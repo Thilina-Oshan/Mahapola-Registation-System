@@ -5,14 +5,25 @@
 package Interfase;
 
 import com.formdev.flatlaf.FlatLaf;
+import java.awt.Color;
+import javax.swing.colorchooser.DefaultColorSelectionModel;
 
 
 public class MainInterfase extends javax.swing.JFrame {
 
       
-    
+    Color DefaultColor , ClickedColor;
     public MainInterfase() {
         initComponents();
+         DefaultColor = new Color(153,153,255);
+        ClickedColor = new Color(0,0,204);
+        
+        
+        AddStudentBotton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+        
     }
 
    
@@ -68,6 +79,11 @@ public class MainInterfase extends javax.swing.JFrame {
         AddStudentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Iconsmind-Outline-Student-Male.512 (1).png"))); // NOI18N
         AddStudentBotton.setText("  Add Student");
         AddStudentBotton.setBorder(null);
+        AddStudentBotton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddStudentBottonMouseClicked(evt);
+            }
+        });
 
         AddPaymentBotton.setBackground(new java.awt.Color(153, 153, 255));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
@@ -75,6 +91,11 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddPaymentBotton.setText("  Add Payment");
         AddPaymentBotton.setBorder(null);
+        AddPaymentBotton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddPaymentBottonMouseClicked(evt);
+            }
+        });
 
         Overview1.setBackground(new java.awt.Color(153, 153, 255));
         Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
@@ -82,6 +103,11 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
         Overview1.setText(" View Details");
         Overview1.setBorder(null);
+        Overview1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Overview1MouseClicked(evt);
+            }
+        });
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/images-removebg-preview (1) (1).png"))); // NOI18N
@@ -226,8 +252,37 @@ public class MainInterfase extends javax.swing.JFrame {
     }//GEN-LAST:event_AddcoursBottonActionPerformed
 
     private void AddcoursBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddcoursBottonMouseClicked
-        AddcoursBotton.setBackground(new java.awt.Color(204, 204, 255));
+       AddStudentBotton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(ClickedColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
     }//GEN-LAST:event_AddcoursBottonMouseClicked
+
+    private void AddStudentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentBottonMouseClicked
+       
+        AddStudentBotton.setBackground(ClickedColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+        
+//        NewJFrame addS = new NewJFrame();
+//        InterfaseView.removeAll();
+//        InterfaseView.add(addS).setVisible(true);
+    }//GEN-LAST:event_AddStudentBottonMouseClicked
+
+    private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked
+       AddStudentBotton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(ClickedColor);
+        Overview1.setBackground(DefaultColor);
+    }//GEN-LAST:event_AddPaymentBottonMouseClicked
+
+    private void Overview1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseClicked
+       AddStudentBotton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(ClickedColor);
+    }//GEN-LAST:event_Overview1MouseClicked
 
     /**
      * @param args the command line arguments

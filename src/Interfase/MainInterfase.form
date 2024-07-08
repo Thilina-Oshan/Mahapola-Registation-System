@@ -200,6 +200,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddStudentBottonMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="AddPaymentBotton">
                   <Properties>
@@ -220,6 +223,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddPaymentBottonMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="Overview1">
                   <Properties>
@@ -240,6 +246,9 @@
                       <Border info="null"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Overview1MouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel1">
                   <Properties>
