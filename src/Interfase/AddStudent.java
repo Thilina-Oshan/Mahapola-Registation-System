@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package Interfase;
+
+import java.util.regex.Pattern;
 
 /**
  *
@@ -11,12 +12,13 @@ package Interfase;
  */
 public class AddStudent extends javax.swing.JFrame {
 
-    /** Creates new form AddStudent */
+    /**
+     * Creates new form AddStudent
+     */
     public AddStudent() {
         initComponents();
     }
 
-  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -91,6 +93,11 @@ public class AddStudent extends javax.swing.JFrame {
         txtName.setForeground(new java.awt.Color(0, 0, 0));
         txtName.setCaretColor(new java.awt.Color(0, 0, 0));
         txtName.setVerifyInputWhenFocusTarget(false);
+        txtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNameFocusLost(evt);
+            }
+        });
 
         ValidateName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ValidateName.setForeground(new java.awt.Color(0, 0, 0));
@@ -109,6 +116,11 @@ public class AddStudent extends javax.swing.JFrame {
         txtNic.setForeground(new java.awt.Color(0, 0, 0));
         txtNic.setCaretColor(new java.awt.Color(0, 0, 0));
         txtNic.setVerifyInputWhenFocusTarget(false);
+        txtNic.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNicFocusLost(evt);
+            }
+        });
 
         validateNic.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         validateNic.setForeground(new java.awt.Color(0, 0, 0));
@@ -126,6 +138,11 @@ public class AddStudent extends javax.swing.JFrame {
         txtTeleNumber.setForeground(new java.awt.Color(0, 0, 0));
         txtTeleNumber.setCaretColor(new java.awt.Color(0, 0, 0));
         txtTeleNumber.setVerifyInputWhenFocusTarget(false);
+        txtTeleNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTeleNumberFocusLost(evt);
+            }
+        });
 
         ValidateNumber.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ValidateNumber.setForeground(new java.awt.Color(0, 0, 0));
@@ -143,6 +160,11 @@ public class AddStudent extends javax.swing.JFrame {
         txtAddress.setForeground(new java.awt.Color(0, 0, 0));
         txtAddress.setCaretColor(new java.awt.Color(0, 0, 0));
         txtAddress.setVerifyInputWhenFocusTarget(false);
+        txtAddress.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAddressFocusLost(evt);
+            }
+        });
 
         ValidateAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ValidateAddress.setForeground(new java.awt.Color(0, 0, 0));
@@ -158,6 +180,11 @@ public class AddStudent extends javax.swing.JFrame {
         txtMCNumber.setForeground(new java.awt.Color(0, 0, 0));
         txtMCNumber.setCaretColor(new java.awt.Color(0, 0, 0));
         txtMCNumber.setVerifyInputWhenFocusTarget(false);
+        txtMCNumber.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMCNumberFocusLost(evt);
+            }
+        });
 
         ValidateMc.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ValidateMc.setForeground(new java.awt.Color(0, 0, 0));
@@ -347,7 +374,7 @@ public class AddStudent extends javax.swing.JFrame {
         );
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 255));
-        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 51), 3, true));
+        jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 102), 3, true));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
@@ -478,25 +505,44 @@ public class AddStudent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+
         fldSearch.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void txtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNameFocusLost
+        NameValidate();
+    }//GEN-LAST:event_txtNameFocusLost
+
+    private void txtNicFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNicFocusLost
+        NicValidate();
+    }//GEN-LAST:event_txtNicFocusLost
+
+    private void txtTeleNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTeleNumberFocusLost
+        TelephoneNumberValidate();
+    }//GEN-LAST:event_txtTeleNumberFocusLost
+
+    private void txtAddressFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddressFocusLost
+        AddressValidate();
+    }//GEN-LAST:event_txtAddressFocusLost
+
+    private void txtMCNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMCNumberFocusLost
+      McValidate();
+    }//GEN-LAST:event_txtMCNumberFocusLost
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        com.formdev.flatlaf.themes.FlatMacLightLaf.setup();
 
+        com.formdev.flatlaf.themes.FlatMacLightLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -548,4 +594,82 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JLabel validateNic;
     // End of variables declaration//GEN-END:variables
 
+    private boolean NameValidate() {
+
+        if (txtName.getText().equals("")) {
+
+            ValidateName.setText("Can not be empty");
+
+        } else if (!Pattern.matches("[A-Za-z. ]{1,50}", txtName.getText())) {
+
+            ValidateName.setText("Enter Valid Name (ex :- Namal Rajapaksha)");
+        } else {
+            ValidateName.setText(" ");
+        }
+        return true;
+    }
+
+    private boolean NicValidate() {
+
+        if (txtNic.getText().equals("")) {
+
+            validateNic.setText("Can not be empty");
+
+        } else if (!Pattern.matches("^(([5,6,7,8,9]{1})([0-9]{1})([0,1,2,3,5,6,7,8]{1})([0-9]{6})([v|V|x|X]))|(([1,2]{1})([0,9]{1})([0-9]{2})([0,1,2,3,5,6,7,8]{1})([0-9]{7}))", txtNic.getText())) {
+
+            validateNic.setText("Enter Valid Nic (ex :-722441524V OR 200125302976)");
+        } else {
+            validateNic.setText(" ");
+        }
+        return true;
+    }
+
+    private boolean TelephoneNumberValidate() {
+
+        if (txtTeleNumber.getText().isEmpty()) {
+
+            ValidateNumber.setText("Can not be empty");
+
+        } else if (!Pattern.matches("[0-9]{10}", txtTeleNumber.getText())) {
+
+            ValidateNumber.setText("only 10 numbers (ex:-0778612779)");
+
+        } else {
+            ValidateNumber.setText(" ");
+        }
+        return true;
+    }
+
+    private boolean AddressValidate() {
+
+        if (txtAddress.getText().isEmpty()) {
+
+            ValidateAddress.setText("Can not be empty");
+
+        } else if (!Pattern.matches("^[#.0-9a-zA-Z\\s,-]+$ {1,50}", txtAddress.getText())) {
+
+            ValidateAddress.setText("Not valid Addres (ex:-127 B,Main Street,Colombo 04)");
+
+        } else {
+            ValidateAddress.setText(" ");
+        }
+        return true;
+    }
+
+    private boolean McValidate(){
+    
+          if (txtMCNumber.getText().isEmpty()) {
+
+            ValidateMc.setText("Can not be empty");
+
+        } else if (!Pattern.matches("^\\d{4}$", txtMCNumber.getText())) {
+
+            ValidateMc.setText("Not valid MC Number (ex:-1111 (Only 4 Number)))");
+
+        } else {
+            ValidateMc.setText(" ");
+        }
+        return true;
+        
+    }
 }
