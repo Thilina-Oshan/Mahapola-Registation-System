@@ -5,33 +5,64 @@
 package Interfase;
 
 import com.formdev.flatlaf.FlatLaf;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.colorchooser.DefaultColorSelectionModel;
-
 
 public class MainInterfase extends javax.swing.JFrame {
 
-      
-    Color DefaultColor , ClickedColor;
+    Color DefaultColor, ClickedColor;
+    private JButton[] buttons;
+    private JFrame recentFrame;
+
     public MainInterfase() {
         initComponents();
-         DefaultColor = new Color(153,153,255);
-        ClickedColor = new Color(0,0,204);
-        
-        
-        AddStudentBotton.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        Overview1.setBackground(DefaultColor);
-        
+        DefaultColor = new Color(153, 153, 255);
+        ClickedColor = new Color(0, 0, 204);
+
+        buttons = new JButton[]{AddStudentBotton, AddcoursBotton, AddPaymentBotton, Overview1};
+
+        // Add panels to InterfaseView
+        InterfaseView.setLayout(new CardLayout());
+        InterfaseView.add(new AddAplicant(), "Panel 0"); // Placeholder panel
+        InterfaseView.add(new AddAplicant(), "Panel 1"); // Add Student panel
+        InterfaseView.add(new AddCourse(), "Panel 2"); // Add Course panel
+        InterfaseView.add(new AddPayment(), "Panel 3"); // Add Payment panel
+        InterfaseView.add(new OverView(), "Panel 4"); // View Details panel
+
     }
 
-   
+    private void changePanel(int index) {
+        CardLayout cardLayout = (CardLayout) InterfaseView.getLayout();
+        if (index >= 0 && index < InterfaseView.getComponentCount()) {
+            cardLayout.show(InterfaseView, "Panel " + index);
+        } else {
+            System.err.println("Invalid index: " + index);
+        }
+    }
+
+    public void goToPanelAt(int index) {
+        changePanel(index);
+        for (int i = 0; i < buttons.length; i++) {
+            if (i == index) {
+                buttons[i].setBackground(ClickedColor);
+            } else {
+                buttons[i].setBackground(DefaultColor);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         AddcoursBotton = new javax.swing.JButton();
@@ -50,7 +81,7 @@ public class MainInterfase extends javax.swing.JFrame {
         setTitle("Mahapola Ports & Maritime Academy");
         setSize(new java.awt.Dimension(0, 0));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(204, 255, 255));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -84,6 +115,11 @@ public class MainInterfase extends javax.swing.JFrame {
                 AddStudentBottonMouseClicked(evt);
             }
         });
+        AddStudentBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddStudentBottonActionPerformed(evt);
+            }
+        });
 
         AddPaymentBotton.setBackground(new java.awt.Color(153, 153, 255));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
@@ -96,6 +132,11 @@ public class MainInterfase extends javax.swing.JFrame {
                 AddPaymentBottonMouseClicked(evt);
             }
         });
+        AddPaymentBotton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPaymentBottonActionPerformed(evt);
+            }
+        });
 
         Overview1.setBackground(new java.awt.Color(153, 153, 255));
         Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
@@ -106,6 +147,11 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Overview1MouseClicked(evt);
+            }
+        });
+        Overview1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Overview1ActionPerformed(evt);
             }
         });
 
@@ -217,17 +263,17 @@ public class MainInterfase extends javax.swing.JFrame {
             .addComponent(InterfaseView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -236,11 +282,11 @@ public class MainInterfase extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -248,49 +294,59 @@ public class MainInterfase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddcoursBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddcoursBottonActionPerformed
-        // TODO add your handling code here:
+        goToPanelAt(2);
     }//GEN-LAST:event_AddcoursBottonActionPerformed
 
     private void AddcoursBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddcoursBottonMouseClicked
-       AddStudentBotton.setBackground(DefaultColor);
+        AddStudentBotton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(ClickedColor);
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
     }//GEN-LAST:event_AddcoursBottonMouseClicked
 
     private void AddStudentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentBottonMouseClicked
-       
+
         AddStudentBotton.setBackground(ClickedColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
-        
-//        NewJFrame addS = new NewJFrame();
-//        InterfaseView.removeAll();
-//        InterfaseView.add(addS).setVisible(true);
+
+
     }//GEN-LAST:event_AddStudentBottonMouseClicked
 
     private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked
-       AddStudentBotton.setBackground(DefaultColor);
+        AddStudentBotton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(ClickedColor);
         Overview1.setBackground(DefaultColor);
     }//GEN-LAST:event_AddPaymentBottonMouseClicked
 
     private void Overview1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseClicked
-       AddStudentBotton.setBackground(DefaultColor);
+        AddStudentBotton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(ClickedColor);
     }//GEN-LAST:event_Overview1MouseClicked
 
+    private void AddStudentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBottonActionPerformed
+        goToPanelAt(1);
+    }//GEN-LAST:event_AddStudentBottonActionPerformed
+
+    private void AddPaymentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPaymentBottonActionPerformed
+        goToPanelAt(3);
+    }//GEN-LAST:event_AddPaymentBottonActionPerformed
+
+    private void Overview1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Overview1ActionPerformed
+        goToPanelAt(4);
+    }//GEN-LAST:event_Overview1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       
+
         com.formdev.flatlaf.themes.FlatMacLightLaf.setup();
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -310,9 +366,55 @@ public class MainInterfase extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    
+//    public class Dashbord {
+//
+//        private Container container; // Assuming you have a container field
+//
+//        public Dashbord() {
+//            // Initialize the container and add components
+//            container = new JPanel(); // Example container, replace with your actual container
+//            container.setLayout(new CardLayout()); // Example layout, adjust as needed
+//
+//            // Add your components to the container
+//            container.add(new JPanel(), "Panel 1");
+//            container.add(new JPanel(), "Panel 2");
+//            // Add more panels as needed
+//
+//            // Attempt to go to a specific panel
+//            goToPanelAt(2); // Example index
+//        }
+//
+//     
+//      private void changePanel(JPanel panel) {
+//        ((GroupLayout) mainPanel.getLayout()).replace(mainPanel.getComponent(2), panel);
+//    }
+//    
+//      
+//        public void goToPanelAt(int index) {
+//        switch (index) {
+//            case 1 ->
+//                changePanel(new AddAplicant());
+//            case 2 ->
+//                changePanel(new AddCourse());
+//            default ->
+//                changePanel(new AddPayment());
+//        }
+//
+//        for (int i = 0; i < buttons.length; i++) {
+//            if (i == index) {
+//                buttons[i].setBackground(new Color(86, 86, 86));
+//            } else {
+//                buttons[i].setBackground(new Color(102, 47, 56));
+//            }
+//        }
+//    }
 }

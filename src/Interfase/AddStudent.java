@@ -6,15 +6,8 @@ package Interfase;
 
 import java.util.regex.Pattern;
 
-/**
- *
- * @author Oshan Demel
- */
 public class AddStudent extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddStudent
-     */
     public AddStudent() {
         initComponents();
     }
@@ -197,6 +190,11 @@ public class AddStudent extends javax.swing.JFrame {
         jButtonInsert.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         jButtonInsert.setForeground(new java.awt.Color(0, 0, 102));
         jButtonInsert.setText("Save");
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
 
         jButtonUpdate.setBackground(new java.awt.Color(255, 255, 255));
         jButtonUpdate.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
@@ -207,6 +205,11 @@ public class AddStudent extends javax.swing.JFrame {
         jButtonClear.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
         jButtonClear.setForeground(new java.awt.Color(0, 0, 102));
         jButtonClear.setText("Clear Fields");
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -534,8 +537,20 @@ public class AddStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAddressFocusLost
 
     private void txtMCNumberFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMCNumberFocusLost
-      McValidate();
+        McValidate();
     }//GEN-LAST:event_txtMCNumberFocusLost
+
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+       
+        if(isvalidate() ){
+        
+        }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        clearField();
+        clearLbl();
+    }//GEN-LAST:event_jButtonClearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -593,6 +608,14 @@ public class AddStudent extends javax.swing.JFrame {
     private javax.swing.JTextField txtTeleNumber;
     private javax.swing.JLabel validateNic;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isvalidate() {
+
+        boolean isvalidate = NameValidate() & NicValidate() & TelephoneNumberValidate() & AddressValidate() & McValidate();
+
+        return isvalidate;
+
+    }
 
     private boolean NameValidate() {
 
@@ -656,9 +679,9 @@ public class AddStudent extends javax.swing.JFrame {
         return true;
     }
 
-    private boolean McValidate(){
-    
-          if (txtMCNumber.getText().isEmpty()) {
+    private boolean McValidate() {
+
+        if (txtMCNumber.getText().isEmpty()) {
 
             ValidateMc.setText("Can not be empty");
 
@@ -670,6 +693,24 @@ public class AddStudent extends javax.swing.JFrame {
             ValidateMc.setText(" ");
         }
         return true;
-        
+
+    }
+    
+    public void clearField(){
+    
+        txtAddress.setText("");
+        txtMCNumber.setText("");
+        txtName.setText("");
+        txtNic.setText("");
+        txtTeleNumber.setText("");
+    }
+    
+    public void clearLbl(){
+    
+        validateNic.setText(" ");
+        ValidateNumber.setText(" ");
+        ValidateName.setText(" ");
+        ValidateAddress.setText(" ");
+        ValidateMc.setText(" ");
     }
 }
