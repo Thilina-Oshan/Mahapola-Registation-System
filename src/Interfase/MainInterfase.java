@@ -26,15 +26,16 @@ public class MainInterfase extends javax.swing.JFrame {
         DefaultColor = new Color(153, 153, 255);
         ClickedColor = new Color(0, 0, 204);
 
-        buttons = new JButton[]{AddStudentBotton, AddcoursBotton, AddPaymentBotton, Overview1};
+        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddPaymentBotton, Overview1};
 
         // Add panels to InterfaseView
         InterfaseView.setLayout(new CardLayout());
-        InterfaseView.add(new AddAplicant(), "Panel 0"); // Placeholder panel
-        InterfaseView.add(new AddAplicant(), "Panel 1"); // Add Student panel
-        InterfaseView.add(new AddCourse(), "Panel 2"); // Add Course panel
-        InterfaseView.add(new AddPayment(), "Panel 3"); // Add Payment panel
-        InterfaseView.add(new OverView(), "Panel 4"); // View Details panel
+        InterfaseView.add(new Home(), "Panel 0"); // Placeholder panel
+        InterfaseView.add(new Home(), "Panel 1"); // Placeholder panel
+        InterfaseView.add(new AddAplicant(), "Panel 2"); // Add Student panel
+        InterfaseView.add(new AddCourse(), "Panel 3"); // Add Course panel
+        InterfaseView.add(new AddPayment(), "Panel 4"); // Add Payment panel
+        InterfaseView.add(new OverView(), "Panel 5"); // View Details panel
 
     }
 
@@ -66,12 +67,13 @@ public class MainInterfase extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         AddcoursBotton = new javax.swing.JButton();
-        AddStudentBotton = new javax.swing.JButton();
+        Homet1Botton = new javax.swing.JButton();
         AddPaymentBotton = new javax.swing.JButton();
         Overview1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        AddStudentBotton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -81,16 +83,15 @@ public class MainInterfase extends javax.swing.JFrame {
         setTitle("Mahapola Ports & Maritime Academy");
         setSize(new java.awt.Dimension(0, 0));
 
-        mainPanel.setBackground(new java.awt.Color(204, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(153, 153, 255));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(51, 51, 255));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
 
         AddcoursBotton.setBackground(new java.awt.Color(153, 153, 255));
         AddcoursBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddcoursBotton.setForeground(new java.awt.Color(0, 0, 0));
-        AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/online-certificate (2).png"))); // NOI18N
         AddcoursBotton.setText("  Add Course");
         AddcoursBotton.setBorder(null);
         AddcoursBotton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,27 +105,25 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddStudentBotton.setBackground(new java.awt.Color(153, 153, 255));
-        AddStudentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        AddStudentBotton.setForeground(new java.awt.Color(0, 0, 0));
-        AddStudentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Iconsmind-Outline-Student-Male.512 (1).png"))); // NOI18N
-        AddStudentBotton.setText("  Add Student");
-        AddStudentBotton.setBorder(null);
-        AddStudentBotton.addMouseListener(new java.awt.event.MouseAdapter() {
+        Homet1Botton.setBackground(new java.awt.Color(153, 153, 255));
+        Homet1Botton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        Homet1Botton.setForeground(new java.awt.Color(0, 0, 0));
+        Homet1Botton.setText("    DashBord");
+        Homet1Botton.setBorder(null);
+        Homet1Botton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddStudentBottonMouseClicked(evt);
+                Homet1BottonMouseClicked(evt);
             }
         });
-        AddStudentBotton.addActionListener(new java.awt.event.ActionListener() {
+        Homet1Botton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddStudentBottonActionPerformed(evt);
+                Homet1BottonActionPerformed(evt);
             }
         });
 
         AddPaymentBotton.setBackground(new java.awt.Color(153, 153, 255));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddPaymentBotton.setForeground(new java.awt.Color(0, 0, 0));
-        AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddPaymentBotton.setText("  Add Payment");
         AddPaymentBotton.setBorder(null);
         AddPaymentBotton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,7 +140,6 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setBackground(new java.awt.Color(153, 153, 255));
         Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         Overview1.setForeground(new java.awt.Color(0, 0, 0));
-        Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
         Overview1.setText(" View Details");
         Overview1.setBorder(null);
         Overview1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,24 +165,51 @@ public class MainInterfase extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mahapola Ports ");
 
+        AddStudentBotton1.setBackground(new java.awt.Color(153, 153, 255));
+        AddStudentBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        AddStudentBotton1.setForeground(new java.awt.Color(0, 0, 0));
+        AddStudentBotton1.setText("  Add Student");
+        AddStudentBotton1.setBorder(null);
+        AddStudentBotton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddStudentBotton1MouseClicked(evt);
+            }
+        });
+        AddStudentBotton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddStudentBotton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Overview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddPaymentBotton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddStudentBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddcoursBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Homet1Botton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AddcoursBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Overview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AddStudentBotton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AddPaymentBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -199,15 +224,17 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(AddStudentBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(AddcoursBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addComponent(AddPaymentBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(Overview1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addGap(18, 18, 18)
+                .addComponent(Homet1Botton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddStudentBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddcoursBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddPaymentBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addComponent(Overview1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Hopstarter-Button-Button-Help.256 (1).png"))); // NOI18N
@@ -256,11 +283,11 @@ public class MainInterfase extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(InterfaseView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(InterfaseView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(InterfaseView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(InterfaseView, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -294,51 +321,68 @@ public class MainInterfase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddcoursBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddcoursBottonActionPerformed
-        goToPanelAt(2);
+        goToPanelAt(3);
     }//GEN-LAST:event_AddcoursBottonActionPerformed
 
     private void AddcoursBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddcoursBottonMouseClicked
-        AddStudentBotton.setBackground(DefaultColor);
+        Homet1Botton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(ClickedColor);
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
     }//GEN-LAST:event_AddcoursBottonMouseClicked
 
-    private void AddStudentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentBottonMouseClicked
+    private void Homet1BottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Homet1BottonMouseClicked
 
-        AddStudentBotton.setBackground(ClickedColor);
+        Homet1Botton.setBackground(ClickedColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
 
 
-    }//GEN-LAST:event_AddStudentBottonMouseClicked
+    }//GEN-LAST:event_Homet1BottonMouseClicked
 
     private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked
-        AddStudentBotton.setBackground(DefaultColor);
+        Homet1Botton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(ClickedColor);
         Overview1.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
     }//GEN-LAST:event_AddPaymentBottonMouseClicked
 
     private void Overview1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseClicked
-        AddStudentBotton.setBackground(DefaultColor);
+        Homet1Botton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(ClickedColor);
+        AddStudentBotton1.setBackground(DefaultColor);
     }//GEN-LAST:event_Overview1MouseClicked
 
-    private void AddStudentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBottonActionPerformed
+    private void Homet1BottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Homet1BottonActionPerformed
         goToPanelAt(1);
-    }//GEN-LAST:event_AddStudentBottonActionPerformed
+    }//GEN-LAST:event_Homet1BottonActionPerformed
 
     private void AddPaymentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPaymentBottonActionPerformed
-        goToPanelAt(3);
+        goToPanelAt(4);
     }//GEN-LAST:event_AddPaymentBottonActionPerformed
 
     private void Overview1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Overview1ActionPerformed
-        goToPanelAt(4);
+        goToPanelAt(5);
     }//GEN-LAST:event_Overview1ActionPerformed
+
+    private void AddStudentBotton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentBotton1MouseClicked
+
+        Homet1Botton.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(ClickedColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+    }//GEN-LAST:event_AddStudentBotton1MouseClicked
+
+    private void AddStudentBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBotton1ActionPerformed
+        goToPanelAt(2);
+    }//GEN-LAST:event_AddStudentBotton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,8 +401,9 @@ public class MainInterfase extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPaymentBotton;
-    private javax.swing.JButton AddStudentBotton;
+    private javax.swing.JButton AddStudentBotton1;
     private javax.swing.JButton AddcoursBotton;
+    private javax.swing.JButton Homet1Botton;
     private javax.swing.JPanel InterfaseView;
     private javax.swing.JButton Overview1;
     private javax.swing.JLabel jLabel1;
@@ -372,9 +417,6 @@ public class MainInterfase extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    
 //    public class Dashbord {
 //
 //        private Container container; // Assuming you have a container field
