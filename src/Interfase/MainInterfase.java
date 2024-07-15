@@ -92,6 +92,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddcoursBotton.setBackground(new java.awt.Color(153, 153, 255));
         AddcoursBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddcoursBotton.setForeground(new java.awt.Color(0, 0, 0));
+        AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/online-certificate (2).png"))); // NOI18N
         AddcoursBotton.setText("  Add Course");
         AddcoursBotton.setBorder(null);
         AddcoursBotton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,6 +109,7 @@ public class MainInterfase extends javax.swing.JFrame {
         Homet1Botton.setBackground(new java.awt.Color(153, 153, 255));
         Homet1Botton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         Homet1Botton.setForeground(new java.awt.Color(0, 0, 0));
+        Homet1Botton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home (1).png"))); // NOI18N
         Homet1Botton.setText("    DashBord");
         Homet1Botton.setBorder(null);
         Homet1Botton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,6 +126,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(new java.awt.Color(153, 153, 255));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddPaymentBotton.setForeground(new java.awt.Color(0, 0, 0));
+        AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddPaymentBotton.setText("  Add Payment");
         AddPaymentBotton.setBorder(null);
         AddPaymentBotton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,6 +143,7 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setBackground(new java.awt.Color(153, 153, 255));
         Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         Overview1.setForeground(new java.awt.Color(0, 0, 0));
+        Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
         Overview1.setText(" View Details");
         Overview1.setBorder(null);
         Overview1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,6 +172,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddStudentBotton1.setBackground(new java.awt.Color(153, 153, 255));
         AddStudentBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddStudentBotton1.setForeground(new java.awt.Color(0, 0, 0));
+        AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Iconsmind-Outline-Student-Male.512 (1).png"))); // NOI18N
         AddStudentBotton1.setText("  Add Student");
         AddStudentBotton1.setBorder(null);
         AddStudentBotton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,7 +202,7 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 10, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(AddcoursBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -272,7 +277,7 @@ public class MainInterfase extends javax.swing.JFrame {
         InterfaseView.setLayout(InterfaseViewLayout);
         InterfaseViewLayout.setHorizontalGroup(
             InterfaseViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 924, Short.MAX_VALUE)
+            .addGap(0, 914, Short.MAX_VALUE)
         );
         InterfaseViewLayout.setVerticalGroup(
             InterfaseViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,12 +389,9 @@ public class MainInterfase extends javax.swing.JFrame {
         goToPanelAt(2);
     }//GEN-LAST:event_AddStudentBotton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
 
-        com.formdev.flatlaf.themes.FlatMacLightLaf.setup();
+        com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

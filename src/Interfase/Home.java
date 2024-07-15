@@ -28,6 +28,9 @@ public class Home extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(153, 153, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 2, 24)); // NOI18N
         jLabel1.setText("jLabel1");
 
