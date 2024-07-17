@@ -1,15 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfase;
 
+import Classes.DbConnection;
 import Jpanels.AddAdmin;
 import com.formdev.flatlaf.FlatLaf;
+import com.mysql.cj.jdbc.ConnectionGroup;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.sql.Connection;
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,14 +18,19 @@ import javax.swing.colorchooser.DefaultColorSelectionModel;
 
 public class MainInterfase extends javax.swing.JFrame {
 
-    Color DefaultColor, ClickedColor;
+    //Set Connection 
+    static Connection con = new DbConnection().connect();
+
+    Color DefaultColor, ClickedColor, ClickForeground, ClickAfterForgrond;
     private JButton[] buttons;
     private JFrame recentFrame;
 
     public MainInterfase() {
         initComponents();
-        DefaultColor = new Color(153, 153, 255);
-        ClickedColor = new Color(0, 0, 204);
+        DefaultColor = new Color(102, 102, 255);
+        ClickedColor = new Color(0, 0, 128);
+        ClickAfterForgrond = new Color(0, 0, 0);
+        ClickForeground = new Color(255, 255, 255);
 
         buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, AddRegisterdBotton1, Overview1, jButtonAdmin};
 
@@ -95,7 +100,7 @@ public class MainInterfase extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
 
-        AddcoursBotton.setBackground(new java.awt.Color(153, 153, 255));
+        AddcoursBotton.setBackground(new java.awt.Color(102, 102, 255));
         AddcoursBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddcoursBotton.setForeground(new java.awt.Color(0, 0, 0));
         AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/online-certificate (2).png"))); // NOI18N
@@ -113,9 +118,9 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        Homet1Botton.setBackground(new java.awt.Color(0, 0, 204));
+        Homet1Botton.setBackground(new java.awt.Color(0, 0, 51));
         Homet1Botton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        Homet1Botton.setForeground(new java.awt.Color(0, 0, 0));
+        Homet1Botton.setForeground(new java.awt.Color(255, 255, 255));
         Homet1Botton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home (1).png"))); // NOI18N
         Homet1Botton.setText(" Home");
         Homet1Botton.setBorder(null);
@@ -132,7 +137,7 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddPaymentBotton.setBackground(new java.awt.Color(153, 153, 255));
+        AddPaymentBotton.setBackground(new java.awt.Color(102, 102, 255));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddPaymentBotton.setForeground(new java.awt.Color(0, 0, 0));
         AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
@@ -150,7 +155,7 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        Overview1.setBackground(new java.awt.Color(153, 153, 255));
+        Overview1.setBackground(new java.awt.Color(102, 102, 255));
         Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         Overview1.setForeground(new java.awt.Color(0, 0, 0));
         Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
@@ -183,7 +188,7 @@ public class MainInterfase extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mahapola Ports ");
 
-        AddStudentBotton1.setBackground(new java.awt.Color(153, 153, 255));
+        AddStudentBotton1.setBackground(new java.awt.Color(102, 102, 255));
         AddStudentBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddStudentBotton1.setForeground(new java.awt.Color(0, 0, 0));
         AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Iconsmind-Outline-Student-Male.512 (1).png"))); // NOI18N
@@ -201,7 +206,7 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddRegisterdBotton1.setBackground(new java.awt.Color(153, 153, 255));
+        AddRegisterdBotton1.setBackground(new java.awt.Color(102, 102, 255));
         AddRegisterdBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddRegisterdBotton1.setForeground(new java.awt.Color(0, 0, 0));
         AddRegisterdBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
@@ -219,7 +224,7 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddBatchButton.setBackground(new java.awt.Color(153, 153, 255));
+        AddBatchButton.setBackground(new java.awt.Color(102, 102, 255));
         AddBatchButton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         AddBatchButton.setForeground(new java.awt.Color(0, 0, 0));
         AddBatchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icons8-Ios7-Science-Classroom.512 (2).png"))); // NOI18N
@@ -237,7 +242,7 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        jButtonAdmin.setBackground(new java.awt.Color(153, 153, 255));
+        jButtonAdmin.setBackground(new java.awt.Color(102, 102, 255));
         jButtonAdmin.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         jButtonAdmin.setForeground(new java.awt.Color(0, 0, 0));
         jButtonAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Graphicloads-Folded-Add-contact-folded.256 (1).png"))); // NOI18N
@@ -255,7 +260,7 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 255));
+        jButton1.setBackground(new java.awt.Color(102, 102, 255));
         jButton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LOgoutS.png"))); // NOI18N
@@ -350,7 +355,7 @@ public class MainInterfase extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        InterfaseView.setBackground(new java.awt.Color(51, 51, 255));
+        InterfaseView.setBackground(new java.awt.Color(102, 102, 255));
 
         javax.swing.GroupLayout InterfaseViewLayout = new javax.swing.GroupLayout(InterfaseView);
         InterfaseView.setLayout(InterfaseViewLayout);
@@ -406,6 +411,16 @@ public class MainInterfase extends javax.swing.JFrame {
         AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickForeground);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
     }//GEN-LAST:event_AddcoursBottonMouseClicked
 
     private void Homet1BottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Homet1BottonMouseClicked
@@ -418,11 +433,23 @@ public class MainInterfase extends javax.swing.JFrame {
         AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
+        Homet1Botton.setForeground(ClickForeground);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickForeground);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
 
 
     }//GEN-LAST:event_Homet1BottonMouseClicked
 
     private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked
+        //Background Change
         Homet1Botton.setBackground(DefaultColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(ClickedColor);
@@ -431,7 +458,17 @@ public class MainInterfase extends javax.swing.JFrame {
         AddRegisterdBotton1.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
-        
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickForeground);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+
     }//GEN-LAST:event_AddPaymentBottonMouseClicked
 
     private void Overview1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseClicked
@@ -443,7 +480,17 @@ public class MainInterfase extends javax.swing.JFrame {
         AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
-      
+
+        //ForeGround Change
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickForeground);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+        AddBatchButton.setForeground(ClickAfterForgrond);
+
     }//GEN-LAST:event_Overview1MouseClicked
 
     private void Homet1BottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Homet1BottonActionPerformed
@@ -467,8 +514,19 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
-        
-        
+        AddRegisterdBotton1.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickForeground);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+
+
     }//GEN-LAST:event_AddStudentBotton1MouseClicked
 
     private void AddStudentBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBotton1ActionPerformed
@@ -482,6 +540,18 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(DefaultColor);
         AddRegisterdBotton1.setBackground(ClickedColor);
         Overview1.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickForeground);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+
+
     }//GEN-LAST:event_AddRegisterdBotton1MouseClicked
 
     private void AddRegisterdBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1ActionPerformed
@@ -501,7 +571,17 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setBackground(DefaultColor);
         AddBatchButton.setBackground(ClickedColor);
         jButtonAdmin.setBackground(DefaultColor);
-        
+
+        //ForeGround Change
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+        AddBatchButton.setForeground(ClickForeground);
+
     }//GEN-LAST:event_AddBatchButtonMouseClicked
 
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
@@ -517,6 +597,16 @@ public class MainInterfase extends javax.swing.JFrame {
         AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(ClickedColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickForeground);
     }//GEN-LAST:event_jButtonAdminMouseClicked
 
     private void Overview1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseEntered
