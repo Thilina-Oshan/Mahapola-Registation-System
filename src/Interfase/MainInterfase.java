@@ -94,7 +94,7 @@ public class MainInterfase extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
-        mainPanel.setBackground(new java.awt.Color(153, 153, 255));
+        mainPanel.setBackground(new java.awt.Color(102, 102, 255));
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 255));
 
