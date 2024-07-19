@@ -13,12 +13,14 @@ import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.colorchooser.DefaultColorSelectionModel;
 
 public class MainInterfase extends javax.swing.JFrame {
 
     //Set Connection 
-    static Connection con = new DbConnection().connect();
+//    static Connection con = new DbConnection().connect();
+   
 
     Color DefaultColor, ClickedColor, ClickForeground, ClickAfterForgrond;
     private JButton[] buttons;
