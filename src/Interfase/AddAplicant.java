@@ -2,15 +2,11 @@ package Interfase;
 
 import java.util.regex.Pattern;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
 
 public class AddAplicant extends javax.swing.JPanel {
-    
-      DefaultTableModel addAplicatTable = new DefaultTableModel(new String[]{"Student Nic", "Student Name", "Student Contact", "Student Address"}, 0);
 
     public AddAplicant() {
         initComponents();
-        jTableAddStudent.setModel(addAplicatTable);
 
     }
 
@@ -20,7 +16,7 @@ public class AddAplicant extends javax.swing.JPanel {
 
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableAddStudent = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jTextField7 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -42,9 +38,9 @@ public class AddAplicant extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 51));
 
-        jTableAddStudent.setBackground(new java.awt.Color(153, 255, 255));
-        jTableAddStudent.setForeground(new java.awt.Color(0, 0, 204));
-        jTableAddStudent.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setBackground(new java.awt.Color(153, 255, 255));
+        jTable1.setForeground(new java.awt.Color(0, 0, 204));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -55,7 +51,7 @@ public class AddAplicant extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableAddStudent);
+        jScrollPane1.setViewportView(jTable1);
 
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -139,6 +135,11 @@ public class AddAplicant extends javax.swing.JPanel {
                 txtNameFocusLost(evt);
             }
         });
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
 
         validateNic.setText("error lable");
 
@@ -153,6 +154,11 @@ public class AddAplicant extends javax.swing.JPanel {
         txtPnum.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPnumFocusLost(evt);
+            }
+        });
+        txtPnum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPnumActionPerformed(evt);
             }
         });
 
@@ -262,6 +268,14 @@ public class AddAplicant extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtPnumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPnumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPnumActionPerformed
+
     private void txtNicFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNicFocusLost
 
         NicValidate();
@@ -290,7 +304,7 @@ public class AddAplicant extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableAddStudent;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtName;
