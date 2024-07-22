@@ -28,10 +28,10 @@ public class MainInterfase extends javax.swing.JFrame {
 
     public MainInterfase() {
         initComponents();
-        DefaultColor = new Color(102, 102, 255);
-        ClickedColor = new Color(0, 0, 128);
-        ClickAfterForgrond = new Color(0, 0, 0);
-        ClickForeground = new Color(255, 255, 255);
+        DefaultColor = new Color(0, 0, 51);
+        ClickedColor = new Color(11,160,244);
+        ClickAfterForgrond = new Color(255,255,0);
+        ClickForeground = new Color(255,255,255);
 
         buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, AddRegisterdBotton1, Overview1, jButtonAdmin};
 
@@ -95,15 +95,15 @@ public class MainInterfase extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
-        mainPanel.setBackground(new java.awt.Color(102, 102, 255));
+        mainPanel.setBackground(new java.awt.Color(11, 160, 244));
 
-        jPanel5.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel5.setBackground(new java.awt.Color(11, 160, 244));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
-        AddcoursBotton.setBackground(new java.awt.Color(102, 102, 255));
+        AddcoursBotton.setBackground(new java.awt.Color(0, 0, 51));
         AddcoursBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        AddcoursBotton.setForeground(new java.awt.Color(0, 0, 0));
+        AddcoursBotton.setForeground(new java.awt.Color(255, 255, 0));
         AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/online-certificate (2).png"))); // NOI18N
         AddcoursBotton.setText(" Add Course");
         AddcoursBotton.setBorder(null);
@@ -119,11 +119,11 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        Homet1Botton.setBackground(new java.awt.Color(0, 0, 51));
+        Homet1Botton.setBackground(new java.awt.Color(11, 160, 244));
         Homet1Botton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
         Homet1Botton.setForeground(new java.awt.Color(255, 255, 255));
         Homet1Botton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home (1).png"))); // NOI18N
-        Homet1Botton.setText(" Home");
+        Homet1Botton.setText(" Dashbord");
         Homet1Botton.setBorder(null);
         Homet1Botton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Homet1Botton.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
@@ -138,9 +138,9 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddPaymentBotton.setBackground(new java.awt.Color(102, 102, 255));
+        AddPaymentBotton.setBackground(new java.awt.Color(0, 0, 51));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        AddPaymentBotton.setForeground(new java.awt.Color(0, 0, 0));
+        AddPaymentBotton.setForeground(new java.awt.Color(255, 255, 0));
         AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddPaymentBotton.setText(" Add Payment");
         AddPaymentBotton.setBorder(null);
@@ -156,9 +156,9 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        Overview1.setBackground(new java.awt.Color(102, 102, 255));
+        Overview1.setBackground(new java.awt.Color(0, 0, 51));
         Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        Overview1.setForeground(new java.awt.Color(0, 0, 0));
+        Overview1.setForeground(new java.awt.Color(255, 255, 0));
         Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
         Overview1.setText(" View Details");
         Overview1.setBorder(null);
@@ -180,18 +180,18 @@ public class MainInterfase extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/images-removebg-preview (1) (1).png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Serif", 3, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("& Maritime Academy");
 
-        jLabel3.setFont(new java.awt.Font("Serif", 3, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mahapola Ports ");
 
-        AddStudentBotton1.setBackground(new java.awt.Color(102, 102, 255));
+        AddStudentBotton1.setBackground(new java.awt.Color(0, 0, 51));
         AddStudentBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        AddStudentBotton1.setForeground(new java.awt.Color(0, 0, 0));
+        AddStudentBotton1.setForeground(new java.awt.Color(255, 255, 0));
         AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Iconsmind-Outline-Student-Male.512 (1).png"))); // NOI18N
         AddStudentBotton1.setText(" Add Applicant");
         AddStudentBotton1.setBorder(null);
@@ -207,9 +207,9 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddRegisterdBotton1.setBackground(new java.awt.Color(102, 102, 255));
+        AddRegisterdBotton1.setBackground(new java.awt.Color(0, 0, 51));
         AddRegisterdBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        AddRegisterdBotton1.setForeground(new java.awt.Color(0, 0, 0));
+        AddRegisterdBotton1.setForeground(new java.awt.Color(255, 255, 0));
         AddRegisterdBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddRegisterdBotton1.setText(" Registerd Student");
         AddRegisterdBotton1.setBorder(null);
@@ -225,9 +225,9 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddBatchButton.setBackground(new java.awt.Color(102, 102, 255));
+        AddBatchButton.setBackground(new java.awt.Color(0, 0, 51));
         AddBatchButton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        AddBatchButton.setForeground(new java.awt.Color(0, 0, 0));
+        AddBatchButton.setForeground(new java.awt.Color(255, 255, 0));
         AddBatchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icons8-Ios7-Science-Classroom.512 (2).png"))); // NOI18N
         AddBatchButton.setText(" Add Batch");
         AddBatchButton.setBorder(null);
@@ -243,9 +243,9 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        jButtonAdmin.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonAdmin.setBackground(new java.awt.Color(0, 0, 51));
         jButtonAdmin.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        jButtonAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonAdmin.setForeground(new java.awt.Color(255, 255, 0));
         jButtonAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Graphicloads-Folded-Add-contact-folded.256 (1).png"))); // NOI18N
         jButtonAdmin.setText(" Add New Admin");
         jButtonAdmin.setBorder(null);
@@ -261,13 +261,18 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 255));
+        jButton1.setBackground(new java.awt.Color(0, 0, 51));
         jButton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LOgoutS.png"))); // NOI18N
         jButton1.setText("LogOut");
         jButton1.setBorder(null);
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -285,7 +290,7 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(AddcoursBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -613,6 +618,10 @@ public class MainInterfase extends javax.swing.JFrame {
     private void Overview1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview1MouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
 
