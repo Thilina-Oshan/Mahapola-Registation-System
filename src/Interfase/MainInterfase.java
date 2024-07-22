@@ -102,9 +102,9 @@ public class MainInterfase extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
         AddcoursBotton.setBackground(new java.awt.Color(0, 0, 51));
-        AddcoursBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        AddcoursBotton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddcoursBotton.setForeground(new java.awt.Color(255, 255, 0));
-        AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/online-certificate (2).png"))); // NOI18N
+        AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Course (1).png"))); // NOI18N
         AddcoursBotton.setText(" Add Course");
         AddcoursBotton.setBorder(null);
         AddcoursBotton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -120,9 +120,9 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         Homet1Botton.setBackground(new java.awt.Color(11, 160, 244));
-        Homet1Botton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        Homet1Botton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         Homet1Botton.setForeground(new java.awt.Color(255, 255, 255));
-        Homet1Botton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/home (1).png"))); // NOI18N
+        Homet1Botton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Home (1).png"))); // NOI18N
         Homet1Botton.setText(" Dashbord");
         Homet1Botton.setBorder(null);
         Homet1Botton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -139,7 +139,7 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         AddPaymentBotton.setBackground(new java.awt.Color(0, 0, 51));
-        AddPaymentBotton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        AddPaymentBotton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddPaymentBotton.setForeground(new java.awt.Color(255, 255, 0));
         AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddPaymentBotton.setText(" Add Payment");
@@ -157,7 +157,7 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         Overview1.setBackground(new java.awt.Color(0, 0, 51));
-        Overview1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        Overview1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         Overview1.setForeground(new java.awt.Color(255, 255, 0));
         Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
         Overview1.setText(" View Details");
@@ -190,10 +190,10 @@ public class MainInterfase extends javax.swing.JFrame {
         jLabel3.setText("Mahapola Ports ");
 
         AddStudentBotton1.setBackground(new java.awt.Color(0, 0, 51));
-        AddStudentBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        AddStudentBotton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddStudentBotton1.setForeground(new java.awt.Color(255, 255, 0));
-        AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Iconsmind-Outline-Student-Male.512 (1).png"))); // NOI18N
-        AddStudentBotton1.setText(" Add Applicant");
+        AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Iconsmind-Outline-Student-MaleFemale.512 (3).png"))); // NOI18N
+        AddStudentBotton1.setText(" Student");
         AddStudentBotton1.setBorder(null);
         AddStudentBotton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddStudentBotton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -208,7 +208,7 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         AddRegisterdBotton1.setBackground(new java.awt.Color(0, 0, 51));
-        AddRegisterdBotton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        AddRegisterdBotton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddRegisterdBotton1.setForeground(new java.awt.Color(255, 255, 0));
         AddRegisterdBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
         AddRegisterdBotton1.setText(" Registerd Student");
@@ -226,9 +226,9 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         AddBatchButton.setBackground(new java.awt.Color(0, 0, 51));
-        AddBatchButton.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        AddBatchButton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddBatchButton.setForeground(new java.awt.Color(255, 255, 0));
-        AddBatchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Icons8-Ios7-Science-Classroom.512 (2).png"))); // NOI18N
+        AddBatchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Batch-removebg-preview (1).png"))); // NOI18N
         AddBatchButton.setText(" Add Batch");
         AddBatchButton.setBorder(null);
         AddBatchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -244,7 +244,7 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         jButtonAdmin.setBackground(new java.awt.Color(0, 0, 51));
-        jButtonAdmin.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        jButtonAdmin.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jButtonAdmin.setForeground(new java.awt.Color(255, 255, 0));
         jButtonAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Graphicloads-Folded-Add-contact-folded.256 (1).png"))); // NOI18N
         jButtonAdmin.setText(" Add New Admin");
@@ -262,7 +262,7 @@ public class MainInterfase extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(0, 0, 51));
-        jButton1.setFont(new java.awt.Font("SimSun", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LOgoutS.png"))); // NOI18N
         jButton1.setText("LogOut");
