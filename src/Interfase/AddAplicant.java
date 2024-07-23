@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import Interfase.AddAplicant;
+import javax.swing.GroupLayout;
 
 public class AddAplicant extends javax.swing.JPanel {
 
@@ -161,10 +163,10 @@ public class AddAplicant extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     NewJFrame ADF = new NewJFrame();
-    
+
     private void jButtonAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewActionPerformed
-   
-         ADF.setVisible(true);
+
+        ADF.setVisible(true);
     }//GEN-LAST:event_jButtonAddNewActionPerformed
     private static void showPopupForm() {
         JDialog dialog = new JDialog((JFrame) null, "Popup Form", true);
@@ -176,7 +178,7 @@ public class AddAplicant extends javax.swing.JPanel {
         dialog.setVisible(true);
     }
     private void jButtonRegistationStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistationStudentActionPerformed
-
+        /*goToPanelAts(1);*/
     }//GEN-LAST:event_jButtonRegistationStudentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,5 +193,8 @@ public class AddAplicant extends javax.swing.JPanel {
     private javax.swing.JTable jTableAddaplicant;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+
+    
 
 }

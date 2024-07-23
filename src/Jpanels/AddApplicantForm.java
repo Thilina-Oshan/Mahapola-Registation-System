@@ -15,18 +15,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AddApplicantForm extends JDialog {
 
-      private AddAplicant main;
-    public AddApplicantForm(JFrame parentFrame) {
-      initComponents(); 
+    private AddAplicant main;
+
+    public AddApplicantForm() {
+        initComponents();
     }
-    
-      public AddApplicantForm(AddAplicant main) {
-          /*this();*/
+
+    public AddApplicantForm(AddAplicant main) {
+        /*this();*/
         this.main = main;
     }
-
-
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -88,7 +86,7 @@ public class AddApplicantForm extends JDialog {
                         .addComponent(jButton2)
                         .addGap(29, 29, 29)
                         .addComponent(jButton3)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,8 +109,8 @@ public class AddApplicantForm extends JDialog {
                 .addGap(25, 25, 25))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -124,7 +122,7 @@ public class AddApplicantForm extends JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
 //        this.disableEvents(true);
 
     }//GEN-LAST:event_jButton3ActionPerformed

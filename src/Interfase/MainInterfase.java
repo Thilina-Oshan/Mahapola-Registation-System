@@ -4,10 +4,13 @@ import Classes.DbConnection;
 import Jpanels.AddAdmin;
 import Jpanels.AddApplicantForm;
 import com.formdev.flatlaf.FlatLaf;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -21,20 +24,25 @@ public class MainInterfase extends javax.swing.JFrame {
 
     //Set Connection 
 //    static Connection con = new DbConnection().connect();
-   
-
     Color DefaultColor, ClickedColor, ClickForeground, ClickAfterForgrond;
     private JButton[] buttons;
+    private JButton[] button;
     private JFrame recentFrame;
+    
+  
 
     public MainInterfase() {
         initComponents();
         DefaultColor = new Color(0, 0, 51);
-        ClickedColor = new Color(11,160,244);
-        ClickAfterForgrond = new Color(255,255,0);
-        ClickForeground = new Color(255,255,255);
+        ClickedColor = new Color(11, 160, 244);
+        ClickAfterForgrond = new Color(255, 255, 0);
+        ClickForeground = new Color(255, 255, 255);
 
         buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, AddRegisterdBotton1, Overview1, jButtonAdmin};
+        
+
+       
+       
 
         // Add panels to InterfaseView
         InterfaseView.setLayout(new CardLayout());
@@ -47,9 +55,13 @@ public class MainInterfase extends javax.swing.JFrame {
         InterfaseView.add(new AddBatch(), "Panel 6"); // Add Batch panel
         InterfaseView.add(new OverView(), "Panel 7"); // View Details panel
         InterfaseView.add(new AddAdmin(), "Panel 8"); // Admin Details panel
-//        InterfaseView.add(new AddApplicantForm(parentFrame),"Panel 9");
-
+      
+        
+         
+        
+        
     }
+     
 
     private void changePanel(int index) {
         CardLayout cardLayout = (CardLayout) InterfaseView.getLayout();
@@ -71,6 +83,7 @@ public class MainInterfase extends javax.swing.JFrame {
         }
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -143,7 +156,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(new java.awt.Color(0, 0, 51));
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddPaymentBotton.setForeground(new java.awt.Color(255, 255, 0));
-        AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
+        AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Custom-Icon-Design-Flatastic-5-Payment-card.512 (1).png"))); // NOI18N
         AddPaymentBotton.setText(" Add Payment");
         AddPaymentBotton.setBorder(null);
         AddPaymentBotton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -195,7 +208,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddStudentBotton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddStudentBotton1.setForeground(new java.awt.Color(255, 255, 0));
         AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Iconsmind-Outline-Student-MaleFemale.512 (3).png"))); // NOI18N
-        AddStudentBotton1.setText(" Student");
+        AddStudentBotton1.setText(" Add Student");
         AddStudentBotton1.setBorder(null);
         AddStudentBotton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddStudentBotton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,7 +225,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddRegisterdBotton1.setBackground(new java.awt.Color(0, 0, 51));
         AddRegisterdBotton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddRegisterdBotton1.setForeground(new java.awt.Color(255, 255, 0));
-        AddRegisterdBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save-money (1).png"))); // NOI18N
+        AddRegisterdBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Iconsmind-Outline-Student-MaleFemale.512 (3).png"))); // NOI18N
         AddRegisterdBotton1.setText(" Registerd Student");
         AddRegisterdBotton1.setBorder(null);
         AddRegisterdBotton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -298,9 +311,6 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addComponent(AddcoursBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Overview1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(AddStudentBotton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -310,13 +320,13 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addComponent(AddBatchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(AddPaymentBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Overview1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AddPaymentBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -344,12 +354,12 @@ public class MainInterfase extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(AddPaymentBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Overview1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jButtonAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(Overview1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
