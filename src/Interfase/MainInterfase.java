@@ -2,6 +2,7 @@ package Interfase;
 
 import Classes.DbConnection;
 import Jpanels.AddAdmin;
+import Jpanels.AddApplicantForm;
 import com.formdev.flatlaf.FlatLaf;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -46,6 +47,7 @@ public class MainInterfase extends javax.swing.JFrame {
         InterfaseView.add(new AddBatch(), "Panel 6"); // Add Batch panel
         InterfaseView.add(new OverView(), "Panel 7"); // View Details panel
         InterfaseView.add(new AddAdmin(), "Panel 8"); // Admin Details panel
+//        InterfaseView.add(new AddApplicantForm(parentFrame),"Panel 9");
 
     }
 

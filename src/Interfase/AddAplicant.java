@@ -1,12 +1,28 @@
 package Interfase;
 
+import Jpanels.AddApplicantForm;
+import Jpanels.NewJFrame;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
 
 public class AddAplicant extends javax.swing.JPanel {
 
+    DefaultTableModel AddAplicantModel = new DefaultTableModel(new String[]{"Studen Nic", "Student Name", "Phone Number", "Address"}, 0);
+
     public AddAplicant() {
         initComponents();
+        jTableAddaplicant.setModel(AddAplicantModel);
 
     }
 
@@ -16,7 +32,7 @@ public class AddAplicant extends javax.swing.JPanel {
 
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableAddaplicant = new javax.swing.JTable();
         jTextField7 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -27,11 +43,11 @@ public class AddAplicant extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(153, 153, 255));
 
-        jPanel4.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel4.setBackground(new java.awt.Color(11, 160, 244));
 
-        jTable1.setBackground(new java.awt.Color(153, 255, 255));
-        jTable1.setForeground(new java.awt.Color(0, 0, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAddaplicant.setBackground(new java.awt.Color(153, 255, 255));
+        jTableAddaplicant.setForeground(new java.awt.Color(0, 0, 204));
+        jTableAddaplicant.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -42,7 +58,7 @@ public class AddAplicant extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableAddaplicant);
 
         jTextField7.setBackground(new java.awt.Color(255, 255, 255));
         jTextField7.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -66,6 +82,11 @@ public class AddAplicant extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mpma.png"))); // NOI18N
 
         jButtonAddNew.setText("Add New ");
+        jButtonAddNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddNewActionPerformed(evt);
+            }
+        });
 
         jButtonRegistationStudent.setText("jButton2");
         jButtonRegistationStudent.addActionListener(new java.awt.event.ActionListener() {
@@ -139,10 +160,24 @@ public class AddAplicant extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonRegistationStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistationStudentActionPerformed
-         
-    }//GEN-LAST:event_jButtonRegistationStudentActionPerformed
+    NewJFrame ADF = new NewJFrame();
+    
+    private void jButtonAddNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewActionPerformed
+   
+         ADF.setVisible(true);
+    }//GEN-LAST:event_jButtonAddNewActionPerformed
+    private static void showPopupForm() {
+        JDialog dialog = new JDialog((JFrame) null, "Popup Form", true);
+        dialog.setSize(300, 200);
 
+        JLabel label = new JLabel("This is a popup form!");
+        dialog.getContentPane().add(label);
+
+        dialog.setVisible(true);
+    }
+    private void jButtonRegistationStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistationStudentActionPerformed
+
+    }//GEN-LAST:event_jButtonRegistationStudentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -153,95 +188,8 @@ public class AddAplicant extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableAddaplicant;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
-
-//    private boolean isvalidate() {
-//
-//        boolean isvalidate = NameValidate() & NicValidate() & TelephoneNumberValidate() & AddressValidate();
-//
-//        return isvalidate;
-//
-//    }
-//
-//    private boolean NameValidate() {
-//
-//        if (txtName.getText().equals("")) {
-//
-//            validateName.setText("Can not be empty");
-//
-//        } else if (!Pattern.matches("[A-Za-z. ]{1,50}", txtName.getText())) {
-//
-//            validateName.setText("Enter Valid Name (ex :- Namal Rajapaksha)");
-//        } else {
-//            validateName.setText(" ");
-//        }
-//        return true;
-//    }
-//
-//    private boolean NicValidate() {
-//
-//        if (txtNic.getText().equals("")) {
-//
-//            validateNic.setText("Can not be empty");
-//
-//        } else if (!Pattern.matches("^(([5,6,7,8,9]{1})([0-9]{1})([0,1,2,3,5,6,7,8]{1})([0-9]{6})([v|V|x|X]))|(([1,2]{1})([0,9]{1})([0-9]{2})([0,1,2,3,5,6,7,8]{1})([0-9]{7}))", txtNic.getText())) {
-//
-//            validateNic.setText("Enter Valid Nic (ex :-722441524V OR 200125302976)");
-//        } else {
-//            validateNic.setText(" ");
-//        }
-//        return true;
-//    }
-//
-//    private boolean TelephoneNumberValidate() {
-//
-//        if (txtPnum.getText().isEmpty()) {
-//
-//            validatePhoneNum.setText("Can not be empty");
-//
-//        } else if (!Pattern.matches("[0-9]{10}", txtPnum.getText())) {
-//
-//            validatePhoneNum.setText("only 10 numbers (ex:-0778612779)");
-//
-//        } else {
-//            validatePhoneNum.setText(" ");
-//        }
-//        return true;
-//    }
-//
-//    private boolean AddressValidate() {
-//
-//        if (txtAddress.getText().isEmpty()) {
-//
-//            validateAddress.setText("Can not be empty");
-//
-//        } else if (!Pattern.matches("[A-Za-z0-9'\\.\\-\\s\\,\\/\\\\]{1,50}", txtAddress.getText())) {
-//
-//            validateAddress.setText("Not valid Addres (ex:-127 B,Main Street,Colombo 04)");
-//
-//        } else {
-//            validateAddress.setText(" ");
-//        }
-//        return true;
-//    }
-//
-//    public void clearField() {
-//
-//        txtAddress.setText("");
-//        txtName.setText("");
-//        txtNic.setText("");
-//        txtPnum.setText("");
-//    }
-//
-//    public void clearLbl() {
-//
-//        validateNic.setText(" ");
-//        validateAddress.setText(" ");
-//        validateName.setText(" ");
-//        validatePhoneNum.setText(" ");
-//
-//    }
 
 }
