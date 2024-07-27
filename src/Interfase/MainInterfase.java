@@ -28,8 +28,6 @@ public class MainInterfase extends javax.swing.JFrame {
     private JButton[] buttons;
     private JButton[] button;
     private JFrame recentFrame;
-    
-  
 
     public MainInterfase() {
         initComponents();
@@ -37,12 +35,10 @@ public class MainInterfase extends javax.swing.JFrame {
         ClickedColor = new Color(11, 160, 244);
         ClickAfterForgrond = new Color(255, 255, 0);
         ClickForeground = new Color(255, 255, 255);
-
-        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, AddRegisterdBotton1, Overview1, jButtonAdmin};
+        
         
 
-       
-       
+        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, AddRegisterdBotton1, Overview1, jButtonAdmin};
 
         // Add panels to InterfaseView
         InterfaseView.setLayout(new CardLayout());
@@ -55,13 +51,9 @@ public class MainInterfase extends javax.swing.JFrame {
         InterfaseView.add(new AddBatch(), "Panel 6"); // Add Batch panel
         InterfaseView.add(new OverView(), "Panel 7"); // View Details panel
         InterfaseView.add(new AddAdmin(), "Panel 8"); // Admin Details panel
-      
-        
-         
-        
-        
+        InterfaseView.add(new AddRegistation(), "Panel 9");
+
     }
-     
 
     private void changePanel(int index) {
         CardLayout cardLayout = (CardLayout) InterfaseView.getLayout();
@@ -83,7 +75,6 @@ public class MainInterfase extends javax.swing.JFrame {
         }
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -383,7 +374,7 @@ public class MainInterfase extends javax.swing.JFrame {
         );
         InterfaseViewLayout.setVerticalGroup(
             InterfaseViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -416,191 +407,9 @@ public class MainInterfase extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AddcoursBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddcoursBottonActionPerformed
-        goToPanelAt(3);
-    }//GEN-LAST:event_AddcoursBottonActionPerformed
-
-    private void AddcoursBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddcoursBottonMouseClicked
-        Homet1Botton.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(ClickedColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        Overview1.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
-        AddBatchButton.setBackground(DefaultColor);
-        jButtonAdmin.setBackground(DefaultColor);
-
-        //ForeGround Change
-        AddBatchButton.setForeground(ClickAfterForgrond);
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickForeground);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-    }//GEN-LAST:event_AddcoursBottonMouseClicked
-
-    private void Homet1BottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Homet1BottonMouseClicked
-
-        Homet1Botton.setBackground(ClickedColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        Overview1.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
-        AddBatchButton.setBackground(DefaultColor);
-        jButtonAdmin.setBackground(DefaultColor);
-        Homet1Botton.setForeground(ClickForeground);
-
-        //ForeGround Change
-        AddBatchButton.setForeground(ClickAfterForgrond);
-        Homet1Botton.setForeground(ClickForeground);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-
-
-    }//GEN-LAST:event_Homet1BottonMouseClicked
-
-    private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked
-        //Background Change
-        Homet1Botton.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(ClickedColor);
-        Overview1.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
-        jButtonAdmin.setBackground(DefaultColor);
-        AddBatchButton.setBackground(DefaultColor);
-
-        //ForeGround Change
-        AddBatchButton.setForeground(ClickAfterForgrond);
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickForeground);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-
-    }//GEN-LAST:event_AddPaymentBottonMouseClicked
-
-    private void Overview1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseClicked
-        Homet1Botton.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        Overview1.setBackground(ClickedColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
-        AddBatchButton.setBackground(DefaultColor);
-        jButtonAdmin.setBackground(DefaultColor);
-
-        //ForeGround Change
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickForeground);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-        AddBatchButton.setForeground(ClickAfterForgrond);
-
-    }//GEN-LAST:event_Overview1MouseClicked
-
-    private void Homet1BottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Homet1BottonActionPerformed
-        goToPanelAt(1);
-    }//GEN-LAST:event_Homet1BottonActionPerformed
-
-    private void AddPaymentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPaymentBottonActionPerformed
-        goToPanelAt(4);
-    }//GEN-LAST:event_AddPaymentBottonActionPerformed
-
-    private void Overview1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Overview1ActionPerformed
-        goToPanelAt(7);
-    }//GEN-LAST:event_Overview1ActionPerformed
-
-    private void AddStudentBotton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentBotton1MouseClicked
-
-        Homet1Botton.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(ClickedColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        Overview1.setBackground(DefaultColor);
-        jButtonAdmin.setBackground(DefaultColor);
-        AddBatchButton.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
-
-        //ForeGround Change
-        AddBatchButton.setForeground(ClickAfterForgrond);
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickForeground);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-
-
-    }//GEN-LAST:event_AddStudentBotton1MouseClicked
-
-    private void AddStudentBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBotton1ActionPerformed
-        goToPanelAt(2);
-    }//GEN-LAST:event_AddStudentBotton1ActionPerformed
-
-    private void AddRegisterdBotton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1MouseClicked
-        Homet1Botton.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(ClickedColor);
-        Overview1.setBackground(DefaultColor);
-
-        //ForeGround Change
-        AddBatchButton.setForeground(ClickAfterForgrond);
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickForeground);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-
-
-    }//GEN-LAST:event_AddRegisterdBotton1MouseClicked
-
-    private void AddRegisterdBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1ActionPerformed
-        goToPanelAt(5);
-    }//GEN-LAST:event_AddRegisterdBotton1ActionPerformed
-
-    private void AddBatchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBatchButtonActionPerformed
-        goToPanelAt(6);
-    }//GEN-LAST:event_AddBatchButtonActionPerformed
-
-    private void AddBatchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBatchButtonMouseClicked
-        Homet1Botton.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
-        Overview1.setBackground(DefaultColor);
-        AddBatchButton.setBackground(ClickedColor);
-        jButtonAdmin.setBackground(DefaultColor);
-
-        //ForeGround Change
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-        AddBatchButton.setForeground(ClickForeground);
-
-    }//GEN-LAST:event_AddBatchButtonMouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
         goToPanelAt(8);
@@ -627,13 +436,189 @@ public class MainInterfase extends javax.swing.JFrame {
         jButtonAdmin.setForeground(ClickForeground);
     }//GEN-LAST:event_jButtonAdminMouseClicked
 
+    private void AddBatchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBatchButtonActionPerformed
+        goToPanelAt(6);
+    }//GEN-LAST:event_AddBatchButtonActionPerformed
+
+    private void AddBatchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBatchButtonMouseClicked
+        Homet1Botton.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+        AddBatchButton.setBackground(ClickedColor);
+        jButtonAdmin.setBackground(DefaultColor);
+
+        //ForeGround Change
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+        AddBatchButton.setForeground(ClickForeground);
+    }//GEN-LAST:event_AddBatchButtonMouseClicked
+
+    private void AddRegisterdBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1ActionPerformed
+        goToPanelAt(5);
+    }//GEN-LAST:event_AddRegisterdBotton1ActionPerformed
+
+    private void AddRegisterdBotton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1MouseClicked
+        Homet1Botton.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(ClickedColor);
+        Overview1.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickForeground);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+
+    }//GEN-LAST:event_AddRegisterdBotton1MouseClicked
+
+    private void AddStudentBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBotton1ActionPerformed
+        goToPanelAt(2);
+    }//GEN-LAST:event_AddStudentBotton1ActionPerformed
+
+    private void AddStudentBotton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddStudentBotton1MouseClicked
+
+        Homet1Botton.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(ClickedColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+        jButtonAdmin.setBackground(DefaultColor);
+        AddBatchButton.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickForeground);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+
+    }//GEN-LAST:event_AddStudentBotton1MouseClicked
+
+    private void Overview1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Overview1ActionPerformed
+        goToPanelAt(7);
+    }//GEN-LAST:event_Overview1ActionPerformed
+
     private void Overview1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_Overview1MouseEntered
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void Overview1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Overview1MouseClicked
+        Homet1Botton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(ClickedColor);
+        AddStudentBotton1.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(DefaultColor);
+        AddBatchButton.setBackground(DefaultColor);
+        jButtonAdmin.setBackground(DefaultColor);
+
+        //ForeGround Change
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickForeground);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+        AddBatchButton.setForeground(ClickAfterForgrond);
+    }//GEN-LAST:event_Overview1MouseClicked
+
+    private void AddPaymentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPaymentBottonActionPerformed
+        goToPanelAt(4);
+    }//GEN-LAST:event_AddPaymentBottonActionPerformed
+
+    private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked
+        //Background Change
+        Homet1Botton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(ClickedColor);
+        Overview1.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(DefaultColor);
+        jButtonAdmin.setBackground(DefaultColor);
+        AddBatchButton.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickForeground);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+    }//GEN-LAST:event_AddPaymentBottonMouseClicked
+
+    private void Homet1BottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Homet1BottonActionPerformed
+        goToPanelAt(1);
+    }//GEN-LAST:event_Homet1BottonActionPerformed
+
+    private void Homet1BottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Homet1BottonMouseClicked
+
+        Homet1Botton.setBackground(ClickedColor);
+        AddcoursBotton.setBackground(DefaultColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(DefaultColor);
+        AddBatchButton.setBackground(DefaultColor);
+        jButtonAdmin.setBackground(DefaultColor);
+        Homet1Botton.setForeground(ClickForeground);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickForeground);
+        AddcoursBotton.setForeground(ClickAfterForgrond);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+
+    }//GEN-LAST:event_Homet1BottonMouseClicked
+
+    private void AddcoursBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddcoursBottonActionPerformed
+        goToPanelAt(3);
+    }//GEN-LAST:event_AddcoursBottonActionPerformed
+
+    private void AddcoursBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddcoursBottonMouseClicked
+        Homet1Botton.setBackground(DefaultColor);
+        AddcoursBotton.setBackground(ClickedColor);
+        AddPaymentBotton.setBackground(DefaultColor);
+        Overview1.setBackground(DefaultColor);
+        AddStudentBotton1.setBackground(DefaultColor);
+        AddRegisterdBotton1.setBackground(DefaultColor);
+        AddBatchButton.setBackground(DefaultColor);
+        jButtonAdmin.setBackground(DefaultColor);
+
+        //ForeGround Change
+        AddBatchButton.setForeground(ClickAfterForgrond);
+        Homet1Botton.setForeground(ClickAfterForgrond);
+        AddcoursBotton.setForeground(ClickForeground);
+        AddPaymentBotton.setForeground(ClickAfterForgrond);
+        Overview1.setForeground(ClickAfterForgrond);
+        AddStudentBotton1.setForeground(ClickAfterForgrond);
+        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
+        jButtonAdmin.setForeground(ClickAfterForgrond);
+    }//GEN-LAST:event_AddcoursBottonMouseClicked
 
     public static void main(String args[]) {
 
@@ -666,46 +651,5 @@ public class MainInterfase extends javax.swing.JFrame {
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 
-//    public class Dashbord {
-//
-//        private Container container; // Assuming you have a container field
-//
-//        public Dashbord() {
-//            // Initialize the container and add components
-//            container = new JPanel(); // Example container, replace with your actual container
-//            container.setLayout(new CardLayout()); // Example layout, adjust as needed
-//
-//            // Add your components to the container
-//            container.add(new JPanel(), "Panel 1");
-//            container.add(new JPanel(), "Panel 2");
-//            // Add more panels as needed
-//
-//            // Attempt to go to a specific panel
-//            goToPanelAt(2); // Example index
-//        }
-//
-//     
-//      private void changePanel(JPanel panel) {
-//        ((GroupLayout) mainPanel.getLayout()).replace(mainPanel.getComponent(2), panel);
-//    }
-//    
-//      
-//        public void goToPanelAt(int index) {
-//        switch (index) {
-//            case 1 ->
-//                changePanel(new AddAplicant());
-//            case 2 ->
-//                changePanel(new AddCourse());
-//            default ->
-//                changePanel(new AddPayment());
-//        }
-//
-//        for (int i = 0; i < buttons.length; i++) {
-//            if (i == index) {
-//                buttons[i].setBackground(new Color(86, 86, 86));
-//            } else {
-//                buttons[i].setBackground(new Color(102, 47, 56));
-//            }
-//        }
-//    }
+    
 }
