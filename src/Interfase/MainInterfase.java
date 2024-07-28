@@ -1,7 +1,6 @@
 package Interfase;
 
 import Classes.DbConnection;
-import Jframes.AddApplicantForm;
 import com.formdev.flatlaf.FlatLaf;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -35,7 +34,7 @@ public class MainInterfase extends javax.swing.JFrame {
         ClickAfterForgrond = new Color(255, 255, 0);
         ClickForeground = new Color(255, 255, 255);
 
-        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, jButtonAdmin ,Overview1};
+        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, jButtonAdmin, Overview1};
 
         // Add panels to InterfaseView
         InterfaseView.setLayout(new CardLayout());

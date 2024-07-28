@@ -1,6 +1,5 @@
 package Interfase;
 
-import Jframes.AddApplicantForm;
 import Jframes.AddAplicantFormJFrame;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -247,13 +246,13 @@ public class AddAplicant extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonAddAplicantActionPerformed
 
     private void jButtonAddAplicantMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAplicantMouseEntered
-      jButtonAddAplicant.setForeground(ClickedColor);
-      jButtonAddAplicant.setBackground(DefaultColor);
+        jButtonAddAplicant.setForeground(ClickedColor);
+        jButtonAddAplicant.setBackground(DefaultColor);
     }//GEN-LAST:event_jButtonAddAplicantMouseEntered
 
     private void jButtonAddAplicantMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAplicantMouseExited
-       jButtonAddAplicant.setForeground(DefaultColor);
-      jButtonAddAplicant.setBackground(ClickedColor);
+        jButtonAddAplicant.setForeground(DefaultColor);
+        jButtonAddAplicant.setBackground(ClickedColor);
     }//GEN-LAST:event_jButtonAddAplicantMouseExited
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
