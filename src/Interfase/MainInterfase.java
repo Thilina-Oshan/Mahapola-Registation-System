@@ -1,8 +1,8 @@
 package Interfase;
 
 import Classes.DbConnection;
-import Jpanels.AddAdmin;
-import Jpanels.AddApplicantForm;
+import Jframes.AddAdmin;
+import Jframes.AddApplicantForm;
 import com.formdev.flatlaf.FlatLaf;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
