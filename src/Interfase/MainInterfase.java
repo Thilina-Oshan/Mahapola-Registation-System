@@ -1,7 +1,6 @@
 package Interfase;
 
 import Classes.DbConnection;
-import Jframes.AddAdmin;
 import Jframes.AddApplicantForm;
 import com.formdev.flatlaf.FlatLaf;
 import java.awt.BorderLayout;
@@ -36,7 +35,7 @@ public class MainInterfase extends javax.swing.JFrame {
         ClickAfterForgrond = new Color(255, 255, 0);
         ClickForeground = new Color(255, 255, 255);
 
-        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, Overview1, jButtonAdmin};
+        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, jButtonAdmin ,Overview1};
 
         // Add panels to InterfaseView
         InterfaseView.setLayout(new CardLayout());
@@ -44,10 +43,10 @@ public class MainInterfase extends javax.swing.JFrame {
         InterfaseView.add(new Home(), "Panel 1"); // Placeholder panel
         InterfaseView.add(new AddAplicant(), "Panel 2"); // Add Student panel
         InterfaseView.add(new AddCourse(), "Panel 3"); // Add Course panel
-        InterfaseView.add(new AddPayment(), "Panel 4"); // Add Payment panel
-        InterfaseView.add(new AddBatch(), "Panel 6"); // Add Batch panel
+        InterfaseView.add(new AddBatch(), "Panel 4"); // Add Batch panel
+        InterfaseView.add(new AddPayment(), "Panel 5"); // Add Payment panel
+        InterfaseView.add(new AddAdmin(), "Panel 6"); // Admin Details panel
         InterfaseView.add(new OverView(), "Panel 7"); // View Details panel
-        InterfaseView.add(new AddAdmin(), "Panel 8"); // Admin Details panel
 
     }
 
@@ -375,7 +374,7 @@ public class MainInterfase extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
-        goToPanelAt(8);
+        goToPanelAt(6);
     }//GEN-LAST:event_jButtonAdminActionPerformed
 
     private void jButtonAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAdminMouseClicked
@@ -398,7 +397,7 @@ public class MainInterfase extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAdminMouseClicked
 
     private void AddBatchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBatchButtonActionPerformed
-        goToPanelAt(6);
+        goToPanelAt(4);
     }//GEN-LAST:event_AddBatchButtonActionPerformed
 
     private void AddBatchButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBatchButtonMouseClicked
@@ -473,7 +472,7 @@ public class MainInterfase extends javax.swing.JFrame {
     }//GEN-LAST:event_Overview1MouseClicked
 
     private void AddPaymentBottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPaymentBottonActionPerformed
-        goToPanelAt(4);
+        goToPanelAt(5);
     }//GEN-LAST:event_AddPaymentBottonActionPerformed
 
     private void AddPaymentBottonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPaymentBottonMouseClicked

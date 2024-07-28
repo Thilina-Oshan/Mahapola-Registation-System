@@ -4,6 +4,7 @@
  */
 package Interfase;
 
+import Jframes.AddBatchForm;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.GroupLayout;
@@ -22,6 +23,7 @@ public class AddBatch extends javax.swing.JPanel {
     private JButton[] button;
     private JFrame recentFrame;
     
+   AddBatchForm addBatchform = new AddBatchForm(); 
    DefaultTableModel AddBatchModel = new DefaultTableModel(new String[]{"Batch Id","Batch Name" , "Start Date" , "End Date"}, 0);//Set Default table
 
     public AddBatch() {
@@ -37,7 +39,7 @@ public class AddBatch extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelAddRegistationTable = new javax.swing.JPanel();
+        jPanelAddBatchTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableBatch = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -49,7 +51,7 @@ public class AddBatch extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 102, 255));
 
-        jPanelAddRegistationTable.setBackground(new java.awt.Color(102, 102, 255));
+        jPanelAddBatchTable.setBackground(new java.awt.Color(102, 102, 255));
 
         jTableBatch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,11 +108,11 @@ public class AddBatch extends javax.swing.JPanel {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanelAddRegistationTableLayout = new javax.swing.GroupLayout(jPanelAddRegistationTable);
-        jPanelAddRegistationTable.setLayout(jPanelAddRegistationTableLayout);
-        jPanelAddRegistationTableLayout.setHorizontalGroup(
-            jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAddBatchTableLayout = new javax.swing.GroupLayout(jPanelAddBatchTable);
+        jPanelAddBatchTable.setLayout(jPanelAddBatchTableLayout);
+        jPanelAddBatchTableLayout.setHorizontalGroup(
+            jPanelAddBatchTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddBatchTableLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -118,22 +120,22 @@ public class AddBatch extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
+            .addGroup(jPanelAddBatchTableLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddBatchTableLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAddBatch, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
         );
-        jPanelAddRegistationTableLayout.setVerticalGroup(
-            jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
+        jPanelAddBatchTableLayout.setVerticalGroup(
+            jPanelAddBatchTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddBatchTableLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
-                .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAddBatchTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -148,16 +150,16 @@ public class AddBatch extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAddRegistationTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelAddBatchTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAddRegistationTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelAddBatchTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddBatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddBatchActionPerformed
-        
+        addBatchform.setVisible(true);
     }//GEN-LAST:event_jButtonAddBatchActionPerformed
 
 
@@ -167,7 +169,7 @@ public class AddBatch extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanelAddRegistationTable;
+    private javax.swing.JPanel jPanelAddBatchTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableBatch;
     private javax.swing.JTextField jTextSearchRegisterd;

@@ -16,7 +16,6 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 import Interfase.AddAplicant;
-import Jframes.AddAdmin;
 import Popup.AddAplicantForm;
 import javax.swing.GroupLayout;
 import Interfase.MainInterfase;
