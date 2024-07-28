@@ -54,6 +54,7 @@ public class AddRegistation extends javax.swing.JPanel {
         ));
         jScrollPane5.setViewportView(jTableAddaplicant3);
 
+        jPanel9.setBackground(new java.awt.Color(11, 160, 244));
         jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 3, true));
 
         jLabel6.setText("jLabel1");
@@ -179,38 +180,15 @@ public class AddRegistation extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
     private javax.swing.JButton jButtonAddAplicantTable;
-    private javax.swing.JButton jButtonAddNew;
-    private javax.swing.JButton jButtonRegistationStudent;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPanel jPanelAddAplicant;
-    private javax.swing.JPanel jPanelAddAplicant1;
     private javax.swing.JPanel jPanelRegisterd2;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTableAddaplicant;
-    private javax.swing.JTable jTableAddaplicant1;
     private javax.swing.JTable jTableAddaplicant3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

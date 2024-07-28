@@ -35,10 +35,8 @@ public class MainInterfase extends javax.swing.JFrame {
         ClickedColor = new Color(11, 160, 244);
         ClickAfterForgrond = new Color(255, 255, 0);
         ClickForeground = new Color(255, 255, 255);
-        
-        
 
-        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, AddRegisterdBotton1, Overview1, jButtonAdmin};
+        buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, Overview1, jButtonAdmin};
 
         // Add panels to InterfaseView
         InterfaseView.setLayout(new CardLayout());
@@ -47,11 +45,9 @@ public class MainInterfase extends javax.swing.JFrame {
         InterfaseView.add(new AddAplicant(), "Panel 2"); // Add Student panel
         InterfaseView.add(new AddCourse(), "Panel 3"); // Add Course panel
         InterfaseView.add(new AddPayment(), "Panel 4"); // Add Payment panel
-        InterfaseView.add(new AddRegistation(), "Panel 5"); // Add Registerd panel
         InterfaseView.add(new AddBatch(), "Panel 6"); // Add Batch panel
         InterfaseView.add(new OverView(), "Panel 7"); // View Details panel
         InterfaseView.add(new AddAdmin(), "Panel 8"); // Admin Details panel
-        InterfaseView.add(new AddRegistation(), "Panel 9");
 
     }
 
@@ -87,10 +83,8 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton = new javax.swing.JButton();
         Overview1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         AddStudentBotton1 = new javax.swing.JButton();
-        AddRegisterdBotton1 = new javax.swing.JButton();
         AddBatchButton = new javax.swing.JButton();
         jButtonAdmin = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -101,9 +95,9 @@ public class MainInterfase extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
-        mainPanel.setBackground(new java.awt.Color(11, 160, 244));
+        mainPanel.setBackground(new java.awt.Color(102, 102, 255));
 
-        jPanel5.setBackground(new java.awt.Color(11, 160, 244));
+        jPanel5.setBackground(new java.awt.Color(102, 102, 255));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -111,7 +105,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddcoursBotton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddcoursBotton.setForeground(new java.awt.Color(255, 255, 0));
         AddcoursBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Course (1).png"))); // NOI18N
-        AddcoursBotton.setText(" Add Course");
+        AddcoursBotton.setText(" Course");
         AddcoursBotton.setBorder(null);
         AddcoursBotton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddcoursBotton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,7 +142,7 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddPaymentBotton.setForeground(new java.awt.Color(255, 255, 0));
         AddPaymentBotton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Custom-Icon-Design-Flatastic-5-Payment-card.512 (1).png"))); // NOI18N
-        AddPaymentBotton.setText(" Add Payment");
+        AddPaymentBotton.setText(" Payment");
         AddPaymentBotton.setBorder(null);
         AddPaymentBotton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddPaymentBotton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,20 +180,16 @@ public class MainInterfase extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/images-removebg-preview (1) (1).png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("& Maritime Academy");
-
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Mahapola Ports ");
+        jLabel3.setText("MPMA ");
 
         AddStudentBotton1.setBackground(new java.awt.Color(0, 0, 51));
         AddStudentBotton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddStudentBotton1.setForeground(new java.awt.Color(255, 255, 0));
         AddStudentBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Iconsmind-Outline-Student-MaleFemale.512 (3).png"))); // NOI18N
-        AddStudentBotton1.setText(" Add Student");
+        AddStudentBotton1.setText(" Student");
         AddStudentBotton1.setBorder(null);
         AddStudentBotton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddStudentBotton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,29 +203,11 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        AddRegisterdBotton1.setBackground(new java.awt.Color(0, 0, 51));
-        AddRegisterdBotton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        AddRegisterdBotton1.setForeground(new java.awt.Color(255, 255, 0));
-        AddRegisterdBotton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Iconsmind-Outline-Student-MaleFemale.512 (3).png"))); // NOI18N
-        AddRegisterdBotton1.setText(" Registerd Student");
-        AddRegisterdBotton1.setBorder(null);
-        AddRegisterdBotton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        AddRegisterdBotton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddRegisterdBotton1MouseClicked(evt);
-            }
-        });
-        AddRegisterdBotton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddRegisterdBotton1ActionPerformed(evt);
-            }
-        });
-
         AddBatchButton.setBackground(new java.awt.Color(0, 0, 51));
         AddBatchButton.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         AddBatchButton.setForeground(new java.awt.Color(255, 255, 0));
         AddBatchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/Batch-removebg-preview (1).png"))); // NOI18N
-        AddBatchButton.setText(" Add Batch");
+        AddBatchButton.setText(" Batch");
         AddBatchButton.setBorder(null);
         AddBatchButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AddBatchButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -253,7 +225,7 @@ public class MainInterfase extends javax.swing.JFrame {
         jButtonAdmin.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jButtonAdmin.setForeground(new java.awt.Color(255, 255, 0));
         jButtonAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Graphicloads-Folded-Add-contact-folded.256 (1).png"))); // NOI18N
-        jButtonAdmin.setText(" Add New Admin");
+        jButtonAdmin.setText(" New Admin");
         jButtonAdmin.setBorder(null);
         jButtonAdmin.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButtonAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -292,10 +264,8 @@ public class MainInterfase extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -305,9 +275,6 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addComponent(AddStudentBotton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(AddRegisterdBotton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(AddBatchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -315,7 +282,7 @@ public class MainInterfase extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Overview1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Overview1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                             .addComponent(jButtonAdmin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AddPaymentBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
@@ -328,10 +295,8 @@ public class MainInterfase extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)))
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addComponent(Homet1Botton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -340,15 +305,13 @@ public class MainInterfase extends javax.swing.JFrame {
                 .addComponent(AddcoursBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(AddBatchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AddRegisterdBotton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(AddPaymentBotton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Overview1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -421,7 +384,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
         AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(ClickedColor);
 
@@ -432,7 +394,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickAfterForgrond);
         Overview1.setForeground(ClickAfterForgrond);
         AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickForeground);
     }//GEN-LAST:event_jButtonAdminMouseClicked
 
@@ -445,7 +406,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddStudentBotton1.setBackground(DefaultColor);
         AddcoursBotton.setBackground(DefaultColor);
         AddPaymentBotton.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
         AddBatchButton.setBackground(ClickedColor);
         jButtonAdmin.setBackground(DefaultColor);
@@ -456,34 +416,9 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickAfterForgrond);
         Overview1.setForeground(ClickAfterForgrond);
         AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
         AddBatchButton.setForeground(ClickForeground);
     }//GEN-LAST:event_AddBatchButtonMouseClicked
-
-    private void AddRegisterdBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1ActionPerformed
-        goToPanelAt(5);
-    }//GEN-LAST:event_AddRegisterdBotton1ActionPerformed
-
-    private void AddRegisterdBotton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddRegisterdBotton1MouseClicked
-        Homet1Botton.setBackground(DefaultColor);
-        AddStudentBotton1.setBackground(DefaultColor);
-        AddcoursBotton.setBackground(DefaultColor);
-        AddPaymentBotton.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(ClickedColor);
-        Overview1.setBackground(DefaultColor);
-
-        //ForeGround Change
-        AddBatchButton.setForeground(ClickAfterForgrond);
-        Homet1Botton.setForeground(ClickAfterForgrond);
-        AddcoursBotton.setForeground(ClickAfterForgrond);
-        AddPaymentBotton.setForeground(ClickAfterForgrond);
-        Overview1.setForeground(ClickAfterForgrond);
-        AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickForeground);
-        jButtonAdmin.setForeground(ClickAfterForgrond);
-
-    }//GEN-LAST:event_AddRegisterdBotton1MouseClicked
 
     private void AddStudentBotton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStudentBotton1ActionPerformed
         goToPanelAt(2);
@@ -498,7 +433,6 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
 
         //ForeGround Change
         AddBatchButton.setForeground(ClickAfterForgrond);
@@ -507,7 +441,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickAfterForgrond);
         Overview1.setForeground(ClickAfterForgrond);
         AddStudentBotton1.setForeground(ClickForeground);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
 
     }//GEN-LAST:event_AddStudentBotton1MouseClicked
@@ -526,7 +459,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(ClickedColor);
         AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
 
@@ -536,7 +468,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickAfterForgrond);
         Overview1.setForeground(ClickForeground);
         AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
         AddBatchButton.setForeground(ClickAfterForgrond);
     }//GEN-LAST:event_Overview1MouseClicked
@@ -552,7 +483,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(ClickedColor);
         Overview1.setBackground(DefaultColor);
         AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
 
@@ -563,7 +493,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickForeground);
         Overview1.setForeground(ClickAfterForgrond);
         AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
     }//GEN-LAST:event_AddPaymentBottonMouseClicked
 
@@ -578,7 +507,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
         AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
         Homet1Botton.setForeground(ClickForeground);
@@ -590,7 +518,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickAfterForgrond);
         Overview1.setForeground(ClickAfterForgrond);
         AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
 
     }//GEN-LAST:event_Homet1BottonMouseClicked
@@ -605,7 +532,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setBackground(DefaultColor);
         Overview1.setBackground(DefaultColor);
         AddStudentBotton1.setBackground(DefaultColor);
-        AddRegisterdBotton1.setBackground(DefaultColor);
         AddBatchButton.setBackground(DefaultColor);
         jButtonAdmin.setBackground(DefaultColor);
 
@@ -616,7 +542,6 @@ public class MainInterfase extends javax.swing.JFrame {
         AddPaymentBotton.setForeground(ClickAfterForgrond);
         Overview1.setForeground(ClickAfterForgrond);
         AddStudentBotton1.setForeground(ClickAfterForgrond);
-        AddRegisterdBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
     }//GEN-LAST:event_AddcoursBottonMouseClicked
 
@@ -635,7 +560,6 @@ public class MainInterfase extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBatchButton;
     private javax.swing.JButton AddPaymentBotton;
-    private javax.swing.JButton AddRegisterdBotton1;
     private javax.swing.JButton AddStudentBotton1;
     private javax.swing.JButton AddcoursBotton;
     private javax.swing.JButton Homet1Botton;
@@ -644,12 +568,10 @@ public class MainInterfase extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAdmin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 
-    
 }
