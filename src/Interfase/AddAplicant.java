@@ -220,10 +220,12 @@ public class AddAplicant extends javax.swing.JPanel {
         jPanelAddAplicantTable.repaint();
     }//GEN-LAST:event_jButtonRegisterdStudentActionPerformed
 
+    AddAplicantFormJFrame APF = new AddAplicantFormJFrame();
+
     private void jButtonAddAplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAplicantActionPerformed
-        AddAplicantFormJFrame APF = new AddAplicantFormJFrame();
+
         APF.setVisible(true);
-        APF.add(APF, BorderLayout.WEST);
+
     }//GEN-LAST:event_jButtonAddAplicantActionPerformed
 
 
