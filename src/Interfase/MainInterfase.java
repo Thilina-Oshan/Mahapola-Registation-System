@@ -158,7 +158,7 @@ public class MainInterfase extends javax.swing.JFrame {
         Overview1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         Overview1.setForeground(new java.awt.Color(255, 255, 0));
         Overview1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backup (1).png"))); // NOI18N
-        Overview1.setText(" View Details");
+        Overview1.setText(" Backup");
         Overview1.setBorder(null);
         Overview1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Overview1.addMouseListener(new java.awt.event.MouseAdapter() {
