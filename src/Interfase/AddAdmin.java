@@ -4,8 +4,6 @@
  */
 package Interfase;
 
-import Jframes.AddAdminForm;
-
 /**
  *
  * @author Oshan Demel

@@ -32,7 +32,7 @@ public class AddAplicant extends javax.swing.JPanel {
 
     DefaultTableModel AddAplicantModel = new DefaultTableModel(new String[]{"Student Id", "Student Nic", "Student Name", "Phone Number", "Address"}, 0);
     Color DefaultColor, ClickedColor;
-    AddAplicantForm ADAF = new AddAplicantForm();
+    AddAplicantFormNew ADAF = new AddAplicantFormNew();
     Connection con;
     ArrayList<AddAplicantClass> addaplicantArray;
     ResultSet rs;

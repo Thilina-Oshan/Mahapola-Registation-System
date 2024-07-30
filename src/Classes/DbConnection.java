@@ -13,7 +13,7 @@ public class DbConnection {
     
 
      
-     public Connection connect(){
+     static public Connection connect(){
         
         Connection con = null ;
         

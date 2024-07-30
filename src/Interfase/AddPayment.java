@@ -4,8 +4,6 @@
  */
 package Interfase;
 
-import Jframes.AddPaymentForm;
-
 /**
  *
  * @author Oshan Demel

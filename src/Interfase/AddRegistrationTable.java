@@ -4,7 +4,6 @@
  */
 package Interfase;
 
-import Jframes.AddRegistationForm;
 import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
 

@@ -6,7 +6,6 @@ package Interfase;
 
 import Classes.AddAplicantClass;
 import Classes.AddCourseClass;
-import Jframes.AddCourseForm;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
