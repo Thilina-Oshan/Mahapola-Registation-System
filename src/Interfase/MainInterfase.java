@@ -21,7 +21,7 @@ import javax.swing.colorchooser.DefaultColorSelectionModel;
 public class MainInterfase extends javax.swing.JFrame {
 
     //Set Connection 
-//    static Connection con = new DbConnection().connect();
+    static Connection conn = new DbConnection().connect();
     Color DefaultColor, ClickedColor, ClickForeground, ClickAfterForgrond;
     private JButton[] buttons;
     private JButton[] button;

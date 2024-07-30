@@ -8,14 +8,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-
-public class DbConnection {
+/**
+ *
+ * @author Oshan Demel
+ */
+public class MainInterfaseClass {
+    static Connection conn;
     
-
-     
-     public Connection connect(){
-        
-        Connection con = null ;
+     public static Connection getConnection() {
+         
+         Connection con = null ;
         
         try {
             
@@ -34,6 +36,9 @@ public class DbConnection {
         
         return con;
     }
+         
+         
+       
     
     
 }

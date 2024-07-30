@@ -5,29 +5,33 @@
 package Jframes;
 
 import Interfase.AddAplicant;
+import Interfase.MainInterfase;
+import java.sql.Connection;
+import Classes.DbConnection;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.PreparedStatement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Oshan Demel
- */
-public class AddAplicantFormJFrame extends javax.swing.JFrame {
 
-    private AddAplicant main;
+public class AddAplicantForm extends javax.swing.JFrame {
 
-    public AddAplicantFormJFrame() {
+    AddAplicant adc = new AddAplicant();
+    Connection con;
+    DbConnection mainClass = new DbConnection();
+//     private AddAplicant main;
+
+    public AddAplicantForm() {
         initComponents();
+        con = mainClass.connect();
         customizeCloseOperation();
     }
 
-    public AddAplicantFormJFrame(AddAplicant main) {
-        this();
-        this.main = main;
-    }
-
+//      public AddAplicantForm(AddAplicant main) {
+//        this();
+//        this.main = main;
+//    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,7 +58,7 @@ public class AddAplicantFormJFrame extends javax.swing.JFrame {
         jButton151 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,6 +141,11 @@ public class AddAplicantFormJFrame extends javax.swing.JFrame {
         jButtonInsert.setText("Save");
         jButtonInsert.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertActionPerformed(evt);
+            }
+        });
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -240,7 +249,9 @@ public class AddAplicantFormJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton151, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -248,7 +259,7 @@ public class AddAplicantFormJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jButton151)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1))
@@ -270,27 +281,53 @@ public class AddAplicantFormJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton151ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton151ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-
-    }//GEN-LAST:event_jButton151ActionPerformed
-
     private void txtNicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNicActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNicActionPerformed
 
+    private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
+//                if (isvalidate()) {
+
+        variableAddaplicant();
+
+        try {
+
+            String query = "INSERT INTO `student_details`(`stu_id`, `stu_nic`, `stu_name`, `phone_num`, `address`) VALUES (null,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(query);
+
+            pst.setString(1, Nic);
+            pst.setString(2, Name);
+            pst.setInt(3, PhoneNumber);
+            pst.setString(4, Address);
+            System.out.println("data not");
+            pst.execute();
+            adc.setStudenttable();
+            JOptionPane.showMessageDialog(null, "Save SUCCESSFUL");
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Can't Save Data");
+
+        }
+//                }
+    }//GEN-LAST:event_jButtonInsertActionPerformed
+
+    private void jButton151ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton151ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton151ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
-
-        com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
-
+       com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddAplicantFormJFrame().setVisible(true);
+                new AddAplicantForm().setVisible(true);
             }
         });
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -317,13 +354,28 @@ public class AddAplicantFormJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel validatePnum;
     // End of variables declaration//GEN-END:variables
 
+    int PhoneNumber;
+    String Name;
+    String Address;
+    String Nic;
+
+    public void variableAddaplicant() {
+
+        Name = txtName.getText();
+        Nic = txtNic.getText();
+        Address = txtAddress.getText();
+        PhoneNumber = Integer.parseInt(txtPhoneNUm.getText());
+
+    }
+
     private void customizeCloseOperation() {
+
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 int confirm = JOptionPane.showOptionDialog(
-                        AddAplicantFormJFrame.this,
+                        AddAplicantForm.this,
                         "Are you sure you want to close the application?",
                         "Exit Confirmation",
                         JOptionPane.YES_NO_OPTION,

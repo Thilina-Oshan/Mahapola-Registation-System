@@ -4,21 +4,69 @@
  */
 package Interfase;
 
+import Classes.AddAplicantClass;
+import Classes.AddCourseClass;
 import Jframes.AddCourseForm;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Oshan Demel
- */
 public class AddCourse extends javax.swing.JPanel {
 
     AddCourseForm addcourseform = new AddCourseForm();
+    DefaultTableModel AddCourseModel = new DefaultTableModel(new String[]{"Course Id", "Course Name", "Course Duration"}, 0);
+    ArrayList<AddCourseClass> addcoursearry;
+    ResultSet rs;
+    Connection con;
 
     public AddCourse() {
         initComponents();
+        con = MainInterfase.conn;
+        jTableBatch.setModel(AddCourseModel);
+        setCoursetable();
     }
 
-   
+    private ArrayList<AddCourseClass> getCourseList(String query) {
+
+        ArrayList<AddCourseClass> courselist = new ArrayList<>();
+        Statement st;
+
+        try {
+
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+
+            AddCourseClass course;
+
+            while (rs.next()) {
+
+                course = new AddCourseClass(rs.getInt(1), rs.getString(2), rs.getString(3));
+                courselist.add(course);
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+
+        return courselist;
+    }
+
+    private void setCoursetable() {
+
+        AddCourseModel.setRowCount(0);
+        addcoursearry = getCourseList("SELECT * FROM `course` ORDER BY `couse_id`");
+
+        for (AddCourseClass i : addcoursearry) {
+
+            AddCourseModel.addRow(new Object[]{i.getCourse_id(), i.getCourse_name(), i.getCourse_duration()});
+        }
+
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

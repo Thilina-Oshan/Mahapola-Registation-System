@@ -10,9 +10,7 @@ package Jframes;
  */
 public class AddBatchForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddBatchForm
-     */
+   
     public AddBatchForm() {
         initComponents();
     }

@@ -1,6 +1,6 @@
 package Interfase;
 
-import Jframes.AddAplicantFormJFrame;
+import Classes.AddAplicantClass;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -20,20 +20,69 @@ import javax.swing.GroupLayout;
 import Interfase.MainInterfase;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 
 public class AddAplicant extends javax.swing.JPanel {
 
-    DefaultTableModel AddAplicantModel = new DefaultTableModel(new String[]{"Studen Nic", "Student Name", "Phone Number", "Address"}, 0);
+    DefaultTableModel AddAplicantModel = new DefaultTableModel(new String[]{"Student Id", "Student Nic", "Student Name", "Phone Number", "Address"}, 0);
     Color DefaultColor, ClickedColor;
-    AddAplicantForm ADF = new AddAplicantForm();
+    AddAplicantForm ADAF = new AddAplicantForm();
+    Connection con;
+    ArrayList<AddAplicantClass> addaplicantArray;
+    ResultSet rs;
 
     public AddAplicant() {
         System.out.println("AddAplicant constructor called");
         initComponents();
+        con = MainInterfase.conn;
         jTableAddaplicant.setModel(AddAplicantModel);
+        setStudenttable();
         DefaultColor = new Color(0, 0, 51);
         ClickedColor = new Color(255, 255, 255);
+
+    }
+
+    private ArrayList<AddAplicantClass> getStudentList(String query) {
+
+        ArrayList<AddAplicantClass> studentdlist = new ArrayList<>();
+        Statement st;
+
+        try {
+
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+
+            AddAplicantClass student;
+
+            while (rs.next()) {
+
+                student = new AddAplicantClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
+                studentdlist.add(student);
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+
+        return studentdlist;
+    }
+
+    public void setStudenttable() {
+
+        AddAplicantModel.setRowCount(0);
+        addaplicantArray = getStudentList("SELECT * FROM `student_details` ORDER BY `stu_id`");
+
+        for (AddAplicantClass i : addaplicantArray) {
+
+            AddAplicantModel.addRow(new Object[]{i.getStu_id(), i.getStu_nic(), i.getStu_name(), i.getPhone_num(), i.getAddress()});
+        }
 
     }
 
@@ -51,7 +100,7 @@ public class AddAplicant extends javax.swing.JPanel {
         jButtonRegisterdStudent = new javax.swing.JButton();
         jButtonAddAplicant = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboBoxSearchaplicant = new javax.swing.JComboBox<>();
         jTextAplicant = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(153, 153, 255));
@@ -154,10 +203,10 @@ public class AddAplicant extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :-");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxSearchaplicant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "stu_id", "stu_nic", "stu_name" }));
+        ComboBoxSearchaplicant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboBoxSearchaplicantActionPerformed(evt);
             }
         });
 
@@ -165,6 +214,11 @@ public class AddAplicant extends javax.swing.JPanel {
         jTextAplicant.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jTextAplicant.setForeground(new java.awt.Color(51, 0, 51));
         jTextAplicant.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextAplicant.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextAplicantCaretUpdate(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelAddAplicantTableLayout = new javax.swing.GroupLayout(jPanelAddAplicantTable);
         jPanelAddAplicantTable.setLayout(jPanelAddAplicantTableLayout);
@@ -184,7 +238,7 @@ public class AddAplicant extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(49, 49, 49)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComboBoxSearchaplicant, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(jTextAplicant, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -199,7 +253,7 @@ public class AddAplicant extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAddAplicantTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxSearchaplicant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextAplicant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,11 +291,10 @@ public class AddAplicant extends javax.swing.JPanel {
         jPanelAddAplicantTable.repaint();
     }//GEN-LAST:event_jButtonRegisterdStudentActionPerformed
 
-    AddAplicantFormJFrame APF = new AddAplicantFormJFrame();
 
     private void jButtonAddAplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAplicantActionPerformed
 
-        APF.setVisible(true);
+        ADAF.setVisible(true);
 
     }//GEN-LAST:event_jButtonAddAplicantActionPerformed
 
@@ -255,16 +308,20 @@ public class AddAplicant extends javax.swing.JPanel {
         jButtonAddAplicant.setBackground(ClickedColor);
     }//GEN-LAST:event_jButtonAddAplicantMouseExited
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ComboBoxSearchaplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxSearchaplicantActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComboBoxSearchaplicantActionPerformed
+
+    private void jTextAplicantCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextAplicantCaretUpdate
+
+    }//GEN-LAST:event_jTextAplicantCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxSearchaplicant;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddAplicant;
     private javax.swing.JButton jButtonRegisterdStudent;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
