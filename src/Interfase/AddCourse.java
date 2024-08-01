@@ -6,26 +6,31 @@ package Interfase;
 
 import Classes.AddAplicantClass;
 import Classes.AddCourseClass;
+import Classes.DbConnection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Connection;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class AddCourse extends javax.swing.JPanel {
+    
+    //Set Connection 
+    static Connection conn = new DbConnection().connect();
 
     AddCourseForm addcourseform = new AddCourseForm();
     DefaultTableModel AddCourseModel = new DefaultTableModel(new String[]{"Course Id", "Course Name", "Course Duration"}, 0);
     ArrayList<AddCourseClass> addcoursearry;
     ResultSet rs;
-    Connection con;
+    
 
     public AddCourse() {
         initComponents();
-        con = MainInterfase.conn;
+        conn = MainInterfase.conn;
         jTableBatch.setModel(AddCourseModel);
-        setCoursetable();
+        setCoursetable("SELECT * FROM `batch_detail`");
     }
 
     private ArrayList<AddCourseClass> getCourseList(String query) {
@@ -35,7 +40,7 @@ public class AddCourse extends javax.swing.JPanel {
 
         try {
 
-            st = (Statement) con.createStatement();
+            st = (Statement) conn.createStatement();
             rs = st.executeQuery(query);
 
             AddCourseClass course;
@@ -54,7 +59,7 @@ public class AddCourse extends javax.swing.JPanel {
         return courselist;
     }
 
-    private void setCoursetable() {
+    private void setCoursetable(String select__from_batch_detail) {
 
         AddCourseModel.setRowCount(0);
         addcoursearry = getCourseList("SELECT * FROM `course` ORDER BY `couse_id`");
@@ -74,7 +79,7 @@ public class AddCourse extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableBatch = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        SearchCombo = new javax.swing.JComboBox<>();
         jTextSearchRegisterd = new javax.swing.JTextField();
         jButtonAddCourse = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -100,12 +105,17 @@ public class AddCourse extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SearchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
         jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jTextSearchRegisterd.setForeground(new java.awt.Color(51, 0, 51));
         jTextSearchRegisterd.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextSearchRegisterd.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextSearchRegisterdCaretUpdate(evt);
+            }
+        });
 
         jButtonAddCourse.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAddCourse.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -147,7 +157,7 @@ public class AddCourse extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SearchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -168,7 +178,7 @@ public class AddCourse extends javax.swing.JPanel {
                 .addGap(78, 78, 78)
                 .addGroup(jPanelAddCourseTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -193,10 +203,25 @@ public class AddCourse extends javax.swing.JPanel {
         addcourseform.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourseActionPerformed
 
+    private void jTextSearchRegisterdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchRegisterdCaretUpdate
+        String[] col_names = {"couse_id", "couse_name", "course_duration"};
+
+        if (jTextSearchRegisterd.getText().isEmpty()) {
+            setCoursetable("SELECT * FROM `course`");
+          
+        } else {
+            String col_name = col_names[SearchCombo.getSelectedIndex()];
+            String value = jTextSearchRegisterd.getText();
+            String query = "SELECT * FROM `course` WHERE `" + col_name + "` LIKE '%" + value + "%'";
+            
+            setCoursetable(query);
+        }
+    }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> SearchCombo;
     private javax.swing.JButton jButtonAddCourse;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
