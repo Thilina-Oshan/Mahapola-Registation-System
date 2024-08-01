@@ -1,29 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Interfase;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Oshan Demel
- */
 public class AddRegistationForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddRegistationForm
-     */
+    static Connection con = MainInterfase.conn;
+
     public AddRegistationForm() {
         initComponents();
         customizeCloseOperation();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -58,10 +54,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
         validateNIc2 = new javax.swing.JLabel();
         txtMCNUm = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxBatch = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBoxCourse = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         validateEnterdNic = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -121,21 +117,41 @@ public class AddRegistationForm extends javax.swing.JFrame {
         txtAddress1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtAddress1.setForeground(new java.awt.Color(0, 0, 0));
         txtAddress1.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtAddress1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAddress1FocusLost(evt);
+            }
+        });
 
         txtName1.setBackground(new java.awt.Color(255, 255, 255));
         txtName1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtName1.setForeground(new java.awt.Color(0, 0, 0));
         txtName1.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtName1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtName1FocusLost(evt);
+            }
+        });
 
         txtPhoneNUm1.setBackground(new java.awt.Color(255, 255, 255));
         txtPhoneNUm1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtPhoneNUm1.setForeground(new java.awt.Color(0, 0, 0));
         txtPhoneNUm1.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtPhoneNUm1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPhoneNUm1FocusLost(evt);
+            }
+        });
 
         txtNic1.setBackground(new java.awt.Color(255, 255, 255));
         txtNic1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtNic1.setForeground(new java.awt.Color(0, 0, 0));
         txtNic1.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtNic1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNic1FocusLost(evt);
+            }
+        });
 
         validateMcNUm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         validateMcNUm.setForeground(new java.awt.Color(0, 0, 0));
@@ -159,6 +175,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jButton3.setText("Clear");
         jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButtonInsert1.setBackground(new java.awt.Color(102, 102, 255));
         jButtonInsert1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -191,7 +212,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Batch");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxBatch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -201,7 +222,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Course");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -249,9 +270,9 @@ public class AddRegistationForm extends javax.swing.JFrame {
                                     .addComponent(txtPhoneNUm1)
                                     .addComponent(txtAddress1)
                                     .addComponent(validateAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, 0, 281, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxBatch, 0, 281, Short.MAX_VALUE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(13, 13, 13))
@@ -305,13 +326,13 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxBatch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
@@ -332,6 +353,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jButton5.setForeground(new java.awt.Color(0, 0, 153));
         jButton5.setText("Load to data registerd student details From");
         jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -421,7 +447,38 @@ public class AddRegistationForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (txtEnterNic.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Please Fill Fields");
+        } else {
+
+            getAddaplicantdetails();
+
+            System.out.println("Data Ok");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtNic1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNic1FocusLost
+        isvalidateNicReg();
+    }//GEN-LAST:event_txtNic1FocusLost
+
+    private void txtName1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtName1FocusLost
+        isvalidateNameReg();
+    }//GEN-LAST:event_txtName1FocusLost
+
+    private void txtPhoneNUm1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPhoneNUm1FocusLost
+        isvalidatePhonenumberReg();
+    }//GEN-LAST:event_txtPhoneNUm1FocusLost
+
+    private void txtAddress1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddress1FocusLost
+        isvalidateAddressReg();
+    }//GEN-LAST:event_txtAddress1FocusLost
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ClearFieldsReg();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public static void main(String args[]) {
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
@@ -439,8 +496,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonInsert1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBoxBatch;
+    private javax.swing.JComboBox<String> jComboBoxCourse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -473,7 +530,6 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JLabel validatePnum1;
     // End of variables declaration//GEN-END:variables
 
-
     private void customizeCloseOperation() {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -494,6 +550,103 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    public void getAddaplicantdetails() {
+
+        java.sql.Statement stmt;
+
+        try {
+            stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `student_details` WHERE `stu_nic`='" + txtEnterNic.getText() + "'");
+
+            if (rs.next()) {
+
+                String nic = rs.getString(2);
+                String name = rs.getString(3);
+                int phoneNum = rs.getInt(4);
+                String address = rs.getString(5);
+
+                txtNic1.setText(nic);
+                txtName1.setText(name);
+                txtPhoneNUm1.setText(phoneNum + "");
+                txtAddress1.setText(address);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Student not found");
+
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e);
+
+        }
+
+    }
+
+    public boolean isvalidateReg() {
+
+        boolean isvalidate = isvalidateNicReg() & isvalidateNameReg() & isvalidatePhonenumberReg() & isvalidateAddressReg();
+        return isvalidate;
+    }
+
+    private boolean isvalidateNicReg() {
+
+        if (txtNic1.getText().equals("")) {
+
+            validateNIc2.setText("Can not be empty");
+
+        } else {
+            validateNIc2.setText(" ");
+        }
+        return true;
+    }
+
+    public boolean isvalidateNameReg() {
+
+        if (txtName1.getText().isEmpty()) {
+            validateName1.setText("Can not be Empty");
+            return false;
+        } else {
+            validateName1.setText("");
+        }
+        return true;
+
+    }
+
+    private boolean isvalidatePhonenumberReg() {
+
+        if (txtPhoneNUm1.getText().isEmpty()) {
+
+            validatePnum1.setText("Can not be empty");
+        } else {
+            validatePnum1.setText(" ");
+        }
+        return true;
+    }
+
+    private boolean isvalidateAddressReg() {
+
+        if (txtAddress1.getText().isEmpty()) {
+
+            validateAddress1.setText("Can not be empty");
+
+        } else {
+            validateAddress1.setText(" ");
+        }
+        return true;
+    }
+
+    public void ClearFieldsReg() {
+
+        txtNic1.setText("");
+        txtAddress1.setText("");
+        txtMCNUm.setText("");
+        txtName1.setText("");
+        txtPhoneNUm1.setText("");
+        jComboBoxBatch.setSelectedIndex(0);
+        jComboBoxCourse.setSelectedIndex(0);
     }
 
 }

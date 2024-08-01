@@ -92,6 +92,18 @@ public class MainInterfase extends javax.swing.JFrame {
         setTitle("Mahapola Ports & Maritime Academy");
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         mainPanel.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -542,6 +554,16 @@ public class MainInterfase extends javax.swing.JFrame {
         AddStudentBotton1.setForeground(ClickAfterForgrond);
         jButtonAdmin.setForeground(ClickAfterForgrond);
     }//GEN-LAST:event_AddcoursBottonMouseClicked
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        AddAplicant ads = new AddAplicant();
+        ads.setAplicantTableData("SELECT * FROM `student_details` ORDER BY `stu_id`");
+    }//GEN-LAST:event_formFocusGained
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        AddAplicant ads = new AddAplicant();
+        ads.setAplicantTableData("SELECT * FROM `student_details` ORDER BY `stu_id`");
+    }//GEN-LAST:event_formWindowGainedFocus
 
     public static void main(String args[]) {
 
