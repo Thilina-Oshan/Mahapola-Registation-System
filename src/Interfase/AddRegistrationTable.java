@@ -280,7 +280,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             addregistationForm.setVisible(true);
 
             try {
-
+                DisableTxtFiels();
                 Field fieldMcNum = addregistationForm.getClass().getDeclaredField("txtMCNUm");
                 fieldMcNum.setAccessible(true);
                 JTextField txtMCNUm = (JTextField) fieldMcNum.get(addregistationForm);
@@ -341,4 +341,19 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     private javax.swing.JTable jTableRegisterd;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
+
+    //Disable the Text Fields
+    public void DisableTxtFiels() {
+
+        addregistationForm.getTxtNic1().setEnabled(false);
+        addregistationForm.getTxtName1().setEnabled(false);
+        addregistationForm.getTxtPhoneNUm1().setEnabled(false);
+        addregistationForm.getTxtAddress1().setEnabled(false);
+        addregistationForm.getValidateNIc2().setText("Do not Update Nic");
+        addregistationForm.getValidateName1().setText("Do not Update Name");
+        addregistationForm.getValidatePnum1().setText("Do not Update Phone Number");
+        addregistationForm.getValidateAddress1().setText("Do not Update Address");
+
+    }
+
 }

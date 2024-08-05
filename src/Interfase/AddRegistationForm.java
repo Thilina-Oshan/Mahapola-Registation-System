@@ -3,13 +3,16 @@ package Interfase;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class AddRegistationForm extends javax.swing.JFrame {
 
@@ -189,6 +192,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jButtonInsert1.setText("Save");
         jButtonInsert1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButtonInsert1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsert1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsert1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(102, 102, 255));
         jButton4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -481,6 +489,37 @@ public class AddRegistationForm extends javax.swing.JFrame {
         ClearFieldsReg();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsert1ActionPerformed
+
+        if (isvalidateReg()) {
+
+            SetVariableRegistation();
+
+            try {
+
+                String query = "INSERT INTO `student_registation`(`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name`) VALUES (?,?,?,?,?,?,?)";
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setInt(1, mc_number);
+                pst.setString(2, Reg_nic);
+                pst.setString(3, Reg_name);
+                pst.setString(4, "0" + Reg_phoneNum);
+                pst.setString(5, Reg_address);
+                pst.setString(6, Reg_batchName);
+                pst.setString(7, Reg_courseName);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "Sucess");
+
+            } catch (Exception e) {
+
+                JOptionPane.showMessageDialog(this, "Cant");
+                System.out.println(e);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_jButtonInsert1ActionPerformed
+
     public static void main(String args[]) {
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
@@ -532,6 +571,26 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JLabel validatePnum1;
     // End of variables declaration//GEN-END:variables
 
+    int mc_number;
+    String Reg_nic;
+    String Reg_name;
+    String Reg_phoneNum;
+    String Reg_address;
+    String Reg_batchName;
+    String Reg_courseName;
+
+    public void SetVariableRegistation() {
+
+        mc_number = Integer.parseInt(txtMCNUm.getText());
+        Reg_nic = txtNic1.getText();
+        Reg_name = txtName1.getText();
+        Reg_phoneNum = txtPhoneNUm1.getText();
+        Reg_address = txtAddress1.getText();
+        Reg_batchName = jComboBoxBatch.getSelectedItem().toString();
+        Reg_courseName = jComboBoxCourse.getSelectedItem().toString();
+
+    }
+
     private void customizeCloseOperation() {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -574,6 +633,15 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 txtName1.setText(name);
                 txtPhoneNUm1.setText(phoneNum + "");
                 txtAddress1.setText(address);
+
+                txtNic1.setEnabled(false);
+                txtName1.setEnabled(false);
+                txtPhoneNUm1.setEnabled(false);
+                txtAddress1.setEnabled(false);
+                validateNIc2.setText("Do not Chanege Nic");
+                validateName1.setText("Do not Chanege Name");
+                validatePnum1.setText("Do not Chanege Phone Number");
+                validateAddress1.setText("Do not Chanege Address");
 
             } else {
                 JOptionPane.showMessageDialog(null, "Student not found");
@@ -697,6 +765,83 @@ public class AddRegistationForm extends javax.swing.JFrame {
             System.out.println(e);
         }
 
+    }
+
+    public void DisableTxtFiels() {
+
+        txtNic1.setEnabled(false);
+        txtName1.setEnabled(false);
+        txtPhoneNUm1.setEnabled(false);
+        txtAddress1.setEnabled(false);
+        validateNIc2.setText("Do not Chanege Nic");
+        validateName1.setText("Do not Chanege Name");
+        validatePnum1.setText("Do not Chanege Phone Number");
+        validateAddress1.setText("Do not Chanege Address");
+    }
+
+    // Here the getter setter method is created. Click on the Student Registration table to disable the text fields. The getter setter method is used to disable the text fields.
+    public JTextField getTxtAddress1() {
+        return txtAddress1;
+    }
+
+    public JTextField getTxtName1() {
+        return txtName1;
+    }
+
+    public JTextField getTxtNic1() {
+        return txtNic1;
+    }
+
+    public JTextField getTxtPhoneNUm1() {
+        return txtPhoneNUm1;
+    }
+
+    public JLabel getValidateAddress1() {
+        return validateAddress1;
+    }
+
+    public JLabel getValidateNIc2() {
+        return validateNIc2;
+    }
+
+    public JLabel getValidateName1() {
+        return validateName1;
+    }
+
+    public JLabel getValidatePnum1() {
+        return validatePnum1;
+    }
+
+    public void setTxtAddress1(JTextField txtAddress1) {
+        this.txtAddress1 = txtAddress1;
+    }
+
+    public void setTxtName1(JTextField txtName1) {
+        this.txtName1 = txtName1;
+    }
+
+    public void setTxtNic1(JTextField txtNic1) {
+        this.txtNic1 = txtNic1;
+    }
+
+    public void setTxtPhoneNUm1(JTextField txtPhoneNUm1) {
+        this.txtPhoneNUm1 = txtPhoneNUm1;
+    }
+
+    public void setValidateAddress1(JLabel validateAddress1) {
+        this.validateAddress1 = validateAddress1;
+    }
+
+    public void setValidateNIc2(JLabel validateNIc2) {
+        this.validateNIc2 = validateNIc2;
+    }
+
+    public void setValidateName1(JLabel validateName1) {
+        this.validateName1 = validateName1;
+    }
+
+    public void setValidatePnum1(JLabel validatePnum1) {
+        this.validatePnum1 = validatePnum1;
     }
 
 }
