@@ -7,7 +7,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import javax.swing.BorderFactory;
@@ -381,7 +381,9 @@ public class MainInterfase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       LoginForm lgf = new LoginForm();
+       lgf.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed

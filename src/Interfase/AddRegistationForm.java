@@ -17,6 +17,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     public AddRegistationForm() {
         initComponents();
+        setBatchCombo();
+        setCourseCombo();
         customizeCloseOperation();
     }
 
@@ -647,6 +649,54 @@ public class AddRegistationForm extends javax.swing.JFrame {
         txtPhoneNUm1.setText("");
         jComboBoxBatch.setSelectedIndex(0);
         jComboBoxCourse.setSelectedIndex(0);
+    }
+
+    public void setBatchCombo() {
+
+        java.sql.Statement st;
+
+        try {
+
+            st = con.createStatement();
+
+            String comboBox = "SELECT  `batch_name`  FROM `batch_details`";
+            ResultSet rs = st.executeQuery(comboBox);
+            jComboBoxBatch.removeAllItems();
+
+            while (rs.next()) {
+
+                jComboBoxBatch.addItem(rs.getString(1));
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
+        }
+
+    }
+
+    public void setCourseCombo() {
+
+        java.sql.Statement st;
+
+        try {
+
+            st = con.createStatement();
+
+            String comboBox = "SELECT `couse_name` FROM `course`";
+            ResultSet rs = st.executeQuery(comboBox);
+            jComboBoxCourse.removeAllItems();
+
+            while (rs.next()) {
+
+                jComboBoxCourse.addItem(rs.getString(1));
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
+        }
+
     }
 
 }

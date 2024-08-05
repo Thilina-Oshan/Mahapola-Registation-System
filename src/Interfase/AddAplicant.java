@@ -388,6 +388,11 @@ public class AddAplicant extends javax.swing.JPanel {
 
             try {
 
+                Field fieldId = ADAF.getClass().getDeclaredField("txtId");
+                fieldId.setAccessible(true);
+                JTextField txtId = (JTextField) fieldId.get(ADAF);
+                txtId.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 0).toString());
+
                 Field field = ADAF.getClass().getDeclaredField("txtNic");
                 field.setAccessible(true);
                 JTextField txtNic = (JTextField) field.get(ADAF);

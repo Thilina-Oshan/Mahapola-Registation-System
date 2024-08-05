@@ -23,8 +23,6 @@ public class AddAplicantClass {
         this.phone_num = phone_num;
         this.address = address;
     }
-   
-
 
     /**
      * @return the stu_id
@@ -68,13 +66,18 @@ public class AddAplicantClass {
         this.stu_name = stu_name;
     }
 
-    
+    /**
+     * @return the phone_num
+     */
+    public String getPhone_num() {
+        return phone_num;
+    }
 
     /**
      * @param phone_num the phone_num to set
      */
-    public void setPhone_num(int phone_num) {
-        this.setPhone_num(phone_num);
+    public void setPhone_num(String phone_num) {
+        this.phone_num = phone_num;
     }
 
     /**
@@ -91,16 +94,7 @@ public class AddAplicantClass {
         this.address = address;
     }
 
-    
-    public void setPhone_num(String phone_num) {
-        this.phone_num = phone_num;
-    }
+  
 
-    /**
-     * @return the phone_num
-     */
-    public String getPhone_num() {
-        return phone_num;
-    }
-
+   
 }

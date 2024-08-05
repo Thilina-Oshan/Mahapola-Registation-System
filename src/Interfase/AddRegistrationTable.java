@@ -4,22 +4,93 @@
  */
 package Interfase;
 
+import Classes.AddRegistationClass;
 import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 public class AddRegistrationTable extends javax.swing.JPanel {
 
+    static Connection con = MainInterfase.conn;
     AddRegistationForm addregistationform = new AddRegistationForm();
-    
-     DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number","Studen Nic", "Student Name", "Phone Number", "Address" , "Batch" , "Course"}, 0);//Set Default table
-   
+
+    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course"}, 0);//Set Default table
+
+    ArrayList<AddRegistationClass> addregistationArray;
+    ResultSet rs;
+
     public AddRegistrationTable() {
         initComponents();
-          jTableRegisterd.setModel(AddRegisterdModel);
+        jTableRegisterd.setModel(AddRegisterdModel);
+        setRegStudenttable();
     }
 
-   
+    private ArrayList<AddRegistationClass> getRegStudentList(String query) {
+
+        ArrayList<AddRegistationClass> Regstudentdlist = new ArrayList<>();
+        Statement st;
+
+        try {
+
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+
+            AddRegistationClass studentReg;
+
+            while (rs.next()) {
+
+                studentReg = new AddRegistationClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                Regstudentdlist.add(studentReg);
+
+//                studentReg = new AddRegistationClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)rs.getString(7));
+//                Regstudentdlist.add(studentReg);
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+
+        return Regstudentdlist;
+    }
+
+    void setRegistationTableData(String query) { //table ekata data set 
+
+        AddRegisterdModel.setRowCount(0);
+        addregistationArray = getRegStudentList(query);
+
+        for (int i = 0; i < addregistationArray.size(); i++) {
+
+            int a = addregistationArray.get(i).getMc_num();
+            String b = addregistationArray.get(i).getStu_num();
+            String c = addregistationArray.get(i).getStu_name();
+            String d = addregistationArray.get(i).getStu_phoneNum();
+            String e = addregistationArray.get(i).getStu_address();
+            String f = addregistationArray.get(i).getBatch_name();
+            String g = addregistationArray.get(i).getCourse_name();
+
+            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g});
+        }
+
+    }
+
+    public void setRegStudenttable() {
+
+        setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
+
+//        AddAplicantModel.setRowCount(0);
+//        addaplicantArray = getStudentList("SELECT * FROM `student_details` ORDER BY `stu_id`");
+//
+//        for (AddAplicantClass i : addaplicantArray) {
+//
+//            AddAplicantModel.addRow(new Object[]{i.getStu_id(), i.getStu_nic(), i.getStu_name(), i.getPhone_num(), i.getAddress()});
+//        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -194,7 +265,6 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jPanelAddRegistationTable.removeAll();
         jPanelAddRegistationTable.setLayout(new BorderLayout());
         jPanelAddRegistationTable.add(addAplicantPanel, BorderLayout.WEST);
-
         jPanelAddRegistationTable.revalidate();
         jPanelAddRegistationTable.repaint();
     }//GEN-LAST:event_jButtonAplicantActionPerformed
