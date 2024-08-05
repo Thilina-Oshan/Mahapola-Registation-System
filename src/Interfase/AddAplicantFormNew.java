@@ -436,6 +436,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "No record found with the given ID");
                 }
+                clearFiled();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e);
                 System.out.println(e);
@@ -613,6 +614,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         txtName.setText("");
         txtPhoneNumber.setText("");
         txtAddress.setText("");
+        txtId.setText("");
 
     }
 

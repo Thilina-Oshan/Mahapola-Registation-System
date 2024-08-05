@@ -9,7 +9,7 @@ package Classes;
  * @author Oshan Demel
  */
 public class AddRegistationClass {
-    
+
     private int mc_num;
     private String stu_num;
     private String stu_name;
@@ -125,8 +125,5 @@ public class AddRegistationClass {
     public void setCourse_name(String course_name) {
         this.course_name = course_name;
     }
-    
-    
-    
-    
+
 }
