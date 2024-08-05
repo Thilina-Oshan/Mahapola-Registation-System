@@ -59,7 +59,7 @@ public class AddCourse extends javax.swing.JPanel {
         return courselist;
     }
 
-    private void setCoursetable(String select__from_batch_detail) {
+    private void setCoursetable(String select__from_course) {
 
         AddCourseModel.setRowCount(0);
         addcoursearry = getCourseList("SELECT * FROM `course` ORDER BY `couse_id`");
@@ -224,7 +224,7 @@ public class AddCourse extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-       
+       setCoursetable("SELECT * FROM `course`");
     }//GEN-LAST:event_formFocusGained
 
 
