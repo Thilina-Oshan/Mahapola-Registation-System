@@ -86,6 +86,11 @@ public class AddCourse extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 255));
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jPanelAddCourseTable.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -217,6 +222,10 @@ public class AddCourse extends javax.swing.JPanel {
             setCoursetable(query);
         }
     }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+       
+    }//GEN-LAST:event_formFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
