@@ -52,9 +52,9 @@ public class AddRegistationForm extends javax.swing.JFrame {
         validateName1 = new javax.swing.JLabel();
         validatePnum1 = new javax.swing.JLabel();
         validateAddress1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jButtonUpdate = new javax.swing.JButton();
         jButtonInsert1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonClear = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         validateNIc2 = new javax.swing.JLabel();
         txtMCNUm = new javax.swing.JTextField();
@@ -174,15 +174,15 @@ public class AddRegistationForm extends javax.swing.JFrame {
         validateAddress1.setForeground(new java.awt.Color(0, 0, 0));
         validateAddress1.setText("     ");
 
-        jButton3.setBackground(new java.awt.Color(102, 102, 255));
-        jButton3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 51));
-        jButton3.setText("Clear");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonUpdate.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonUpdate.setText("Update");
+        jButtonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonUpdateActionPerformed(evt);
             }
         });
 
@@ -198,12 +198,17 @@ public class AddRegistationForm extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(102, 102, 255));
-        jButton4.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 51));
-        jButton4.setText("Update");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonClear.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jButtonClear.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonClear.setText("Clear");
+        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,9 +295,9 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jButtonInsert1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -347,10 +352,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonInsert1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -485,9 +490,60 @@ public class AddRegistationForm extends javax.swing.JFrame {
         isvalidateAddressReg();
     }//GEN-LAST:event_txtAddress1FocusLost
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        ClearFieldsReg();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+         
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the data?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_NO_OPTION) {
+
+            if (isvalidateReg()) {
+                SetVariableRegistation();
+
+                try {
+                    con.setAutoCommit(false); // Disable auto-commit for transaction management
+
+                    String query = "UPDATE `student_registation` SET `stu_nic`=?,`stu_name`=?,`phone_num`=?,`address`=?,`batch_name`=?,`couse_name`=? WHERE `mc_num`= ? " ;
+                    try (PreparedStatement pst = con.prepareStatement(query)) {
+                        pst.setString(1, Reg_nic);
+                        pst.setString(2, Reg_name);
+                        pst.setString(3, Reg_phoneNum);
+                        pst.setString(4, Reg_address);
+                        pst.setString(5, Reg_batchName);
+                        pst.setString(6, Reg_courseName);
+                        pst.setInt(7, mc_number); // Corrected index for mc_number
+
+                        int rowsAffected = pst.executeUpdate();
+                        if (rowsAffected > 0) {
+                            JOptionPane.showMessageDialog(null, "Update Successful");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Update Failed: No rows affected.");
+                            
+                            System.out.println("Update Failed: No rows affected.");
+                        }
+                    }
+
+                    con.commit(); // Commit the transaction
+                    ClearFieldsReg();
+                } catch (Exception e) {
+                    try {
+                        con.rollback(); // Rollback transaction on error
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Rollback failed: " + ex.getMessage());
+                    }
+                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                    System.out.println(e);
+                    e.printStackTrace(); // Print stack trace for debugging
+                } finally {
+                    try {
+                        con.setAutoCommit(true); // Re-enable auto-commit
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Failed to reset auto-commit: " + ex.getMessage());
+                    }
+                }
+
+            }
+        }
+
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
 
     private void jButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsert1ActionPerformed
 
@@ -507,12 +563,14 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 pst.setString(6, Reg_batchName);
                 pst.setString(7, Reg_courseName);
                 pst.execute();
-                JOptionPane.showMessageDialog(this, "Sucess");
+                JOptionPane.showMessageDialog(this, "SAVE Successful");
+                ClearFieldsReg();
 
             } catch (Exception e) {
 
-                JOptionPane.showMessageDialog(this, "Cant");
                 System.out.println(e);
+                JOptionPane.showMessageDialog(this, e);
+                JOptionPane.showMessageDialog(this, "Cant");
 
             }
 
@@ -520,7 +578,14 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonInsert1ActionPerformed
 
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        
+     
+
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
     public static void main(String args[]) {
+
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
         /* Create and display the form */
@@ -533,10 +598,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonInsert1;
+    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JComboBox<String> jComboBoxBatch;
     private javax.swing.JComboBox<String> jComboBoxCourse;
     private javax.swing.JLabel jLabel1;

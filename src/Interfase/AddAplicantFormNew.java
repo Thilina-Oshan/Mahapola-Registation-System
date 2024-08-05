@@ -142,6 +142,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         txtPhoneNumber.setBackground(new java.awt.Color(255, 255, 255));
         txtPhoneNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtPhoneNumber.setForeground(new java.awt.Color(0, 0, 0));
+        txtPhoneNumber.setCaretColor(new java.awt.Color(0, 0, 0));
         txtPhoneNumber.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtPhoneNumberFocusLost(evt);
@@ -159,6 +160,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         txtAddress.setBackground(new java.awt.Color(255, 255, 255));
         txtAddress.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtAddress.setForeground(new java.awt.Color(0, 0, 0));
+        txtAddress.setCaretColor(new java.awt.Color(0, 0, 0));
         txtAddress.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtAddressFocusLost(evt);
@@ -206,7 +208,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Student Nic");
 
-        txtId.setBackground(new java.awt.Color(255, 255, 255));
+        txtId.setBackground(new java.awt.Color(204, 204, 204));
         txtId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtId.setForeground(new java.awt.Color(0, 0, 0));
         txtId.setCaretColor(new java.awt.Color(0, 0, 0));
@@ -314,6 +316,8 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
+        txtId.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -382,7 +386,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
                 pst.setString(3, phoneNum);
                 pst.setString(4, address);
                 pst.execute();
-                JOptionPane.showMessageDialog(this, "SAVE SUCCESSFUL");
+                JOptionPane.showMessageDialog(this, "SAVE Successful");
                 System.out.println("");
                 clearFiled();
             } catch (Exception e) {
@@ -398,52 +402,56 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if (isvalidate()) {
-            setAplicantVariables();
+        
+       int choise = JOptionPane.showConfirmDialog(null, "Are you sure Update Data ?", "Confitmation", JOptionPane.YES_NO_OPTION);
+        if (choise == JOptionPane.YES_NO_OPTION) {
+       
+            if (isvalidate()) {
+                setAplicantVariables();
 
-            try {
-                // Print the variables to ensure they are set correctly
-                System.out.println("NIC: " + nic);
-                System.out.println("Name: " + name);
-                System.out.println("Phone Number: " + phoneNum);
-                System.out.println("Address: " + address);
-                System.out.println("Student ID: " + stu_id);
+                try {
+                    // Print the variables to ensure they are set correctly
+                    System.out.println("NIC: " + nic);
+                    System.out.println("Name: " + name);
+                    System.out.println("Phone Number: " + phoneNum);
+                    System.out.println("Address: " + address);
+                    System.out.println("Student ID: " + stu_id);
 
-                // Check if the student ID exists
-                String checkQuery = "SELECT COUNT(*) FROM `student_details` WHERE `stu_id` = ?";
-                PreparedStatement checkPst = con.prepareStatement(checkQuery);
-                checkPst.setInt(1, stu_id);
+                    // Check if the student ID exists
+                    String checkQuery = "SELECT COUNT(*) FROM `student_details` WHERE `stu_id` = ?";
+                    PreparedStatement checkPst = con.prepareStatement(checkQuery);
+                    checkPst.setInt(1, stu_id);
 
-                ResultSet rs = checkPst.executeQuery();
-                if (rs.next() && rs.getInt(1) > 0) {
-                    // Proceed with the update
-                    String query = "UPDATE `student_details` SET `stu_nic`= ?,`stu_name`= ?,`phone_num`= ?,`address`= ? WHERE `stu_id`= ?";
-                    PreparedStatement pst = con.prepareStatement(query);
+                    ResultSet rs = checkPst.executeQuery();
+                    if (rs.next() && rs.getInt(1) > 0) {
+                        // Proceed with the update
+                        String query = "UPDATE `student_details` SET `stu_nic`= ?,`stu_name`= ?,`phone_num`= ?,`address`= ? WHERE `stu_id`= ?";
+                        PreparedStatement pst = con.prepareStatement(query);
 
-                    pst.setString(1, nic);
-                    pst.setString(2, name);
-                    pst.setString(3, phoneNum);
-                    pst.setString(4, address);
-                    pst.setInt(5, stu_id);
+                        pst.setString(1, nic);
+                        pst.setString(2, name);
+                        pst.setString(3, phoneNum);
+                        pst.setString(4, address);
+                        pst.setInt(5, stu_id);
 
-                    int rowsUpdated = pst.executeUpdate();
+                        int rowsUpdated = pst.executeUpdate();
 
-                    if (rowsUpdated > 0) {
-                        JOptionPane.showMessageDialog(null, "UPDATE  SUCCESSFUL");
+                        if (rowsUpdated > 0) {
+                            JOptionPane.showMessageDialog(null, "UPDATE Successful");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No record found with the given ID");
+                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "No record found with the given ID");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(null, "No record found with the given ID");
+                    clearFiled();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, e);
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(this, "Can't Update");
                 }
-                clearFiled();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e);
-                System.out.println(e);
-                JOptionPane.showMessageDialog(this, "Can't Update");
             }
         }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -522,7 +530,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
+public void windowClosing(WindowEvent e) {
                 int confirm = JOptionPane.showOptionDialog(
                         AddAplicantFormNew.this,
                         "Are you sure you want to close the application?",

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -23,7 +24,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     static Connection con = MainInterfase.conn;
     AddRegistationForm addregistationform = new AddRegistationForm();
 
-    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course"}, 0);//Set Default table
+    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Registation Date"}, 0);//Set Default table
 
     ArrayList<AddRegistationClass> addregistationArray;
     ResultSet rs;
@@ -50,7 +51,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                studentReg = new AddRegistationClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                studentReg = new AddRegistationClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getDate(8));
                 Regstudentdlist.add(studentReg);
             }
 
@@ -76,8 +77,9 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             String e = addregistationArray.get(i).getStu_address();
             String f = addregistationArray.get(i).getBatch_name();
             String g = addregistationArray.get(i).getCourse_name();
+            Date h = addregistationArray.get(i).getRegistation_date();
 
-            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g});
+            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g , h});
         }
 
     }
@@ -98,11 +100,22 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jButtonRegisterd = new javax.swing.JButton();
         jButtonAplicant = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxRegisterd = new javax.swing.JComboBox<>();
         jTextSearchRegisterd = new javax.swing.JTextField();
         jButtonAddNewRegisterd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanelAddRegistationTable.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -167,12 +180,22 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxRegisterd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc_Number", "Nic", "Name", " " }));
 
         jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
         jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         jTextSearchRegisterd.setForeground(new java.awt.Color(51, 0, 51));
         jTextSearchRegisterd.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextSearchRegisterd.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextSearchRegisterdCaretUpdate(evt);
+            }
+        });
+        jTextSearchRegisterd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextSearchRegisterdActionPerformed(evt);
+            }
+        });
 
         jButtonAddNewRegisterd.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAddNewRegisterd.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -214,7 +237,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -240,8 +263,8 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -326,12 +349,42 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTableRegisterdMouseClicked
 
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        setRegStudenttable();
+    }//GEN-LAST:event_formFocusGained
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        setRegStudenttable();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jTextSearchRegisterdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextSearchRegisterdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextSearchRegisterdActionPerformed
+
+    private void jTextSearchRegisterdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchRegisterdCaretUpdate
+
+        String[] col_names = {"mc_num", "stu_nic", "stu_name"};
+
+        if (jTextSearchRegisterd.getText().isEmpty()) {
+            setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
+            jTextSearchRegisterd.setText("");
+        } else {
+
+            String col_name = col_names[jComboBoxRegisterd.getSelectedIndex()];
+            String value = jTextSearchRegisterd.getText();
+            String query = "SELECT * FROM `student_registation` WHERE " + col_name + " LIKE '%" + value + "%'";
+
+            setRegistationTableData(query);
+
+        }
+    }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddNewRegisterd;
     private javax.swing.JButton jButtonAplicant;
     private javax.swing.JButton jButtonRegisterd;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxRegisterd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;

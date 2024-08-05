@@ -4,6 +4,8 @@
  */
 package Classes;
 
+import java.util.Date;
+
 /**
  *
  * @author Oshan Demel
@@ -17,8 +19,9 @@ public class AddRegistationClass {
     private String stu_address;
     private String batch_name;
     private String course_name;
+    private Date registation_date;
 
-    public AddRegistationClass(int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name) {
+    public AddRegistationClass(int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, Date registation_date) {
         this.mc_num = mc_num;
         this.stu_num = stu_num;
         this.stu_name = stu_name;
@@ -26,6 +29,7 @@ public class AddRegistationClass {
         this.stu_address = stu_address;
         this.batch_name = batch_name;
         this.course_name = course_name;
+        this.registation_date = registation_date;
     }
 
     /**
@@ -124,6 +128,20 @@ public class AddRegistationClass {
      */
     public void setCourse_name(String course_name) {
         this.course_name = course_name;
+    }
+
+    /**
+     * @return the registation_date
+     */
+    public Date getRegistation_date() {
+        return registation_date;
+    }
+
+    /**
+     * @param registation_date the registation_date to set
+     */
+    public void setRegistation_date(Date registation_date) {
+        this.registation_date = registation_date;
     }
 
 }
