@@ -4,14 +4,21 @@
  */
 package Interfase;
 
+import Classes.DbConnection;
+
 
 public class Home extends javax.swing.JPanel {
 
     
     public Home() {
         initComponents();
+         
     }
 
+    
+     public void setUser(String name){
+        JlableAdminName.setText(name);
+    }
     
     
     @SuppressWarnings("unchecked")

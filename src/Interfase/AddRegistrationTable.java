@@ -4,22 +4,89 @@
  */
 package Interfase;
 
+import Classes.AddRegistationClass;
 import java.awt.BorderLayout;
+import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 
 public class AddRegistrationTable extends javax.swing.JPanel {
 
+    static Connection con = MainInterfase.conn;
     AddRegistationForm addregistationform = new AddRegistationForm();
-    
-     DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number","Studen Nic", "Student Name", "Phone Number", "Address" , "Batch" , "Course"}, 0);//Set Default table
-   
+
+    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course"}, 0);//Set Default table
+
+    ArrayList<AddRegistationClass> addregistationArray;
+    ResultSet rs;
+
+    AddRegistationForm addregistationForm = new AddRegistationForm();
+
     public AddRegistrationTable() {
         initComponents();
-          jTableRegisterd.setModel(AddRegisterdModel);
+        jTableRegisterd.setModel(AddRegisterdModel);
+        setRegStudenttable();
     }
 
-   
+    private ArrayList<AddRegistationClass> getRegStudentList(String query) {
+
+        ArrayList<AddRegistationClass> Regstudentdlist = new ArrayList<>();
+        Statement st;
+
+        try {
+
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+
+            AddRegistationClass studentReg;
+
+            while (rs.next()) {
+
+                studentReg = new AddRegistationClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                Regstudentdlist.add(studentReg);
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+
+        return Regstudentdlist;
+    }
+
+    void setRegistationTableData(String query) { //table ekata data set 
+
+        AddRegisterdModel.setRowCount(0);
+        addregistationArray = getRegStudentList(query);
+
+        for (int i = 0; i < addregistationArray.size(); i++) {
+
+            int a = addregistationArray.get(i).getMc_num();
+            String b = addregistationArray.get(i).getStu_num();
+            String c = addregistationArray.get(i).getStu_name();
+            String d = addregistationArray.get(i).getStu_phoneNum();
+            String e = addregistationArray.get(i).getStu_address();
+            String f = addregistationArray.get(i).getBatch_name();
+            String g = addregistationArray.get(i).getCourse_name();
+
+            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g});
+        }
+
+    }
+
+    public void setRegStudenttable() {
+
+        setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,6 +117,11 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableRegisterd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableRegisterdMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableRegisterd);
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
@@ -194,7 +266,6 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jPanelAddRegistationTable.removeAll();
         jPanelAddRegistationTable.setLayout(new BorderLayout());
         jPanelAddRegistationTable.add(addAplicantPanel, BorderLayout.WEST);
-
         jPanelAddRegistationTable.revalidate();
         jPanelAddRegistationTable.repaint();
     }//GEN-LAST:event_jButtonAplicantActionPerformed
@@ -202,6 +273,58 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     private void jButtonAddNewRegisterdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddNewRegisterdActionPerformed
         addregistationform.setVisible(true);
     }//GEN-LAST:event_jButtonAddNewRegisterdActionPerformed
+
+    private void jTableRegisterdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableRegisterdMouseClicked
+        if (jTableRegisterd.getSelectedRowCount() == 1) {
+
+            addregistationForm.setVisible(true);
+
+            try {
+
+                Field fieldMcNum = addregistationForm.getClass().getDeclaredField("txtMCNUm");
+                fieldMcNum.setAccessible(true);
+                JTextField txtMCNUm = (JTextField) fieldMcNum.get(addregistationForm);
+                txtMCNUm.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 0).toString());
+
+                Field fieldNic = addregistationForm.getClass().getDeclaredField("txtNic1");
+                fieldNic.setAccessible(true);
+                JTextField txtNic1 = (JTextField) fieldNic.get(addregistationForm);
+                txtNic1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 1).toString());
+
+                Field fieldName = addregistationForm.getClass().getDeclaredField("txtName1");
+                fieldName.setAccessible(true);
+                JTextField txtName1 = (JTextField) fieldName.get(addregistationForm);
+                txtName1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 2).toString());
+
+                Field fieldPhoneNumber = addregistationForm.getClass().getDeclaredField("txtPhoneNUm1");
+                fieldPhoneNumber.setAccessible(true);
+                JTextField txtPhoneNUm1 = (JTextField) fieldPhoneNumber.get(addregistationForm);
+                txtPhoneNUm1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 3).toString());
+
+                Field fieldAddress = addregistationForm.getClass().getDeclaredField("txtAddress1");
+                fieldAddress.setAccessible(true);
+                JTextField txtAddress1 = (JTextField) fieldAddress.get(addregistationForm);
+                txtAddress1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 4).toString());
+
+                Field fieldBatch = addregistationForm.getClass().getDeclaredField("jComboBoxBatch");
+                fieldBatch.setAccessible(true);
+                JComboBox<?> jComboBoxBatch = (JComboBox<?>) fieldBatch.get(addregistationForm);
+                jComboBoxBatch.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 5));
+
+                Field fieldCourse = addregistationForm.getClass().getDeclaredField("jComboBoxCourse");
+                fieldCourse.setAccessible(true);
+                JComboBox<?> jComboBoxCourse = (JComboBox<?>) fieldCourse.get(addregistationForm);
+                jComboBoxCourse.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 6).toString());
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                e.printStackTrace();
+                System.out.println(e);
+            }
+
+        }
+    }//GEN-LAST:event_jTableRegisterdMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

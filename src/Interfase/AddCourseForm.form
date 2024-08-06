@@ -109,11 +109,11 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
-                              <Component id="jButtonInsert" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="ButtonInsert" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButtonUpdate" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="ButtonUpdate" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonClear" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="ButtonClear" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -150,9 +150,9 @@
                       <Component id="validateEnddate" min="-2" pref="26" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonInsert" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jButtonUpdate" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jButtonClear" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="ButtonInsert" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="ButtonUpdate" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="ButtonClear" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
@@ -290,7 +290,7 @@
                 <Property name="text" type="java.lang.String" value="     "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonClear">
+            <Component class="javax.swing.JButton" name="ButtonClear">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -315,10 +315,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonClearActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonInsert">
+            <Component class="javax.swing.JButton" name="ButtonInsert">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -343,10 +343,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonInsertActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonInsertActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonUpdate">
+            <Component class="javax.swing.JButton" name="ButtonUpdate">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -370,6 +370,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonUpdateActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="textDuration">
               <Properties>

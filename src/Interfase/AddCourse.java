@@ -4,15 +4,16 @@
  */
 package Interfase;
 
-import Classes.AddAplicantClass;
 import Classes.AddCourseClass;
 import Classes.DbConnection;
+import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class AddCourse extends javax.swing.JPanel {
@@ -24,13 +25,14 @@ public class AddCourse extends javax.swing.JPanel {
     DefaultTableModel AddCourseModel = new DefaultTableModel(new String[]{"Course Id", "Course Name", "Course Duration"}, 0);
     ArrayList<AddCourseClass> addcoursearry;
     ResultSet rs;
+    AddCourseForm ACF = new AddCourseForm();
     
 
     public AddCourse() {
         initComponents();
         conn = MainInterfase.conn;
-        jTableBatch.setModel(AddCourseModel);
-        setCoursetable("SELECT * FROM `batch_detail`");
+        TableCourse.setModel(AddCourseModel);
+        setCoursetable("SELECT * FROM `course`");
     }
 
     private ArrayList<AddCourseClass> getCourseList(String query) {
@@ -77,7 +79,7 @@ public class AddCourse extends javax.swing.JPanel {
 
         jPanelAddCourseTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableBatch = new javax.swing.JTable();
+        TableCourse = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         SearchCombo = new javax.swing.JComboBox<>();
         jTextSearchRegisterd = new javax.swing.JTextField();
@@ -94,7 +96,7 @@ public class AddCourse extends javax.swing.JPanel {
 
         jPanelAddCourseTable.setBackground(new java.awt.Color(102, 102, 255));
 
-        jTableBatch.setModel(new javax.swing.table.DefaultTableModel(
+        TableCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -105,7 +107,12 @@ public class AddCourse extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableBatch);
+        TableCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableCourseMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TableCourse);
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
@@ -227,16 +234,45 @@ public class AddCourse extends javax.swing.JPanel {
        setCoursetable("SELECT * FROM `course`");
     }//GEN-LAST:event_formFocusGained
 
+    private void TableCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCourseMouseClicked
+        if (TableCourse.getSelectedRowCount() == 1) {
+
+            ACF.setVisible(true);
+
+            try {
+
+                Field fieldCId = ACF.getClass().getDeclaredField("txtCourseId");
+                fieldCId.setAccessible(true);
+                JTextField txtCourseId = (JTextField) fieldCId.get(ACF);
+                txtCourseId.setText(AddCourseModel.getValueAt(TableCourse.getSelectedRow(), 0).toString());
+
+                Field CNamefield = ACF.getClass().getDeclaredField("txtCourseName");
+                CNamefield.setAccessible(true);
+                JTextField txtCourseName = (JTextField) CNamefield.get(ACF);
+                txtCourseName.setText(AddCourseModel.getValueAt(TableCourse.getSelectedRow(), 1).toString());
+
+                Field DurationFiled = ACF.getClass().getDeclaredField("textDuration");
+                DurationFiled.setAccessible(true);
+                JTextField textDuration = (JTextField) DurationFiled.get(ACF);
+                textDuration.setText(AddCourseModel.getValueAt(TableCourse.getSelectedRow(), 2).toString());
+
+
+            } catch (Exception e) {
+            }
+
+        }
+    }//GEN-LAST:event_TableCourseMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> SearchCombo;
+    private javax.swing.JTable TableCourse;
     private javax.swing.JButton jButtonAddCourse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAddCourseTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableBatch;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
 }

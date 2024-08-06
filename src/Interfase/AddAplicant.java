@@ -20,11 +20,16 @@ import javax.swing.GroupLayout;
 import Interfase.MainInterfase;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
  import javax.swing.JOptionPane;
 
 public class AddAplicant extends javax.swing.JPanel {
@@ -36,6 +41,7 @@ public class AddAplicant extends javax.swing.JPanel {
     ArrayList<AddAplicantClass> addaplicantArray;
     ResultSet rs;
 
+//    private javax.swing.JTable jTableAddaplicant;
     public AddAplicant() {
         System.out.println("AddAplicant constructor called");
         initComponents();
@@ -45,6 +51,23 @@ public class AddAplicant extends javax.swing.JPanel {
         DefaultColor = new Color(0, 0, 51);
         ClickedColor = new Color(255, 255, 255);
 
+    }
+
+    public AddAplicant(JTable jTableAddaplicant) {
+        this.jTableAddaplicant = jTableAddaplicant;
+    }
+
+    public DefaultTableModel getAddAplicantModel() {
+        return AddAplicantModel;
+    }
+
+    public JPanel getjPanelAddAplicantTable() {
+        return jPanelAddAplicantTable;
+    }
+
+//    create  a gette methon table eka ehaa pettata ganna
+    public JTable getjTableAddaplicant() {
+        return jTableAddaplicant;
     }
 
     private ArrayList<AddAplicantClass> getStudentList(String query) {
@@ -61,7 +84,7 @@ public class AddAplicant extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                student = new AddAplicantClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5));
+                student = new AddAplicantClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
                 studentdlist.add(student);
             }
 
@@ -73,16 +96,35 @@ public class AddAplicant extends javax.swing.JPanel {
         return studentdlist;
     }
 
-    public void setStudenttable() {
+    void setAplicantTableData(String query) { //table ekata data set 
 
         AddAplicantModel.setRowCount(0);
-        addaplicantArray = getStudentList("SELECT * FROM `student_details` ORDER BY `stu_id`");
+        addaplicantArray = getStudentList(query);
 
-        for (AddAplicantClass i : addaplicantArray) {
+        for (int i = 0; i < addaplicantArray.size(); i++) {
 
-            AddAplicantModel.addRow(new Object[]{i.getStu_id(), i.getStu_nic(), i.getStu_name(), i.getPhone_num(), i.getAddress()});
+            int a = addaplicantArray.get(i).getStu_id();
+            String b = addaplicantArray.get(i).getStu_nic();
+            String c = addaplicantArray.get(i).getStu_name();
+            String d = addaplicantArray.get(i).getPhone_num();
+            String e = addaplicantArray.get(i).getAddress();
+
+            AddAplicantModel.addRow(new Object[]{a, b, c, d, e});
         }
 
+    }
+
+    public void setStudenttable() {
+
+        setAplicantTableData("SELECT * FROM `student_details` ORDER BY `stu_id`");
+
+//        AddAplicantModel.setRowCount(0);
+//        addaplicantArray = getStudentList("SELECT * FROM `student_details` ORDER BY `stu_id`");
+//
+//        for (AddAplicantClass i : addaplicantArray) {
+//
+//            AddAplicantModel.addRow(new Object[]{i.getStu_id(), i.getStu_nic(), i.getStu_name(), i.getPhone_num(), i.getAddress()});
+//        }
     }
 
     @SuppressWarnings("unchecked")
@@ -103,6 +145,16 @@ public class AddAplicant extends javax.swing.JPanel {
         jTextAplicant = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(153, 153, 255));
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanelAddAplicantTable.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -140,6 +192,11 @@ public class AddAplicant extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableAddaplicant.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAddaplicantMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableAddaplicant);
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
@@ -314,6 +371,56 @@ public class AddAplicant extends javax.swing.JPanel {
     private void jTextAplicantCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextAplicantCaretUpdate
 
     }//GEN-LAST:event_jTextAplicantCaretUpdate
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        setStudenttable();
+    }//GEN-LAST:event_formFocusGained
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+
+        setAplicantTableData("SELECT * FROM `student_details` ORDER BY `stu_id`");
+    }//GEN-LAST:event_formMouseClicked
+
+    private void jTableAddaplicantMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAddaplicantMouseClicked
+
+        if (jTableAddaplicant.getSelectedRowCount() == 1) {
+
+            ADAF.setVisible(true);
+
+            try {
+
+                Field fieldId = ADAF.getClass().getDeclaredField("txtId");
+                fieldId.setAccessible(true);
+                JTextField txtId = (JTextField) fieldId.get(ADAF);
+                txtId.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 0).toString());
+
+                Field field = ADAF.getClass().getDeclaredField("txtNic");
+                field.setAccessible(true);
+                JTextField txtNic = (JTextField) field.get(ADAF);
+                txtNic.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 1).toString());
+
+                Field nameFiled = ADAF.getClass().getDeclaredField("txtName");
+                nameFiled.setAccessible(true);
+                JTextField txtName = (JTextField) nameFiled.get(ADAF);
+                txtName.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 2).toString());
+
+                Field pnumField = ADAF.getClass().getDeclaredField("txtPhoneNumber");
+                pnumField.setAccessible(true);
+                JTextField txtPhoneNumber = (JTextField) pnumField.get(ADAF);
+                txtPhoneNumber.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 3).toString());
+
+                Field addressField = ADAF.getClass().getDeclaredField("txtAddress");
+                addressField.setAccessible(true);
+                JTextField txtAddress = (JTextField) addressField.get(ADAF);
+                txtAddress.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 4).toString());
+
+            } catch (Exception e) {
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jTableAddaplicantMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

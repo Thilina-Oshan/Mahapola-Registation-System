@@ -13,10 +13,10 @@ public class AddAplicantClass {
     private int stu_id;
     private String stu_nic;
     private String stu_name;
-    private int phone_num;
-    private String address;
+    private String phone_num;
+     private String address;
 
-    public AddAplicantClass(int stu_id, String stu_nic, String stu_name, int phone_num, String address) {
+    public AddAplicantClass(int stu_id, String stu_nic, String stu_name, String phone_num, String address) {
         this.stu_id = stu_id;
         this.stu_nic = stu_nic;
         this.stu_name = stu_name;
@@ -69,14 +69,14 @@ public class AddAplicantClass {
     /**
      * @return the phone_num
      */
-    public int getPhone_num() {
+    public String getPhone_num() {
         return phone_num;
     }
 
     /**
      * @param phone_num the phone_num to set
      */
-    public void setPhone_num(int phone_num) {
+    public void setPhone_num(String phone_num) {
         this.phone_num = phone_num;
     }
 
@@ -94,4 +94,7 @@ public class AddAplicantClass {
         this.address = address;
     }
 
+  
+
+   
 }
