@@ -12,6 +12,7 @@ import java.util.Date;
  */
 public class AddRegistationClass {
 
+    private int reg_id;
     private int mc_num;
     private String stu_num;
     private String stu_name;
@@ -21,7 +22,8 @@ public class AddRegistationClass {
     private String course_name;
     private Date registation_date;
 
-    public AddRegistationClass(int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, Date registation_date) {
+    public AddRegistationClass(int reg_id, int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, Date registation_date) {
+        this.reg_id = reg_id;
         this.mc_num = mc_num;
         this.stu_num = stu_num;
         this.stu_name = stu_name;
@@ -30,6 +32,20 @@ public class AddRegistationClass {
         this.batch_name = batch_name;
         this.course_name = course_name;
         this.registation_date = registation_date;
+    }
+
+    /**
+     * @return the reg_id
+     */
+    public int getReg_id() {
+        return reg_id;
+    }
+
+    /**
+     * @param reg_id the reg_id to set
+     */
+    public void setReg_id(int reg_id) {
+        this.reg_id = reg_id;
     }
 
     /**

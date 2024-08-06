@@ -24,7 +24,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     static Connection con = MainInterfase.conn;
     AddRegistationForm addregistationform = new AddRegistationForm();
 
-    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Registation Date"}, 0);//Set Default table
+    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Registation Number", "Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Registation Date"}, 0);//Set Default table
 
     ArrayList<AddRegistationClass> addregistationArray;
     ResultSet rs;
@@ -51,7 +51,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                studentReg = new AddRegistationClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),rs.getDate(8));
+                studentReg = new AddRegistationClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getDate(9));
                 Regstudentdlist.add(studentReg);
             }
 
@@ -70,16 +70,17 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
         for (int i = 0; i < addregistationArray.size(); i++) {
 
-            int a = addregistationArray.get(i).getMc_num();
-            String b = addregistationArray.get(i).getStu_num();
-            String c = addregistationArray.get(i).getStu_name();
-            String d = addregistationArray.get(i).getStu_phoneNum();
-            String e = addregistationArray.get(i).getStu_address();
-            String f = addregistationArray.get(i).getBatch_name();
-            String g = addregistationArray.get(i).getCourse_name();
-            Date h = addregistationArray.get(i).getRegistation_date();
+            int a = addregistationArray.get(i).getReg_id();
+            int b = addregistationArray.get(i).getMc_num();
+            String c = addregistationArray.get(i).getStu_num();
+            String d = addregistationArray.get(i).getStu_name();
+            String e = addregistationArray.get(i).getStu_phoneNum();
+            String f = addregistationArray.get(i).getStu_address();
+            String g = addregistationArray.get(i).getBatch_name();
+            String h = addregistationArray.get(i).getCourse_name();
+            Date registrationDate = addregistationArray.get(i).getRegistation_date();
 
-            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g , h});
+            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g, h ,i});
         }
 
     }
@@ -183,7 +184,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jComboBoxRegisterd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc_Number", "Nic", "Name", " " }));
 
         jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
-        jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jTextSearchRegisterd.setForeground(new java.awt.Color(51, 0, 51));
         jTextSearchRegisterd.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextSearchRegisterd.addCaretListener(new javax.swing.event.CaretListener() {
@@ -226,25 +227,13 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout jPanelAddRegistationTableLayout = new javax.swing.GroupLayout(jPanelAddRegistationTable);
         jPanelAddRegistationTable.setLayout(jPanelAddRegistationTableLayout);
         jPanelAddRegistationTableLayout.setHorizontalGroup(
             jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -253,12 +242,25 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
+                .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAddRegistationTableLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101)
+                        .addComponent(jTextSearchRegisterd))
+                    .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanelAddRegistationTableLayout.setVerticalGroup(
             jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(22, 22, 22)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -304,40 +306,46 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
             try {
                 DisableTxtFiels();
+                
+                 Field fieldRegId = addregistationForm.getClass().getDeclaredField("txtRegId");
+                fieldRegId.setAccessible(true);
+                JTextField txtRegId = (JTextField) fieldRegId.get(addregistationForm);
+                txtRegId.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 0).toString());
+                
                 Field fieldMcNum = addregistationForm.getClass().getDeclaredField("txtMCNUm");
                 fieldMcNum.setAccessible(true);
                 JTextField txtMCNUm = (JTextField) fieldMcNum.get(addregistationForm);
-                txtMCNUm.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 0).toString());
+                txtMCNUm.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 1).toString());
 
                 Field fieldNic = addregistationForm.getClass().getDeclaredField("txtNic1");
                 fieldNic.setAccessible(true);
                 JTextField txtNic1 = (JTextField) fieldNic.get(addregistationForm);
-                txtNic1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 1).toString());
+                txtNic1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 2).toString());
 
                 Field fieldName = addregistationForm.getClass().getDeclaredField("txtName1");
                 fieldName.setAccessible(true);
                 JTextField txtName1 = (JTextField) fieldName.get(addregistationForm);
-                txtName1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 2).toString());
+                txtName1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 3).toString());
 
                 Field fieldPhoneNumber = addregistationForm.getClass().getDeclaredField("txtPhoneNUm1");
                 fieldPhoneNumber.setAccessible(true);
                 JTextField txtPhoneNUm1 = (JTextField) fieldPhoneNumber.get(addregistationForm);
-                txtPhoneNUm1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 3).toString());
+                txtPhoneNUm1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 4).toString());
 
                 Field fieldAddress = addregistationForm.getClass().getDeclaredField("txtAddress1");
                 fieldAddress.setAccessible(true);
                 JTextField txtAddress1 = (JTextField) fieldAddress.get(addregistationForm);
-                txtAddress1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 4).toString());
+                txtAddress1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 5).toString());
 
                 Field fieldBatch = addregistationForm.getClass().getDeclaredField("jComboBoxBatch");
                 fieldBatch.setAccessible(true);
                 JComboBox<?> jComboBoxBatch = (JComboBox<?>) fieldBatch.get(addregistationForm);
-                jComboBoxBatch.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 5));
+                jComboBoxBatch.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 6));
 
                 Field fieldCourse = addregistationForm.getClass().getDeclaredField("jComboBoxCourse");
                 fieldCourse.setAccessible(true);
                 JComboBox<?> jComboBoxCourse = (JComboBox<?>) fieldCourse.get(addregistationForm);
-                jComboBoxCourse.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 6).toString());
+                jComboBoxCourse.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 7).toString());
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e);

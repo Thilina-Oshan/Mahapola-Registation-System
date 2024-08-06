@@ -402,10 +402,9 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        
-       int choise = JOptionPane.showConfirmDialog(null, "Are you sure Update Data ?", "Confitmation", JOptionPane.YES_NO_OPTION);
+        int choise = JOptionPane.showConfirmDialog(null, "Are you sure Update Data ?", "Confitmation", JOptionPane.YES_NO_OPTION);
         if (choise == JOptionPane.YES_NO_OPTION) {
-       
+
             if (isvalidate()) {
                 setAplicantVariables();
 
@@ -530,7 +529,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
-public void windowClosing(WindowEvent e) {
+            public void windowClosing(WindowEvent e) {
                 int confirm = JOptionPane.showOptionDialog(
                         AddAplicantFormNew.this,
                         "Are you sure you want to close the application?",
