@@ -4,25 +4,88 @@
  */
 package Interfase;
 
-/**
- *
- * @author Oshan Demel
- */
+import Classes.AddPaymentClass;
+import Classes.AddRegistationClass;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class AddPayment extends javax.swing.JPanel {
-
+    
     AddPaymentForm addpaymentform = new AddPaymentForm();
-
+    DefaultTableModel AddPayementdModel = new DefaultTableModel(new String[]{"Payment Id", "Mc Number", "Course Name", "Batch Name", "Amount", "Student Payment", "Balance"}, 0);//Set Default table
+    ArrayList<AddPaymentClass> addpaymentArray;
+    ResultSet rs;
+    static Connection con = MainInterfase.conn;
+    
     public AddPayment() {
         initComponents();
+        jTablePayment.setModel(AddPayementdModel);
+        setPaymentTable();
     }
+    
+    private ArrayList<AddPaymentClass> getPaymentList(String query) {
+        
+        ArrayList<AddPaymentClass> Payementdlist = new ArrayList<>();
+        Statement st;
+        
+        try {
+            
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+            
+            AddPaymentClass addpayment;
+            
+            while (rs.next()) {
+                
+                addpayment = new AddPaymentClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getFloat(5), rs.getFloat(6), rs.getFloat(7));
+                Payementdlist.add(addpayment);
+            }
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+        
+        return Payementdlist;
+    }
+    
+   public  void setPaymentTableData(String query) { //table ekata data set 
 
+        AddPayementdModel.setRowCount(0);
+        addpaymentArray = getPaymentList(query);
+
+        for (int i = 0; i < addpaymentArray.size(); i++) {
+
+            int a = addpaymentArray.get(i).getPayment_id();
+            int b = addpaymentArray.get(i).getMc_num();
+            String c = addpaymentArray.get(i).getCourse_name();
+            String d = addpaymentArray.get(i).getBatch_name();
+            Float e = addpaymentArray.get(i).getAmount();
+            Float f = addpaymentArray.get(i).getCoustomer_payment();
+            Float g = addpaymentArray.get(i).getAlanse();
+          
+
+            AddPayementdModel.addRow(new Object[]{a, b, c, d, e, f, g});
+        }
+    }
+   
+   public void setPaymentTable() {
+
+        setPaymentTableData("SELECT * FROM `payment` ORDER BY `payment_id`");
+    }
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanelAddPaymentTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableBatch = new javax.swing.JTable();
+        jTablePayment = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextSearchRegisterd = new javax.swing.JTextField();
@@ -34,7 +97,7 @@ public class AddPayment extends javax.swing.JPanel {
 
         jPanelAddPaymentTable.setBackground(new java.awt.Color(102, 102, 255));
 
-        jTableBatch.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePayment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -45,7 +108,7 @@ public class AddPayment extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableBatch);
+        jScrollPane1.setViewportView(jTablePayment);
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
@@ -152,7 +215,7 @@ public class AddPayment extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAddPaymentTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableBatch;
+    private javax.swing.JTable jTablePayment;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
 }

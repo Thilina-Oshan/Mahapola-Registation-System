@@ -4,6 +4,7 @@
  */
 package Interfase;
 
+import Classes.ActiveStatus;
 import Classes.AddRegistationClass;
 import java.awt.BorderLayout;
 import java.lang.reflect.Field;
@@ -16,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,7 +26,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     static Connection con = MainInterfase.conn;
     AddRegistationForm addregistationform = new AddRegistationForm();
 
-    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Registation Number", "Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Registation Date"}, 0);//Set Default table
+    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Register Id", "Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Registation Date", "Status"}, 0);//Set Default table
 
     ArrayList<AddRegistationClass> addregistationArray;
     ResultSet rs;
@@ -51,7 +53,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                studentReg = new AddRegistationClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getDate(9));
+                studentReg = new AddRegistationClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getDate(9), rs.getString(10));
                 Regstudentdlist.add(studentReg);
             }
 
@@ -78,9 +80,10 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             String f = addregistationArray.get(i).getStu_address();
             String g = addregistationArray.get(i).getBatch_name();
             String h = addregistationArray.get(i).getCourse_name();
-            Date registrationDate = addregistationArray.get(i).getRegistation_date();
+            Date j = addregistationArray.get(i).getRegistation_date();
+            String k = addregistationArray.get(i).getStatus();
 
-            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g, h ,i});
+            AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g, h, j, k});
         }
 
     }
@@ -181,7 +184,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        jComboBoxRegisterd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc_Number", "Nic", "Name", " " }));
+        jComboBoxRegisterd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc_Number", "Nic", "Name", "Batch", "Course" }));
 
         jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
         jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
@@ -306,12 +309,12 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
             try {
                 DisableTxtFiels();
-                
-                 Field fieldRegId = addregistationForm.getClass().getDeclaredField("txtRegId");
+
+                Field fieldRegId = addregistationForm.getClass().getDeclaredField("txtRegId");
                 fieldRegId.setAccessible(true);
                 JTextField txtRegId = (JTextField) fieldRegId.get(addregistationForm);
                 txtRegId.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 0).toString());
-                
+
                 Field fieldMcNum = addregistationForm.getClass().getDeclaredField("txtMCNUm");
                 fieldMcNum.setAccessible(true);
                 JTextField txtMCNUm = (JTextField) fieldMcNum.get(addregistationForm);
@@ -347,6 +350,11 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 JComboBox<?> jComboBoxCourse = (JComboBox<?>) fieldCourse.get(addregistationForm);
                 jComboBoxCourse.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 7).toString());
 
+                Field fieldSatus = addregistationForm.getClass().getDeclaredField("jComboBoxStatus");
+                fieldSatus.setAccessible(true);
+                JComboBox<?> jComboBoxStatus = (JComboBox<?>) fieldSatus.get(addregistationForm);
+                jComboBoxStatus.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 9).toString());
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e);
                 JOptionPane.showMessageDialog(this, e.getMessage());
@@ -371,7 +379,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
     private void jTextSearchRegisterdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchRegisterdCaretUpdate
 
-        String[] col_names = {"mc_num", "stu_nic", "stu_name"};
+        String[] col_names = {"mc_num", "stu_nic", "stu_name", "batch_name", "couse_name"};
 
         if (jTextSearchRegisterd.getText().isEmpty()) {
             setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");

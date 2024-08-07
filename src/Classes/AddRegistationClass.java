@@ -21,8 +21,9 @@ public class AddRegistationClass {
     private String batch_name;
     private String course_name;
     private Date registation_date;
+    private String status;
 
-    public AddRegistationClass(int reg_id, int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, Date registation_date) {
+    public AddRegistationClass(int reg_id, int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, Date registation_date, String status) {
         this.reg_id = reg_id;
         this.mc_num = mc_num;
         this.stu_num = stu_num;
@@ -32,6 +33,7 @@ public class AddRegistationClass {
         this.batch_name = batch_name;
         this.course_name = course_name;
         this.registation_date = registation_date;
+        this.status = status;
     }
 
     /**
@@ -160,4 +162,19 @@ public class AddRegistationClass {
         this.registation_date = registation_date;
     }
 
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+  
 }
