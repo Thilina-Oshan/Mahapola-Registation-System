@@ -15,11 +15,11 @@ public class AddPaymentClass {
     private int mc_num;
     private String course_name;
     private String batch_name;
-    private float amount;
-    private float coustomer_payment;
-    private float alanse;
+    private Double amount;
+    private Double coustomer_payment;
+    private Double alanse;
 
-    public AddPaymentClass(int payment_id, int mc_num, String course_name, String batch_name, float amount, float coustomer_payment, float alanse) {
+    public AddPaymentClass(int payment_id, int mc_num, String course_name, String batch_name, Double amount, Double coustomer_payment, Double alanse) {
         this.payment_id = payment_id;
         this.mc_num = mc_num;
         this.course_name = course_name;
@@ -50,7 +50,9 @@ public class AddPaymentClass {
         return mc_num;
     }
 
-    
+    /**
+     * @param mc_num the mc_num to set
+     */
     public void setMc_num(int mc_num) {
         this.mc_num = mc_num;
     }
@@ -86,45 +88,45 @@ public class AddPaymentClass {
     /**
      * @return the amount
      */
-    public float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
     /**
      * @param amount the amount to set
      */
-    public void setAmount(float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
     /**
      * @return the coustomer_payment
      */
-    public float getCoustomer_payment() {
+    public Double getCoustomer_payment() {
         return coustomer_payment;
     }
 
     /**
      * @param coustomer_payment the coustomer_payment to set
      */
-    public void setCoustomer_payment(float coustomer_payment) {
+    public void setCoustomer_payment(Double coustomer_payment) {
         this.coustomer_payment = coustomer_payment;
     }
 
     /**
      * @return the alanse
      */
-    public float getAlanse() {
+    public Double getAlanse() {
         return alanse;
     }
 
     /**
      * @param alanse the alanse to set
      */
-    public void setAlanse(float alanse) {
+    public void setAlanse(Double alanse) {
         this.alanse = alanse;
     }
-    
-    
+
+  
     
 }

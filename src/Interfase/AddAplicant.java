@@ -258,7 +258,7 @@ public class AddAplicant extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :-");
 
-        ComboBoxSearchaplicant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "stu_id", "stu_nic", "stu_name" }));
+        ComboBoxSearchaplicant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nic", "Name", "Phone Number" }));
         ComboBoxSearchaplicant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxSearchaplicantActionPerformed(evt);
@@ -369,6 +369,21 @@ public class AddAplicant extends javax.swing.JPanel {
 
     private void jTextAplicantCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextAplicantCaretUpdate
 
+          String[] col_names = {"stu_nic", "stu_name", "stu_name", "phone_num"};
+
+        if (jTextAplicant.getText().isEmpty()) {
+            setAplicantTableData("SELECT * FROM `student_details`  ORDER BY `stu_id`");
+            jTextAplicant.setText("");
+        } else {
+
+            String col_name = col_names[ComboBoxSearchaplicant.getSelectedIndex()];
+            String value = jTextAplicant.getText();
+            String query = "SELECT * FROM `student_details` WHERE " + col_name + " LIKE '%" + value + "%'";
+
+            setAplicantTableData(query);
+
+        }
+        
     }//GEN-LAST:event_jTextAplicantCaretUpdate
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained

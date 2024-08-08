@@ -6,55 +6,58 @@ package Interfase;
 
 import Classes.AddPaymentClass;
 import Classes.AddRegistationClass;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class AddPayment extends javax.swing.JPanel {
-    
+
     AddPaymentForm addpaymentform = new AddPaymentForm();
-    DefaultTableModel AddPayementdModel = new DefaultTableModel(new String[]{"Payment Id", "Mc Number", "Course Name", "Batch Name", "Amount", "Student Payment", "Balance"}, 0);//Set Default table
+    DefaultTableModel AddPayementdModel = new DefaultTableModel(new String[]{"Payment Id", "Mc Number", "Course Name", "Batch Name", "Amount", "Student Payment", "Deficit/Balance"}, 0);//Set Default table
     ArrayList<AddPaymentClass> addpaymentArray;
     ResultSet rs;
     static Connection con = MainInterfase.conn;
-    
+
     public AddPayment() {
         initComponents();
         jTablePayment.setModel(AddPayementdModel);
         setPaymentTable();
     }
-    
+
     private ArrayList<AddPaymentClass> getPaymentList(String query) {
-        
+
         ArrayList<AddPaymentClass> Payementdlist = new ArrayList<>();
         Statement st;
-        
+
         try {
-            
+
             st = (Statement) con.createStatement();
             rs = st.executeQuery(query);
-            
+
             AddPaymentClass addpayment;
-            
+
             while (rs.next()) {
-                
-                addpayment = new AddPaymentClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getFloat(5), rs.getFloat(6), rs.getFloat(7));
+
+                addpayment = new AddPaymentClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getDouble(5), rs.getDouble(6), rs.getDouble(7));
                 Payementdlist.add(addpayment);
             }
-            
+
         } catch (Exception e) {
-            
+
             JOptionPane.showMessageDialog(null, e, null, 2);
         }
-        
+
         return Payementdlist;
     }
-    
-   public  void setPaymentTableData(String query) { //table ekata data set 
+
+    public void setPaymentTableData(String query) { //table ekata data set 
 
         AddPayementdModel.setRowCount(0);
         addpaymentArray = getPaymentList(query);
@@ -65,20 +68,19 @@ public class AddPayment extends javax.swing.JPanel {
             int b = addpaymentArray.get(i).getMc_num();
             String c = addpaymentArray.get(i).getCourse_name();
             String d = addpaymentArray.get(i).getBatch_name();
-            Float e = addpaymentArray.get(i).getAmount();
-            Float f = addpaymentArray.get(i).getCoustomer_payment();
-            Float g = addpaymentArray.get(i).getAlanse();
-          
+            Double e = addpaymentArray.get(i).getAmount();
+            Double f = addpaymentArray.get(i).getCoustomer_payment();
+            Double g = addpaymentArray.get(i).getAlanse();
 
             AddPayementdModel.addRow(new Object[]{a, b, c, d, e, f, g});
         }
     }
-   
-   public void setPaymentTable() {
+
+    public void setPaymentTable() {
 
         setPaymentTableData("SELECT * FROM `payment` ORDER BY `payment_id`");
     }
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,6 +96,11 @@ public class AddPayment extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 255));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jPanelAddPaymentTable.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -108,6 +115,11 @@ public class AddPayment extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTablePayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePaymentMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTablePayment);
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
@@ -156,23 +168,22 @@ public class AddPayment extends javax.swing.JPanel {
         jPanelAddPaymentTable.setLayout(jPanelAddPaymentTableLayout);
         jPanelAddPaymentTableLayout.setHorizontalGroup(
             jPanelAddPaymentTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddPaymentTableLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelAddPaymentTableLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddPaymentTableLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAddpayment, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
+            .addGroup(jPanelAddPaymentTableLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAddPaymentTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelAddPaymentTableLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101)
+                        .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanelAddPaymentTableLayout.setVerticalGroup(
             jPanelAddPaymentTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,6 +216,60 @@ public class AddPayment extends javax.swing.JPanel {
     private void jButtonAddpaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddpaymentActionPerformed
         addpaymentform.setVisible(true);
     }//GEN-LAST:event_jButtonAddpaymentActionPerformed
+
+    private void jTablePaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePaymentMouseClicked
+
+        if (jTablePayment.getSelectedRowCount() == 1) {
+
+            addpaymentform.setVisible(true);
+
+            try {
+
+                Field fieldPayId = addpaymentform.getClass().getDeclaredField("txtPaymentNUm");
+                fieldPayId.setAccessible(true);
+                JTextField txtPaymentNUm = (JTextField) fieldPayId.get(addpaymentform);
+                txtPaymentNUm.setText(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 0).toString());
+
+                Field fieldPayMc = addpaymentform.getClass().getDeclaredField("txtPayMcNumber");
+                fieldPayMc.setAccessible(true);
+                JTextField txtPayMcNumber = (JTextField) fieldPayMc.get(addpaymentform);
+                txtPayMcNumber.setText(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 1).toString());
+
+                Field fieldCourse = addpaymentform.getClass().getDeclaredField("jComboBoxCoursePay");
+                fieldCourse.setAccessible(true);
+                JComboBox<?> jComboBoxCoursePay = (JComboBox<?>) fieldCourse.get(addpaymentform);
+                jComboBoxCoursePay.setSelectedItem(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 2).toString());
+
+                Field fieldBatch = addpaymentform.getClass().getDeclaredField("jComboBoxBatchPay");
+                fieldBatch.setAccessible(true);
+                JComboBox<?> jComboBoxBatchPay = (JComboBox<?>) fieldBatch.get(addpaymentform);
+                jComboBoxBatchPay.setSelectedItem(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 3).toString());
+
+                Field AmountPayFiled = addpaymentform.getClass().getDeclaredField("txtAmount1");
+                AmountPayFiled.setAccessible(true);
+                JTextField txtAmount1 = (JTextField) AmountPayFiled.get(addpaymentform);
+                txtAmount1.setText(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 4).toString());
+
+                Field PaymenttPayFiled = addpaymentform.getClass().getDeclaredField("txtPayment");
+                PaymenttPayFiled.setAccessible(true);
+                JTextField txtPayment = (JTextField) PaymenttPayFiled.get(addpaymentform);
+                txtPayment.setText(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 5).toString());
+
+                Field BalnsePayFiled = addpaymentform.getClass().getDeclaredField("txtBalnse");
+                BalnsePayFiled.setAccessible(true);
+                JTextField txtBalnse = (JTextField) BalnsePayFiled.get(addpaymentform);
+                txtBalnse.setText(AddPayementdModel.getValueAt(jTablePayment.getSelectedRow(), 6).toString());
+
+            } catch (Exception e) {
+            }
+
+        }
+
+    }//GEN-LAST:event_jTablePaymentMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        setPaymentTable();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
