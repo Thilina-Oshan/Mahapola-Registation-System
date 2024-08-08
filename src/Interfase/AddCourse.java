@@ -23,7 +23,7 @@ public class AddCourse extends javax.swing.JPanel {
 
     AddCourseForm addcourseform = new AddCourseForm();
     DefaultTableModel AddCourseModel = new DefaultTableModel(new String[]{"Course Id", "Course Name", "Course Duration"}, 0);
-    ArrayList<AddCourseClass> addcoursearry;
+    ArrayList<AddCourseClass> addCourseArray;
     ResultSet rs;
     AddCourseForm ACF = new AddCourseForm();
     
@@ -64,13 +64,43 @@ public class AddCourse extends javax.swing.JPanel {
     private void setCoursetable(String select__from_course) {
 
         AddCourseModel.setRowCount(0);
-        addcoursearry = getCourseList("SELECT * FROM `course` ORDER BY `couse_id`");
+        addCourseArray = getCourseList("SELECT * FROM `course` ORDER BY `couse_id`");
 
-        for (AddCourseClass i : addcoursearry) {
+        for (AddCourseClass i : addCourseArray) {
 
             AddCourseModel.addRow(new Object[]{i.getCourse_id(), i.getCourse_name(), i.getCourse_duration()});
         }
 
+    }
+    
+    void setCourseTableData(String query) { //table ekata data set 
+
+        AddCourseModel.setRowCount(0);
+        addCourseArray = getCourseList(query);
+
+        for (int i = 0; i < addCourseArray.size(); i++) {
+
+            int a = addCourseArray.get(i).getCourse_id();
+            String b = addCourseArray.get(i).getCourse_name();
+            String c = addCourseArray.get(i).getCourse_duration();
+            
+
+            AddCourseModel.addRow(new Object[]{a, b, c});
+        }
+
+    }
+    
+    public void setCoursetable() {
+
+        setCourseTableData("SELECT * FROM `course` ORDER BY `couse_id`");
+
+//        AddAplicantModel.setRowCount(0);
+//        addaplicantArray = getStudentList("SELECT * FROM `student_details` ORDER BY `stu_id`");
+//
+//        for (AddAplicantClass i : addaplicantArray) {
+//
+//            AddAplicantModel.addRow(new Object[]{i.getStu_id(), i.getStu_nic(), i.getStu_name(), i.getPhone_num(), i.getAddress()});
+//        }
     }
 
     @SuppressWarnings("unchecked")
@@ -91,6 +121,11 @@ public class AddCourse extends javax.swing.JPanel {
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
             }
         });
 
@@ -117,7 +152,7 @@ public class AddCourse extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        SearchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SearchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "couse_id", "couse_name", "course_duration", " " }));
 
         jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
         jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -231,7 +266,7 @@ public class AddCourse extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-       setCoursetable("SELECT * FROM `course`");
+       setCoursetable();
     }//GEN-LAST:event_formFocusGained
 
     private void TableCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCourseMouseClicked
@@ -262,6 +297,10 @@ public class AddCourse extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_TableCourseMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
