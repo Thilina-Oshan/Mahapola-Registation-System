@@ -4,26 +4,86 @@
  */
 package Interfase;
 
-/**
- *
- * @author Oshan Demel
- */
+import java.util.ArrayList;
+import Classes.AddAdminClass;
+import java.lang.reflect.Field;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 public class AddAdmin extends javax.swing.JPanel {
 
+    static Connection con = MainInterfase.conn;
+    DefaultTableModel AddAdminModel = new DefaultTableModel(new String[]{"Student Id", "User Name", "User Email", "Password", "Re-Password"}, 0);
     AddAdminForm addadminform = new AddAdminForm();
-   
+    ArrayList<AddAdminClass> addadminArray;
+    ResultSet rs;
+
     public AddAdmin() {
         initComponents();
+        setAdmintable();
+        jTableAdmin.setModel(AddAdminModel);
     }
 
-    
+    private ArrayList<AddAdminClass> getAdminLis(String query) {
+
+        ArrayList<AddAdminClass> adminlist = new ArrayList<>();
+        Statement st;
+
+        try {
+
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+
+            AddAdminClass users;
+
+            while (rs.next()) {
+
+                users = new AddAdminClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+                adminlist.add(users);
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+
+        return adminlist;
+    }
+
+    private void setAdminTableData(String query) { //table ekata data set 
+
+        AddAdminModel.setRowCount(0);
+        addadminArray = getAdminLis(query);
+
+        for (int i = 0; i < addadminArray.size(); i++) {
+
+            int a = addadminArray.get(i).getUser_id();
+            String b = addadminArray.get(i).getUser_name();
+            String c = addadminArray.get(i).getName();
+            String d = addadminArray.get(i).getPassword();
+            String e = addadminArray.get(i).getRe_enterPassword();
+
+            AddAdminModel.addRow(new Object[]{a, b, c, d, e});
+        }
+
+    }
+
+    public void setAdmintable() {
+
+        setAdminTableData("SELECT * FROM `users` ORDER BY `id`");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanelAddPaymentTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableBatch = new javax.swing.JTable();
+        jTableAdmin = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextSearchRegisterd = new javax.swing.JTextField();
@@ -33,7 +93,7 @@ public class AddAdmin extends javax.swing.JPanel {
 
         jPanelAddPaymentTable.setBackground(new java.awt.Color(102, 102, 255));
 
-        jTableBatch.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,7 +104,12 @@ public class AddAdmin extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTableBatch);
+        jTableAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableAdminMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTableAdmin);
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
@@ -143,6 +208,45 @@ public class AddAdmin extends javax.swing.JPanel {
         addadminform.setVisible(true);
     }//GEN-LAST:event_jButtonAddAdminActionPerformed
 
+    private void jTableAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAdminMouseClicked
+
+        if (jTableAdmin.getSelectedRowCount() == 1) {
+
+            addadminform.setVisible(true);
+
+            try {
+
+                Field fieldId = addadminform.getClass().getDeclaredField("txtAdminId");
+                fieldId.setAccessible(true);
+                JTextField txtAdminId = (JTextField) fieldId.get(addadminform);
+                txtAdminId.setText(AddAdminModel.getValueAt(jTableAdmin.getSelectedRow(), 0).toString());
+
+                Field fielAdminName = addadminform.getClass().getDeclaredField("txtAdminName");
+                fielAdminName.setAccessible(true);
+                JTextField txtAdminName = (JTextField) fielAdminName.get(addadminform);
+                txtAdminName.setText(AddAdminModel.getValueAt(jTableAdmin.getSelectedRow(), 1).toString());
+
+                Field fielAdminEmail = addadminform.getClass().getDeclaredField("txtEmail");
+                fielAdminEmail.setAccessible(true);
+                JTextField txtEmail = (JTextField) fielAdminEmail.get(addadminform);
+                txtEmail.setText(AddAdminModel.getValueAt(jTableAdmin.getSelectedRow(), 2).toString());
+
+                Field fiedPassword = addadminform.getClass().getDeclaredField("txtPassword");
+                fiedPassword.setAccessible(true);
+                JTextField txtPassword = (JTextField) fiedPassword.get(addadminform);
+                txtPassword.setText(AddAdminModel.getValueAt(jTableAdmin.getSelectedRow(), 3).toString());
+
+                Field fiedRePassword = addadminform.getClass().getDeclaredField("txtReenterPws");
+                fiedRePassword.setAccessible(true);
+                JTextField txtReenterPws = (JTextField) fiedRePassword.get(addadminform);
+                txtReenterPws.setText(AddAdminModel.getValueAt(jTableAdmin.getSelectedRow(), 4).toString());
+
+            } catch (Exception e) {
+            }
+
+        }
+    }//GEN-LAST:event_jTableAdminMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddAdmin;
@@ -152,7 +256,7 @@ public class AddAdmin extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAddPaymentTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableBatch;
+    private javax.swing.JTable jTableAdmin;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
 }

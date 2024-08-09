@@ -92,7 +92,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
     public void setRegStudenttable() {
 
-        setRegistationTableData("SELECT `reg-id`, `mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name`, `status` , `reg_date` FROM `student_registation`");
+        setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
     }
 
     @SuppressWarnings("unchecked")
