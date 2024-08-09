@@ -20,10 +20,10 @@ public class AddRegistationClass {
     private String stu_address;
     private String batch_name;
     private String course_name;
-    private Date registation_date;
     private String status;
+    private Date reg_date;
 
-    public AddRegistationClass(int reg_id, int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, Date registation_date, String status) {
+    public AddRegistationClass(int reg_id, int mc_num, String stu_num, String stu_name, String stu_phoneNum, String stu_address, String batch_name, String course_name, String status, Date reg_date) {
         this.reg_id = reg_id;
         this.mc_num = mc_num;
         this.stu_num = stu_num;
@@ -32,8 +32,8 @@ public class AddRegistationClass {
         this.stu_address = stu_address;
         this.batch_name = batch_name;
         this.course_name = course_name;
-        this.registation_date = registation_date;
         this.status = status;
+        this.reg_date = reg_date;
     }
 
     /**
@@ -149,20 +149,6 @@ public class AddRegistationClass {
     }
 
     /**
-     * @return the registation_date
-     */
-    public Date getRegistation_date() {
-        return registation_date;
-    }
-
-    /**
-     * @param registation_date the registation_date to set
-     */
-    public void setRegistation_date(Date registation_date) {
-        this.registation_date = registation_date;
-    }
-
-    /**
      * @return the status
      */
     public String getStatus() {
@@ -176,5 +162,22 @@ public class AddRegistationClass {
         this.status = status;
     }
 
+    /**
+     * @return the reg_date
+     */
+    public Date getReg_date() {
+        return reg_date;
+    }
+
+    /**
+     * @param reg_date the reg_date to set
+     */
+    public void setReg_date(Date reg_date) {
+        this.reg_date = reg_date;
+    }
+
   
+
+   
 }
+   

@@ -607,7 +607,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         if (isvalidateReg()) {
             try {
                 SetVariableRegistation();
-                String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `registation_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ? , null ,?)";
+                String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `reg_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ? , null ,?)";
 
                 // Debug statement to print the query
                 System.out.println("Executing query: " + query);

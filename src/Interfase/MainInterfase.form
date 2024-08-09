@@ -99,11 +99,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="Homet1Botton" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -112,23 +108,13 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="AddcoursBotton" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="AddStudentBotton1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="AddBatchButton" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton1" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jButtonExam" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="Homet1Botton" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="AddcoursBotton" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="AddStudentBotton1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="AddBatchButton" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                                       <Component id="Overview1" alignment="1" pref="319" max="32767" attributes="0"/>
                                       <Component id="jButtonAdmin" alignment="1" max="32767" attributes="0"/>
                                       <Component id="AddPaymentBotton" max="32767" attributes="0"/>
@@ -163,10 +149,12 @@
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="AddPaymentBotton" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButtonExam" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonAdmin" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="Overview1" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -360,7 +348,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Images/Graphicloads-Folded-Add-contact-folded.256 (1).png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value=" New Admin"/>
+                    <Property name="text" type="java.lang.String" value=" Profile"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
@@ -395,6 +383,31 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JButton" name="jButtonExam">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SimSun" size="18" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Icon/exam__1_-removebg-preview (1).png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Exam"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonExamMouseClicked"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExamActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -414,7 +427,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="677" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

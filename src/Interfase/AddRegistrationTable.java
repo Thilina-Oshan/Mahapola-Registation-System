@@ -20,13 +20,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import static javax.swing.text.html.HTML.Tag.SELECT;
 
 public class AddRegistrationTable extends javax.swing.JPanel {
 
     static Connection con = MainInterfase.conn;
     AddRegistationForm addregistationform = new AddRegistationForm();
 
-    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Register Id", "Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Registation Date", "Status"}, 0);//Set Default table
+    DefaultTableModel AddRegisterdModel = new DefaultTableModel(new String[]{"Register Id", "Mc Number", "Studen Nic", "Student Name", "Phone Number", "Address", "Batch", "Course", "Status", "Registerd Date"}, 0);//Set Default table
 
     ArrayList<AddRegistationClass> addregistationArray;
     ResultSet rs;
@@ -53,13 +54,14 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                studentReg = new AddRegistationClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getDate(9), rs.getString(10));
+                studentReg = new AddRegistationClass(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getDate(10));
                 Regstudentdlist.add(studentReg);
             }
 
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(null, e, null, 2);
+            System.out.println(e);
         }
 
         return Regstudentdlist;
@@ -80,8 +82,8 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             String f = addregistationArray.get(i).getStu_address();
             String g = addregistationArray.get(i).getBatch_name();
             String h = addregistationArray.get(i).getCourse_name();
-            Date j = addregistationArray.get(i).getRegistation_date();
-            String k = addregistationArray.get(i).getStatus();
+            String j = addregistationArray.get(i).getStatus();
+            Date k = addregistationArray.get(i).getReg_date();
 
             AddRegisterdModel.addRow(new Object[]{a, b, c, d, e, f, g, h, j, k});
         }
@@ -90,7 +92,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
     public void setRegStudenttable() {
 
-        setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
+        setRegistationTableData("SELECT `reg-id`, `mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name`, `status` , `reg_date` FROM `student_registation`");
     }
 
     @SuppressWarnings("unchecked")
@@ -109,6 +111,8 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jButtonAddNewRegisterd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jTextBatchNumber = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -143,16 +147,17 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
 
-        jButtonRegisterd.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonRegisterd.setBackground(new java.awt.Color(77, 69, 226));
         jButtonRegisterd.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButtonRegisterd.setForeground(new java.awt.Color(204, 51, 0));
+        jButtonRegisterd.setForeground(new java.awt.Color(255, 255, 0));
         jButtonRegisterd.setText("Registerd Student");
-        jButtonRegisterd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 51), new java.awt.Color(0, 0, 51), null, null));
+        jButtonRegisterd.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 0, 51), new java.awt.Color(51, 0, 51)));
 
         jButtonAplicant.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAplicant.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jButtonAplicant.setForeground(new java.awt.Color(204, 51, 0));
         jButtonAplicant.setText("Add Aplicant");
+        jButtonAplicant.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(51, 0, 51), new java.awt.Color(51, 0, 51)));
         jButtonAplicant.setPreferredSize(new java.awt.Dimension(837, 71));
         jButtonAplicant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +238,13 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addGap(12, 12, 12))
         );
 
+        jTextBatchNumber.setBackground(new java.awt.Color(255, 255, 255));
+        jTextBatchNumber.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Enter Batch Number");
+
         javax.swing.GroupLayout jPanelAddRegistationTableLayout = new javax.swing.GroupLayout(jPanelAddRegistationTable);
         jPanelAddRegistationTable.setLayout(jPanelAddRegistationTableLayout);
         jPanelAddRegistationTableLayout.setHorizontalGroup(
@@ -243,19 +255,23 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 32, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelAddRegistationTableLayout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(101, 101, 101)
-                        .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                            .addComponent(jTextBatchNumber))
+                        .addGap(34, 34, 34)
+                        .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAddRegistationTableLayout.setVerticalGroup(
             jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,10 +283,13 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBoxRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
-                .addGap(34, 34, 34)
+                    .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(jTextBatchNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -376,20 +395,36 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextSearchRegisterdActionPerformed
 
     private void jTextSearchRegisterdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchRegisterdCaretUpdate
-
         String[] col_names = {"mc_num", "stu_nic", "stu_name", "batch_name", "couse_name"};
 
-        if (jTextSearchRegisterd.getText().isEmpty()) {
+// Get the batch number from the JTextField for batch number
+        String batchNumber = jTextBatchNumber.getText().trim(); // Assuming jTextBatchNumber is your JTextField for batch number
+
+        if (jTextSearchRegisterd.getText().isEmpty() && batchNumber.isEmpty()) {
+            // No search criteria entered, display all records
             setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
             jTextSearchRegisterd.setText("");
         } else {
+            // Start building the query
+            StringBuilder query = new StringBuilder("SELECT * FROM `student_registation` WHERE ");
 
-            String col_name = col_names[jComboBoxRegisterd.getSelectedIndex()];
-            String value = jTextSearchRegisterd.getText();
-            String query = "SELECT * FROM `student_registation` WHERE " + col_name + " LIKE '%" + value + "%'";
+            if (!jTextSearchRegisterd.getText().isEmpty()) {
+                // Get the selected column from JComboBox
+                String col_name = col_names[jComboBoxRegisterd.getSelectedIndex()];
+                String value = jTextSearchRegisterd.getText();
+                query.append(col_name).append(" LIKE '%").append(value).append("%'");
 
-            setRegistationTableData(query);
+                if (!batchNumber.isEmpty()) {
+                    query.append(" AND "); // If both search criteria are present, add AND clause
+                }
+            }
 
+            if (!batchNumber.isEmpty()) {
+                query.append("`batch_name` LIKE '%").append(batchNumber).append("%'");
+            }
+
+            // Execute the constructed query
+            setRegistationTableData(query.toString());
         }
     }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
 
@@ -400,12 +435,14 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     private javax.swing.JButton jButtonRegisterd;
     private javax.swing.JComboBox<String> jComboBoxRegisterd;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelAddRegistationTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableRegisterd;
+    private javax.swing.JTextField jTextBatchNumber;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
 

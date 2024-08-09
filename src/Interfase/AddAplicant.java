@@ -170,7 +170,7 @@ public class AddAplicant extends javax.swing.JPanel {
             .addGroup(jPanelTitleLayout.createSequentialGroup()
                 .addGap(217, 217, 217)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         jPanelTitleLayout.setVerticalGroup(
             jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
