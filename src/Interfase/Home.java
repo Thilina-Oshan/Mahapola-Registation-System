@@ -5,22 +5,49 @@
 package Interfase;
 
 import Classes.DbConnection;
-
+import java.lang.System.Logger;
+import java.sql.Connection;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class Home extends javax.swing.JPanel {
 
-    
+    Connection con;
+    LoginForm lgF;
+
     public Home() {
         initComponents();
-         
+        con = MainInterfase.conn;
+        System.out.println("Database connection initialized");
     }
 
-    
-     public void setUser(String name){
-        JlableAdminName.setText(name);
+    public void initializeLoginForm() {
+        if (lgF == null) {
+            lgF = new LoginForm();
+            lgF.setVisible(true);
+            updateAdminName();
+        }
     }
-    
-    
+
+    public void updateAdminName() {
+        if (lgF != null) {
+            JlableAdminName.setText(lgF.getName());
+        }
+    }
+
+    // Method to set the admin's name
+    public void setAdminName(String adminName) {
+        if (adminName != null && !adminName.trim().isEmpty()) {
+            JlableAdminName.setText(adminName);
+            System.out.println("Admin name set to: " + adminName);
+        } else {
+            JlableAdminName.setText("Unknown Admin");
+            System.out.println("Admin name was null or empty; set to default 'Unknown Admin'");
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -298,4 +325,5 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
+
 }

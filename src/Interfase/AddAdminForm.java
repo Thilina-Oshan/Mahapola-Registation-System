@@ -6,6 +6,7 @@ package Interfase;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -34,7 +35,7 @@ public class AddAdminForm extends javax.swing.JFrame {
         validatePassword = new javax.swing.JLabel();
         validateReenderPassword = new javax.swing.JLabel();
         jButtonClear = new javax.swing.JButton();
-        jButtonInsert = new javax.swing.JButton();
+        jButtonInsertAdmin = new javax.swing.JButton();
         jButtonUpdate = new javax.swing.JButton();
         txtPassword = new javax.swing.JTextField();
         txtReenterPws = new javax.swing.JTextField();
@@ -107,12 +108,17 @@ public class AddAdminForm extends javax.swing.JFrame {
         jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButtonInsert.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonInsert.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButtonInsert.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonInsert.setText("Save");
-        jButtonInsert.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsertAdmin.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonInsertAdmin.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        jButtonInsertAdmin.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonInsertAdmin.setText("Save");
+        jButtonInsertAdmin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        jButtonInsertAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonInsertAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInsertAdminActionPerformed(evt);
+            }
+        });
 
         jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
         jButtonUpdate.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -181,7 +187,7 @@ public class AddAdminForm extends javax.swing.JFrame {
                         .addGap(19, 19, 19))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 21, Short.MAX_VALUE)
-                        .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonInsertAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -225,7 +231,7 @@ public class AddAdminForm extends javax.swing.JFrame {
                 .addComponent(validateReenderPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonInsertAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
@@ -288,6 +294,11 @@ public class AddAdminForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton151ActionPerformed
 
+    private void jButtonInsertAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertAdminActionPerformed
+       
+        
+    }//GEN-LAST:event_jButtonInsertAdminActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -324,7 +335,7 @@ public class AddAdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel NOValidate;
     private javax.swing.JButton jButton151;
     private javax.swing.JButton jButtonClear;
-    private javax.swing.JButton jButtonInsert;
+    private javax.swing.JButton jButtonInsertAdmin;
     private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -370,4 +381,51 @@ public class AddAdminForm extends javax.swing.JFrame {
         });
     }
 
+    public boolean isvalidateAdmin() {
+
+        boolean isvalidate = passwordValidation() & reEnterPasswordValidation();
+        return isvalidate;
+    }
+
+    boolean passwordValidation() {
+        String password = this.txtPassword.getText();
+        if (password.isBlank() | password.isEmpty()) {
+            validatePassword.setText("plz enter a passowrd");
+            return false;
+        } else if (!Pattern.matches("^[A-Za-z0-9]{1,16}$", password)) {
+            validatePassword.setText("invalid password - cannot contain special charachters");
+            return false;
+        } else {
+            validatePassword.setText("");
+            return true;
+        }
+    }
+
+    boolean reEnterPasswordValidation() {
+        if (!passwordValidation()) {
+            return false;
+        } else if (txtPassword.getText().equals(txtReenterPws.getText())) {
+            validateReenderPassword.setText("");
+            return true;
+
+        } else {
+            validateReenderPassword.setText("passwords doesent match");
+            return false;
+        }
+    }
+
+//    boolean nameValidation() {
+//        String name = this.name.getText();
+//        if (name.isBlank() | name.isEmpty()) {
+//            nameValidation.setText("plz enter the name");
+//            return false;
+//        } else if (!Pattern.matches("^[A-Za-z0-9\\s]{1,100}", name)) {
+//            nameValidation.setText("invalid canot contains numbers or special charachters");
+//            return false;
+//        } else {
+//            nameValidation.setText("");
+//            return true;
+//
+//        }
+//    }
 }

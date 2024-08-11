@@ -4,16 +4,13 @@
  */
 package Interfase;
 
+import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Oshan Demel
- */
 public class LoginForm extends javax.swing.JFrame {
 
     static Connection con = MainInterfase.conn;
@@ -22,6 +19,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     public LoginForm() {
         initComponents();
+        hp.setVisible(true);
 
     }
 
@@ -56,6 +54,8 @@ public class LoginForm extends javax.swing.JFrame {
         );
 
         jLabel1.setText("Email");
+
+        txtEmail.setBorder(null);
 
         jLabel2.setText("Password");
 
@@ -148,10 +148,11 @@ public class LoginForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(new JFrame(), "Password is required", "Error",
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Email = txtEmail.getText();
-                Password = txtPassword.getText(); // Correctly read the password from the password field
 
-                query = "SELECT * FROM `users` WHERE `email`= '" + Email + "'";
+                Email = txtEmail.getText();
+                Password = txtPassword.getText();
+
+                query = "SELECT * FROM users WHERE email= '" + Email + "'";
 
                 ResultSet rs = st.executeQuery(query);
                 while (rs.next()) {
@@ -160,7 +161,9 @@ public class LoginForm extends javax.swing.JFrame {
                     notFound = 1;
                 }
                 if (notFound == 1 && Password.equals(passDb)) {
-                    hp.setUser(fname);
+                    Home hp = new Home(); // Create a new instance of Home
+                    hp.setAdminName(fname); // Set the admin's name
+
                     main.add(hp); // Add the Home panel to the JFrame
                     main.pack();
                     main.setLocationRelativeTo(null);
@@ -171,7 +174,6 @@ public class LoginForm extends javax.swing.JFrame {
                             JOptionPane.ERROR_MESSAGE);
                 }
                 txtPassword.setText("");
-
             }
         } catch (Exception e) {
             System.out.println("Error!" + e.getMessage());
@@ -199,4 +201,5 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
+
 }

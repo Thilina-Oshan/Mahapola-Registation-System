@@ -23,10 +23,12 @@ public class AddPayment extends javax.swing.JPanel {
     DefaultTableModel AddPayementdModel = new DefaultTableModel(new String[]{"Payment Id", "Mc Number", "Course Name", "Batch Name", "Amount", "Student Payment", "Deficit/Balance"}, 0);//Set Default table
     ArrayList<AddPaymentClass> addpaymentArray;
     ResultSet rs;
-    static Connection con = MainInterfase.conn;
+    Connection con;
+//    static Connection con = MainInterfase.conn;
 
     public AddPayment() {
         initComponents();
+        con = MainInterfase.conn;
         jTablePayment.setModel(AddPayementdModel);
         setPaymentTable();
     }
