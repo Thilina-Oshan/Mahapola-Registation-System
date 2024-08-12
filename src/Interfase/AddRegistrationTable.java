@@ -11,6 +11,7 @@ import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -370,8 +371,20 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 Field fieldSatus = addregistationForm.getClass().getDeclaredField("jComboBoxStatus");
                 fieldSatus.setAccessible(true);
                 JComboBox<?> jComboBoxStatus = (JComboBox<?>) fieldSatus.get(addregistationForm);
-                jComboBoxStatus.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 9).toString());
+                jComboBoxStatus.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 8).toString());
 
+                // Retrieve and set the date
+                Field fieldReg_Date = addregistationForm.getClass().getDeclaredField("jDateChooserReg");
+                fieldReg_Date.setAccessible(true);
+                com.toedter.calendar.JDateChooser jDateChooserReg = (com.toedter.calendar.JDateChooser) fieldReg_Date.get(addregistationForm);
+
+                String dateStr = AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 9).toString();
+                java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr); // Adjust date format as needed
+
+                jDateChooserReg.setDate(utilDate); // Set the date in JDateChooser
+
+//                 java.util.Date utilDate = dd.parse(tableModel.getValueAt(jTable.getSelectedRow(), 5).toString());
+//                jDateChoose.setDate(utilDate);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, e);
                 JOptionPane.showMessageDialog(this, e.getMessage());

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -74,6 +75,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
         validateEnterdNic = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooserReg = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -228,6 +231,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
         txtMCNUm.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtMCNUm.setForeground(new java.awt.Color(0, 0, 0));
         txtMCNUm.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtMCNUm.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMCNUmFocusLost(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -402,8 +410,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonInsert1)
-                        .addComponent(jButtonUpdate))
+                        .addComponent(jButtonUpdate)
+                        .addComponent(jButtonInsert1))
                     .addComponent(jButtonClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -429,44 +437,49 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Enter the Nic First");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel8.setText("Registred Date");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lable_IDate, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lable_IDate, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(169, 169, 169)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lable_IBid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lable_ISid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lable_IDueDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(217, 217, 217)
-                                        .addComponent(validateEnterdNic, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(76, 76, 76))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(169, 169, 169)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lable_IBid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lable_ISid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lable_IDueDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(217, 217, 217)
+                                .addComponent(validateEnterdNic, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEnterNic, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(73, 73, 73)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtEnterNic, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jDateChooserReg, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(76, 76, 76)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(224, 224, 224))
         );
@@ -482,11 +495,19 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton5)
-                .addGap(37, 37, 37)
-                .addComponent(validateEnterdNic, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lable_IBid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(validateEnterdNic, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lable_IBid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooserReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(lable_ISid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
                 .addComponent(lable_IDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -557,7 +578,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 try {
                     con.setAutoCommit(false); // Disable auto-commit for transaction management
 
-                    String query = "UPDATE `student_registation` SET `mc_num`=?, `stu_nic`=?,`stu_name`=?,`phone_num`=?,`address`=?,`batch_name`=?,`couse_name`=? , `status`=? WHERE `reg-id`= ?";
+                    String query = "UPDATE `student_registation` SET `mc_num`=?, `stu_nic`=?,`stu_name`=?,`phone_num`=?,`address`=?,`batch_name`=?,`couse_name`=? , `status`=?, `reg_date`=? WHERE `reg-id`= ?";
                     try (PreparedStatement pst = con.prepareStatement(query)) {
                         pst.setInt(1, mc_number);
                         pst.setString(2, Reg_nic);
@@ -567,7 +588,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
                         pst.setString(6, Reg_batchName);
                         pst.setString(7, Reg_courseName);
                         pst.setString(8, Reg_statusS);
-                        pst.setInt(9, regi_Id); // Use the correct variable for the registration ID
+                         pst.setDate(9, new java.sql.Date(Reg_Date.getTime()));
+                        pst.setInt(10, regi_Id); // Use the correct variable for the registration ID
 
                         int rowsAffected = pst.executeUpdate();
                         if (rowsAffected > 0) {
@@ -607,7 +629,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         if (isvalidateReg()) {
             try {
                 SetVariableRegistation();
-                String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `reg_date`, `status`) VALUES (?, ?, ?, ?, ?, ?, ? , null ,?)";
+                String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `status` , `reg_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 // Debug statement to print the query
                 System.out.println("Executing query: " + query);
@@ -622,6 +644,12 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 pst.setString(6, Reg_batchName);
                 pst.setString(7, Reg_courseName);  // Corrected index to 7
                 pst.setString(8, Reg_statusS);      // Added status parameter at correct index
+                // Handling null for Reg_Date
+                if (Reg_Date != null) {
+                    pst.setDate(9, new java.sql.Date(Reg_Date.getTime()));
+                } else {
+                    pst.setNull(9, java.sql.Types.DATE);
+                }
 
                 pst.executeUpdate(); // Use executeUpdate for INSERT
                 JOptionPane.showMessageDialog(null, "INSERT SUCCESSFUL");
@@ -644,6 +672,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonClearActionPerformed
 
+    private void txtMCNUmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMCNUmFocusLost
+        isvalidateMcNumber();
+    }//GEN-LAST:event_txtMCNUmFocusLost
+
     public static void main(String args[]) {
 
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
@@ -665,6 +697,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxBatch;
     private javax.swing.JComboBox<String> jComboBoxCourse;
     private javax.swing.JComboBox<String> jComboBoxStatus;
+    private com.toedter.calendar.JDateChooser jDateChooserReg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -679,6 +712,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lable_IBid;
@@ -711,6 +745,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
     String Reg_batchName;
     String Reg_courseName;
     String Reg_statusS;
+    Date Reg_Date;
 
     public void SetVariableRegistation() {
 
@@ -722,6 +757,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         Reg_batchName = jComboBoxBatch.getSelectedItem().toString();
         Reg_courseName = jComboBoxCourse.getSelectedItem().toString();
         Reg_statusS = jComboBoxStatus.getSelectedItem().toString();
+        Reg_Date = jDateChooserReg.getDate();
 
         String idTextReg = txtRegId.getText();
         if (idTextReg != null && !idTextReg.isEmpty()) {
@@ -801,10 +837,28 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     public boolean isvalidateReg() {
 
-        boolean isvalidate = isvalidateNicReg() & isvalidateNameReg() & isvalidatePhonenumberReg() & isvalidateAddressReg();
+        boolean isvalidate = isvalidateNicReg() & isvalidateNameReg() & isvalidatePhonenumberReg() & isvalidateAddressReg() & isvalidateMcNumber();
         return isvalidate;
     }
 
+    
+    private boolean  isvalidateMcNumber(){
+    
+        String mcNumber = this.txtMCNUm.getText();
+        if (mcNumber.isBlank() | mcNumber.isEmpty()) {
+            validateMcNUm.setText("plz enter the MC Number");
+            return false;
+        } else if (!Pattern.matches("^[0-9]{1,5}", mcNumber)) {
+            validateMcNUm.setText("Invalid Mc Number");
+            return false;
+        } else {
+            validateMcNUm.setText("");
+            return true;
+
+        }
+        
+    }
+    
     private boolean isvalidateNicReg() {
 
         if (txtNic1.getText().equals("")) {

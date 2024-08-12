@@ -6,11 +6,16 @@ package Interfase;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class AddAdminForm extends javax.swing.JFrame {
+
+    static Connection con = MainInterfase.conn;
 
     public AddAdminForm() {
         initComponents();
@@ -41,7 +46,7 @@ public class AddAdminForm extends javax.swing.JFrame {
         txtReenterPws = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        ValidationEmail = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton151 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -51,7 +56,7 @@ public class AddAdminForm extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
         jLabel9.setFont(new java.awt.Font("Stencil", 1, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -79,6 +84,11 @@ public class AddAdminForm extends javax.swing.JFrame {
         txtAdminName.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtAdminName.setForeground(new java.awt.Color(0, 0, 0));
         txtAdminName.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtAdminName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAdminNameFocusLost(evt);
+            }
+        });
 
         txtAdminId.setBackground(new java.awt.Color(204, 255, 255));
         txtAdminId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -126,14 +136,29 @@ public class AddAdminForm extends javax.swing.JFrame {
         jButtonUpdate.setText("Update");
         jButtonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUpdateActionPerformed(evt);
+            }
+        });
 
         txtPassword.setBackground(new java.awt.Color(255, 255, 255));
         txtPassword.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusLost(evt);
+            }
+        });
 
         txtReenterPws.setBackground(new java.awt.Color(255, 255, 255));
         txtReenterPws.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtReenterPws.setForeground(new java.awt.Color(0, 0, 0));
+        txtReenterPws.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtReenterPwsCaretUpdate(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Email");
@@ -142,9 +167,14 @@ public class AddAdminForm extends javax.swing.JFrame {
         txtEmail.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(0, 0, 0));
         txtEmail.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setText("                                           ");
+        ValidationEmail.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ValidationEmail.setText("                                           ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,7 +213,7 @@ public class AddAdminForm extends javax.swing.JFrame {
                                             .addComponent(NOValidate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtAdminId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(ValidationEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(19, 19, 19))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 21, Short.MAX_VALUE)
@@ -216,7 +246,7 @@ public class AddAdminForm extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ValidationEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,9 +325,105 @@ public class AddAdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton151ActionPerformed
 
     private void jButtonInsertAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertAdminActionPerformed
-       
-        
+
+        if (isvalidateAdmin()) {
+
+            setVariableAdmin();
+
+            try {
+
+                String query = "INSERT INTO `users`(`name`, `email`, `password`, `re_enterpassword`) VALUES (?,?,?,?)";
+                PreparedStatement pst = con.prepareStatement(query);
+
+                pst.setString(1, User_name);
+                pst.setString(2, Email);
+                pst.setString(3, Password);
+                pst.setString(4, Re_enterPassword);
+                pst.execute();
+                JOptionPane.showMessageDialog(this, "Sucsess");
+                ClearAdminF();
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Can't Insert Data");
+                JOptionPane.showMessageDialog(this, e);
+                System.out.println(e);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "An unexpected error occurred");
+                e.printStackTrace();
+            }
+        }
+
     }//GEN-LAST:event_jButtonInsertAdminActionPerformed
+
+    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
+
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the data?", "Confirmation", JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_NO_OPTION) {
+
+            setVariableAdmin();
+
+            if (isvalidateAdmin()) {
+
+                try {
+                    con.setAutoCommit(false); // Disable auto-commit for transaction management
+
+                    String query = "UPDATE `users` SET `name`=?,`email`=?,`password`=?,`re_enterpassword`=? WHERE `id`=?";
+                    try (PreparedStatement pst = con.prepareStatement(query)) {
+
+                        pst.setString(1, User_name);
+                        pst.setString(2, Email);
+                        pst.setString(3, Password);
+                        pst.setString(4, Re_enterPassword);
+                        pst.setInt(5, User_id); // Use the correct variable for the registration ID
+
+                        int rowsAffected = pst.executeUpdate();
+                        if (rowsAffected > 0) {
+                            JOptionPane.showMessageDialog(null, "Update Successful");
+                            ClearAdminF();
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Update Failed: No rows affected.");
+                            System.out.println("Update Failed: No rows affected.");
+                        }
+                    }
+
+                    con.commit(); // Commit the transaction
+                } catch (Exception e) {
+                    try {
+                        con.rollback(); // Rollback transaction on error
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Rollback failed: " + ex.getMessage());
+                    }
+                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                    System.out.println(e);
+                    e.printStackTrace(); // Print stack trace for debugging
+                } finally {
+                    try {
+                        con.setAutoCommit(true); // Re-enable auto-commit
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(null, "Failed to reset auto-commit: " + ex.getMessage());
+
+                    }
+                }
+            }
+
+        }
+    }//GEN-LAST:event_jButtonUpdateActionPerformed
+
+    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
+        passwordValidation();
+    }//GEN-LAST:event_txtPasswordFocusLost
+
+    private void txtReenterPwsCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtReenterPwsCaretUpdate
+        reEnterPasswordValidation();
+    }//GEN-LAST:event_txtReenterPwsCaretUpdate
+
+    private void txtAdminNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAdminNameFocusLost
+        nameValidation();
+    }//GEN-LAST:event_txtAdminNameFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        emailValidatation();
+    }//GEN-LAST:event_txtEmailFocusLost
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -333,6 +459,7 @@ public class AddAdminForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NOValidate;
+    private javax.swing.JLabel ValidationEmail;
     private javax.swing.JButton jButton151;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonInsertAdmin;
@@ -342,7 +469,6 @@ public class AddAdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -357,6 +483,41 @@ public class AddAdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel validatePassword;
     private javax.swing.JLabel validateReenderPassword;
     // End of variables declaration//GEN-END:variables
+
+    int User_id;
+    String User_name;
+    String Email;
+    String Password;
+    String Re_enterPassword;
+
+    public void setVariableAdmin() {
+
+        User_name = txtAdminName.getText();
+        Email = txtEmail.getText();
+        Password = txtPassword.getText();
+        Re_enterPassword = txtReenterPws.getText();
+
+        String idTextAdmin = txtAdminId.getText();
+        if (idTextAdmin != null && !idTextAdmin.isEmpty()) {
+            try {
+                User_id = Integer.parseInt(idTextAdmin);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Student ID");
+                return;
+            }
+        }
+
+    }
+
+    public void ClearAdminF() {
+
+        txtAdminId.setText("");
+        txtAdminName.setText("");
+        txtEmail.setText("");
+        txtPassword.setText("");
+        txtReenterPws.setText("");
+
+    }
 
     private void customizeCloseOperation() {
 
@@ -383,7 +544,7 @@ public class AddAdminForm extends javax.swing.JFrame {
 
     public boolean isvalidateAdmin() {
 
-        boolean isvalidate = passwordValidation() & reEnterPasswordValidation();
+        boolean isvalidate = passwordValidation() & reEnterPasswordValidation() & nameValidation() & emailValidatation();
         return isvalidate;
     }
 
@@ -393,7 +554,7 @@ public class AddAdminForm extends javax.swing.JFrame {
             validatePassword.setText("plz enter a passowrd");
             return false;
         } else if (!Pattern.matches("^[A-Za-z0-9]{1,16}$", password)) {
-            validatePassword.setText("invalid password - cannot contain special charachters");
+            validatePassword.setText("Invalid password - cannot contain special charachters");
             return false;
         } else {
             validatePassword.setText("");
@@ -414,18 +575,36 @@ public class AddAdminForm extends javax.swing.JFrame {
         }
     }
 
-//    boolean nameValidation() {
-//        String name = this.name.getText();
-//        if (name.isBlank() | name.isEmpty()) {
-//            nameValidation.setText("plz enter the name");
-//            return false;
-//        } else if (!Pattern.matches("^[A-Za-z0-9\\s]{1,100}", name)) {
-//            nameValidation.setText("invalid canot contains numbers or special charachters");
-//            return false;
-//        } else {
-//            nameValidation.setText("");
-//            return true;
-//
-//        }
-//    }
+    boolean nameValidation() {
+        String name = this.txtAdminName.getText();
+        if (name.isBlank() | name.isEmpty()) {
+            validateAdminName.setText("plz enter the name");
+            return false;
+        } else if (!Pattern.matches("^[A-Za-z0-9\\s]{1,100}", name)) {
+            validateAdminName.setText("Invalid canot contains numbers or special charachters");
+            return false;
+        } else {
+            validateAdminName.setText("");
+            return true;
+
+        }
+    }
+
+    boolean emailValidatation() {
+
+        String email = this.txtEmail.getText();
+        if (email.isBlank() | email.isEmpty()) {
+            ValidationEmail.setText("plz enter the name");
+            return false;
+        } else if (!Pattern.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", email)) {
+            ValidationEmail.setText("Invalid Email");
+            return false;
+        } else {
+            ValidationEmail.setText("");
+            return true;
+
+        }
+
+    }
+
 }

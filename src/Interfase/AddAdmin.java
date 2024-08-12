@@ -91,6 +91,12 @@ public class AddAdmin extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
         jPanelAddPaymentTable.setBackground(new java.awt.Color(102, 102, 255));
 
         jTableAdmin.setModel(new javax.swing.table.DefaultTableModel(
@@ -246,6 +252,10 @@ public class AddAdmin extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jTableAdminMouseClicked
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+         setAdmintable();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
