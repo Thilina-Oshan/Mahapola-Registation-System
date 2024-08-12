@@ -94,6 +94,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     public void setRegStudenttable() {
 
         setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -472,5 +473,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         addregistationForm.getValidateAddress1().setText("Do not Update Address");
 
     }
-
+    
+    
+    
 }

@@ -14,12 +14,16 @@ import java.sql.PreparedStatement;
 import Interfase.MainInterfase;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
+import Classes.AddRegistationClass;
+import static Interfase.AddRegistationForm.con;
+import java.sql.Statement;
 
 public class AddAplicantFormNew extends javax.swing.JFrame {
 
     static Connection con = MainInterfase.conn;
     private AddAplicant addaplicant;
     ResultSet rs;
+    Statement st;
 
     public AddAplicantFormNew() {
 //        this.addaplicant = addaplicant;
@@ -373,7 +377,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPhoneNumberFocusLost
 
     private void jButtonInsertStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertStudentActionPerformed
-        if (isvalidate()) {
+        if (isvalidate() && addApliDuplicateCheck()) {
 
             try {
                 setAplicantVariables();
@@ -622,6 +626,34 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         txtPhoneNumber.setText("");
         txtAddress.setText("");
         txtId.setText("");
+
+    }
+
+    private boolean addApliDuplicateCheck() {
+
+        setAplicantVariables();
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT  `stu_nic` FROM `student_details`");
+
+            while (rs.next()) {
+
+                if (rs.getString(1).equals(nic)) {
+
+                    JOptionPane.showMessageDialog(this, nic + " NIC  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
+//                    JOptionPane.showMessageDialog(this, "The Nic Number " + nic + " is already registered in the batch " + nic, "Duplicate Entry Found", JOptionPane.WARNING_MESSAGE);
+                    return false;
+
+                }
+
+            }
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, e);
+            System.out.println(e);
+        }
+
+        return true;
 
     }
 

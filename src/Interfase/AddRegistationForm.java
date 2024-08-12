@@ -1,11 +1,13 @@
 package Interfase;
 
+import Classes.AddRegistationClass;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +22,8 @@ import javax.swing.JTextField;
 public class AddRegistationForm extends javax.swing.JFrame {
 
     static Connection con = MainInterfase.conn;
+    Statement st;
+    ResultSet rs;
 
     public AddRegistationForm() {
         initComponents();
@@ -588,7 +592,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
                         pst.setString(6, Reg_batchName);
                         pst.setString(7, Reg_courseName);
                         pst.setString(8, Reg_statusS);
-                         pst.setDate(9, new java.sql.Date(Reg_Date.getTime()));
+                        pst.setDate(9, new java.sql.Date(Reg_Date.getTime()));
                         pst.setInt(10, regi_Id); // Use the correct variable for the registration ID
 
                         int rowsAffected = pst.executeUpdate();
@@ -608,7 +612,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
                     } catch (SQLException ex) {
                         JOptionPane.showMessageDialog(null, "Rollback failed: " + ex.getMessage());
                     }
-                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                    JOptionPane.showMessageDialog(this, Reg_batchName + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
+//                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
                     System.out.println(e);
                     e.printStackTrace(); // Print stack trace for debugging
                 } finally {
@@ -626,7 +631,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     private void jButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsert1ActionPerformed
 
-        if (isvalidateReg()) {
+        if (isvalidateReg() && addRegDuplicateCheck()) {
             try {
                 SetVariableRegistation();
                 String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `status` , `reg_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -656,7 +661,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 ClearFieldsReg();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Can't Insert Data");
-                JOptionPane.showMessageDialog(this, e);
+                JOptionPane.showMessageDialog(this, Reg_batchName + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
+//                JOptionPane.showMessageDialog(this, " Duplicate entry " + Reg_batchName);
+
+                System.out.println(e);
                 System.out.println(e);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "An unexpected error occurred");
@@ -841,9 +849,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
         return isvalidate;
     }
 
-    
-    private boolean  isvalidateMcNumber(){
-    
+    private boolean isvalidateMcNumber() {
+
         String mcNumber = this.txtMCNUm.getText();
         if (mcNumber.isBlank() | mcNumber.isEmpty()) {
             validateMcNUm.setText("plz enter the MC Number");
@@ -856,9 +863,9 @@ public class AddRegistationForm extends javax.swing.JFrame {
             return true;
 
         }
-        
+
     }
-    
+
     private boolean isvalidateNicReg() {
 
         if (txtNic1.getText().equals("")) {
@@ -1048,6 +1055,62 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     public void setjComboBoxStatus(JComboBox<String> jComboBoxStatus) {
         this.jComboBoxStatus = jComboBoxStatus;
+    }
+
+    private boolean addRegDuplicateCheck() {
+
+        SetVariableRegistation();
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT COUNT(*) FROM `student_registration` WHERE `stu_nic` = ? AND `batch_name` = ?");
+
+            while (rs.next()) {
+
+                if (rs.getString(1).equals(Reg_nic)) {
+
+                    JOptionPane.showMessageDialog(this, Reg_nic + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
+                    return false;
+
+                }
+
+            }
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(this, e);
+            System.out.println(e);
+        }
+
+        return true;
+
+    }
+
+    private boolean addRegDuplicateChecks() {
+        SetVariableRegistation(); // Ensure that this method correctly sets the variables
+
+        try {
+            String query = "SELECT COUNT(*) FROM `student_registration` WHERE `stu_nic` = ? AND `batch_name` = ?";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setInt(1, mc_number);  // Assuming mc_number is an int
+            pst.setString(2, Reg_batchName);
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+
+                if (count > 0) {
+                    JOptionPane.showMessageDialog(this, "The Nic Number " + Reg_nic + " is already registered in the batch " + Reg_batchName, "Duplicate Entry Found", JOptionPane.WARNING_MESSAGE);
+                    return false;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "An error occurred while checking for duplicates.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;  // No duplicates found, safe to proceed
     }
 
 }
