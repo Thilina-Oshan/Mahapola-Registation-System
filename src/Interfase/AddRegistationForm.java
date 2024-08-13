@@ -631,7 +631,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     private void jButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsert1ActionPerformed
 
-        if (isvalidateReg() && addRegDuplicateCheck()) {
+        if (isvalidateReg()) {
             try {
                 SetVariableRegistation();
                 String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `status` , `reg_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -658,12 +658,13 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
                 pst.executeUpdate(); // Use executeUpdate for INSERT
                 JOptionPane.showMessageDialog(null, "INSERT SUCCESSFUL");
+                System.out.println("Sucess");
                 ClearFieldsReg();
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Can't Insert Data");
                 JOptionPane.showMessageDialog(this, Reg_batchName + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
-//                JOptionPane.showMessageDialog(this, " Duplicate entry " + Reg_batchName);
-
+                System.out.println("Not");
+//                JOptionPane.showMessageDialog(this, " Duplicate entry " + Reg_batchName);s
                 System.out.println(e);
                 System.out.println(e);
             } catch (Exception e) {
@@ -1075,7 +1076,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
             }
         } catch (Exception e) {
-            
+
             JOptionPane.showMessageDialog(this, e);
             System.out.println(e);
         }

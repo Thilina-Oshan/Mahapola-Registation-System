@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +25,7 @@ public class AddPayment extends javax.swing.JPanel {
     ArrayList<AddPaymentClass> addpaymentArray;
     ResultSet rs;
     Connection con;
+    AddPaymentForm addpayementforms = new AddPaymentForm();
 //    static Connection con = MainInterfase.conn;
 
     public AddPayment() {
@@ -227,6 +229,20 @@ public class AddPayment extends javax.swing.JPanel {
 
             try {
 
+//                DisableTxtFielsPayment();
+
+                // Disable the txtamcload field
+                Field txtamcloadField = addpaymentform.getClass().getDeclaredField("txtLoadMcNum");
+                txtamcloadField.setAccessible(true);
+                JTextField txtLoadMcNum = (JTextField) txtamcloadField.get(addpaymentform);
+                txtLoadMcNum.setEnabled(false); // Disable the field
+
+                // Set the message "Not selected" in validateNicPayment label
+                Field validateNicField = addpaymentform.getClass().getDeclaredField("validateNicPayment");
+                validateNicField.setAccessible(true);
+                JLabel validateNicPayment = (JLabel) validateNicField.get(addpaymentform);
+                validateNicPayment.setText("Not selected");
+
                 Field fieldPayId = addpaymentform.getClass().getDeclaredField("txtPaymentNUm");
                 fieldPayId.setAccessible(true);
                 JTextField txtPaymentNUm = (JTextField) fieldPayId.get(addpaymentform);
@@ -285,4 +301,23 @@ public class AddPayment extends javax.swing.JPanel {
     private javax.swing.JTable jTablePayment;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
+
+    //Disable the Text Fields
+    public void DisableTxtFielsPayment() {
+
+////        addpayementform.getValidateNicPayment().setEnabled(false);
+        addpayementforms.getTxtLoadMcNum().setText("Do not Update Nic");
+        System.out.println("jd");
+
+//   JLabel validateNicField = addpayementform.getValidateNicPayment();
+//
+//    if (validateNicField == null) {
+//        System.out.println("Error: validateNicField is null");
+//    } else {
+//        validateNicField.setText("Do not Update Nic");
+//        validateNicField.setEnabled(false);
+//    }
+//    
+    }
+
 }

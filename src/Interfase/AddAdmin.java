@@ -6,13 +6,18 @@ package Interfase;
 
 import java.util.ArrayList;
 import Classes.AddAdminClass;
+import java.awt.Color;
+import java.awt.Component;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class AddAdmin extends javax.swing.JPanel {
 
@@ -26,6 +31,14 @@ public class AddAdmin extends javax.swing.JPanel {
         initComponents();
         setAdmintable();
         jTableAdmin.setModel(AddAdminModel);
+
+        // Customize the table header
+        JTableHeader header = jTableAdmin.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 16)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
     }
 
     private ArrayList<AddAdminClass> getAdminLis(String query) {
@@ -254,7 +267,7 @@ public class AddAdmin extends javax.swing.JPanel {
     }//GEN-LAST:event_jTableAdminMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-         setAdmintable();
+        setAdmintable();
     }//GEN-LAST:event_formMouseClicked
 
 

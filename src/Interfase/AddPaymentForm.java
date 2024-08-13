@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
+import javax.swing.JTextField;
 
 public class AddPaymentForm extends javax.swing.JFrame {
 
@@ -76,7 +77,7 @@ public class AddPaymentForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtLoadMcNum = new javax.swing.JTextField();
         jButtonLoadMc = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        validateNicPayment = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -384,10 +385,10 @@ public class AddPaymentForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Enter the Nic First");
+        validateNicPayment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        validateNicPayment.setForeground(new java.awt.Color(0, 0, 0));
+        validateNicPayment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        validateNicPayment.setText("Enter the Nic First");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -411,7 +412,7 @@ public class AddPaymentForm extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(validateNicPayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtLoadMcNum, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -425,7 +426,7 @@ public class AddPaymentForm extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txtLoadMcNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(validateNicPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonLoadMc)
                 .addGap(62, 62, 62)
@@ -636,7 +637,6 @@ public class AddPaymentForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
@@ -654,6 +654,7 @@ public class AddPaymentForm extends javax.swing.JFrame {
     private javax.swing.JLabel validateBatchName1;
     private javax.swing.JLabel validateCoursesName;
     private javax.swing.JLabel validateMcnumbers;
+    private javax.swing.JLabel validateNicPayment;
     private javax.swing.JLabel validateNot;
     // End of variables declaration//GEN-END:variables
 
@@ -905,4 +906,111 @@ public class AddPaymentForm extends javax.swing.JFrame {
 
     }
 
+    public JTextField getTxtAmount1() {
+        return txtAmount1;
+    }
+
+    public void setTxtAmount1(JTextField txtAmount1) {
+        this.txtAmount1 = txtAmount1;
+    }
+
+    public JTextField getTxtBalnse() {
+        return txtBalnse;
+    }
+
+    public void setTxtBalnse(JTextField txtBalnse) {
+        this.txtBalnse = txtBalnse;
+    }
+
+    public JTextField getTxtLoadMcNum() {
+        return txtLoadMcNum;
+    }
+
+    public void setTxtLoadMcNum(JTextField txtLoadMcNum) {
+        this.txtLoadMcNum = txtLoadMcNum;
+    }
+
+    public JTextField getTxtPayMcNumber() {
+        return txtPayMcNumber;
+    }
+
+    public void setTxtPayMcNumber(JTextField txtPayMcNumber) {
+        this.txtPayMcNumber = txtPayMcNumber;
+    }
+
+    public JTextField getTxtPayment() {
+        return txtPayment;
+    }
+
+    public void setTxtPayment(JTextField txtPayment) {
+        this.txtPayment = txtPayment;
+    }
+
+    public JTextField getTxtPaymentNUm() {
+        return txtPaymentNUm;
+    }
+
+    public void setTxtPaymentNUm(JTextField txtPaymentNUm) {
+        this.txtPaymentNUm = txtPaymentNUm;
+    }
+
+    public JLabel getValidateAmount() {
+        return validateAmount;
+    }
+
+    public void setValidateAmount(JLabel validateAmount) {
+        this.validateAmount = validateAmount;
+    }
+
+    public JLabel getValidateBalanse() {
+        return validateBalanse;
+    }
+
+    public void setValidateBalanse(JLabel validateBalanse) {
+        this.validateBalanse = validateBalanse;
+    }
+
+    public JLabel getValidateBatchName1() {
+        return validateBatchName1;
+    }
+
+    public void setValidateBatchName1(JLabel validateBatchName1) {
+        this.validateBatchName1 = validateBatchName1;
+    }
+
+    public JLabel getValidateCoursesName() {
+        return validateCoursesName;
+    }
+
+    public void setValidateCoursesName(JLabel validateCoursesName) {
+        this.validateCoursesName = validateCoursesName;
+    }
+
+    public JLabel getValidateMcnumbers() {
+        return validateMcnumbers;
+    }
+
+    public void setValidateMcnumbers(JLabel validateMcnumbers) {
+        this.validateMcnumbers = validateMcnumbers;
+    }
+
+    public JLabel getValidateNicPayment() {
+        return validateNicPayment;
+    }
+
+    public void setValidateNicPayment(JLabel validateNicPayment) {
+        this.validateNicPayment = validateNicPayment;
+    }
+
+    public JLabel getValidateNot() {
+        return validateNot;
+    }
+
+    public void setValidateNot(JLabel validateNot) {
+        this.validateNot = validateNot;
+    }
+
+   
+    
+    
 }
