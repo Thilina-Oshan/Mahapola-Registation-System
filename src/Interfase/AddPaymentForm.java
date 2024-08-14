@@ -896,6 +896,8 @@ public class AddPaymentForm extends javax.swing.JFrame {
         txtPaymentNUm.setText("");
         jComboBoxBatchPay.setSelectedIndex(0);
         jComboBoxCoursePay.setSelectedIndex(0);
+        txtLoadMcNum.setEnabled(true);
+        validateNicPayment.setText("Enter the Nic First");
 
         ValidatePayment.setText(" ");
         validateAmount.setText(" ");
@@ -1010,7 +1012,4 @@ public class AddPaymentForm extends javax.swing.JFrame {
         this.validateNot = validateNot;
     }
 
-   
-    
-    
 }

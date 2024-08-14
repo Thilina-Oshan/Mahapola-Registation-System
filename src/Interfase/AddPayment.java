@@ -230,7 +230,6 @@ public class AddPayment extends javax.swing.JPanel {
             try {
 
 //                DisableTxtFielsPayment();
-
                 // Disable the txtamcload field
                 Field txtamcloadField = addpaymentform.getClass().getDeclaredField("txtLoadMcNum");
                 txtamcloadField.setAccessible(true);
