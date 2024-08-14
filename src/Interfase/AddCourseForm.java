@@ -4,18 +4,63 @@
  */
 package Interfase;
 
+import Classes.AddCourseClass;
+import static Interfase.AddCourseForm.con;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Oshan Demel
  */
 public class AddCourseForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddCourseForm
-     */
+    static Connection con = MainInterfase.conn;
+    ResultSet rs;
+    
+    
+    
     public AddCourseForm() {
         initComponents();
+        customizeCloseOperation();
     }
+    
+    private ArrayList<AddCourseClass> getCourseList(String query) {
+        
+        
+        ArrayList<AddCourseClass> coursedlist = new ArrayList<>();
+        Statement st;
+
+        try {
+
+            st = (Statement) con.createStatement();
+            rs = st.executeQuery(query);
+
+            AddCourseClass course;
+
+            while (rs.next()) {
+
+                course = new AddCourseClass(rs.getInt(1), rs.getString(2), rs.getString(3));
+                coursedlist.add(course);
+            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, e, null, 2);
+        }
+
+        return coursedlist;
+    }
+    
 
    
     @SuppressWarnings("unchecked")
@@ -34,10 +79,10 @@ public class AddCourseForm extends javax.swing.JFrame {
         validateCourseName = new javax.swing.JLabel();
         validateDuration = new javax.swing.JLabel();
         validateEnddate = new javax.swing.JLabel();
-        jButtonClear = new javax.swing.JButton();
-        jButtonInsert = new javax.swing.JButton();
-        jButtonUpdate = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        ButtonClear = new javax.swing.JButton();
+        ButtonInsert = new javax.swing.JButton();
+        ButtonUpdate = new javax.swing.JButton();
+        textDuration = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton151 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -70,6 +115,11 @@ public class AddCourseForm extends javax.swing.JFrame {
         txtCourseName.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtCourseName.setForeground(new java.awt.Color(0, 0, 0));
         txtCourseName.setCaretColor(new java.awt.Color(0, 0, 0));
+        txtCourseName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCourseNameFocusLost(evt);
+            }
+        });
 
         txtCourseId.setBackground(new java.awt.Color(204, 255, 255));
         txtCourseId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -92,31 +142,51 @@ public class AddCourseForm extends javax.swing.JFrame {
         validateEnddate.setForeground(new java.awt.Color(0, 0, 0));
         validateEnddate.setText("     ");
 
-        jButtonClear.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonClear.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButtonClear.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonClear.setText("Clear");
-        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonClear.setBackground(new java.awt.Color(102, 102, 255));
+        ButtonClear.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        ButtonClear.setForeground(new java.awt.Color(0, 0, 51));
+        ButtonClear.setText("Clear");
+        ButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        ButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonClearActionPerformed(evt);
+            }
+        });
 
-        jButtonInsert.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonInsert.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButtonInsert.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonInsert.setText("Save");
-        jButtonInsert.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonInsert.setBackground(new java.awt.Color(102, 102, 255));
+        ButtonInsert.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        ButtonInsert.setForeground(new java.awt.Color(0, 0, 51));
+        ButtonInsert.setText("Save");
+        ButtonInsert.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        ButtonInsert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonInsertActionPerformed(evt);
+            }
+        });
 
-        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonUpdate.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonUpdate.setText("Update");
-        jButtonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
+        ButtonUpdate.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        ButtonUpdate.setForeground(new java.awt.Color(0, 0, 51));
+        ButtonUpdate.setText("Update");
+        ButtonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
+        ButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonUpdateActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setCaretColor(new java.awt.Color(0, 0, 0));
+        textDuration.setBackground(new java.awt.Color(255, 255, 255));
+        textDuration.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        textDuration.setForeground(new java.awt.Color(0, 0, 0));
+        textDuration.setCaretColor(new java.awt.Color(0, 0, 0));
+        textDuration.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textDurationFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -143,15 +213,15 @@ public class AddCourseForm extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(txtCourseId, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTextField1))))
+                                    .addComponent(textDuration))))
                         .addGap(19, 19, 19))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 4, Short.MAX_VALUE)
-                        .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
@@ -174,16 +244,16 @@ public class AddCourseForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(validateDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73)
                 .addComponent(validateEnddate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ButtonInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
         );
 
@@ -244,6 +314,88 @@ public class AddCourseForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton151ActionPerformed
 
+    private void txtCourseNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCourseNameFocusLost
+        isvalidateCname();
+    }//GEN-LAST:event_txtCourseNameFocusLost
+
+    private void textDurationFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDurationFocusLost
+        isvalidateDuration();
+    }//GEN-LAST:event_textDurationFocusLost
+
+    private void ButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsertActionPerformed
+        if (isvalidate()) {
+
+               
+            try {
+
+                setCourseVariables();
+
+                String query = "INSERT INTO `course`(`couse_name`, `course_duration`) VALUES (?,?)";
+                PreparedStatement pst = con.prepareStatement(query);
+
+                pst.setString(1, cName);
+                pst.setString(2, duration);
+                pst.execute();
+                
+                JOptionPane.showMessageDialog(this, "Data Saved! ");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+
+        }
+    }//GEN-LAST:event_ButtonInsertActionPerformed
+
+    private void ButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonClearActionPerformed
+        clearFiled();
+    }//GEN-LAST:event_ButtonClearActionPerformed
+
+    private void ButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUpdateActionPerformed
+        if (isvalidate()) {
+            setCourseVariables();
+
+            try {
+                // Print the variables to ensure they are set correctly
+                System.out.println("Course ID: " + cid);
+                System.out.println("Name: " + cName);
+                System.out.println("Duration: " + duration);
+                
+
+                // Check if the student ID exists
+                String checkQuery = "SELECT COUNT(*) FROM `course` WHERE `couse_id` = ?";
+                PreparedStatement checkPst = con.prepareStatement(checkQuery);
+                checkPst.setInt(1, cid);
+
+                ResultSet rs = checkPst.executeQuery();
+                if (rs.next() && rs.getInt(1) > 0) {
+                    // Proceed with the update
+                    String query = "UPDATE `course` SET `couse_name`= ?,`course_duration`= ? WHERE `couse_id`= ?";
+                    PreparedStatement pst = con.prepareStatement(query);
+                    
+                    pst.setString(1, cName);
+                    pst.setString(2, duration);
+                    pst.setInt(3, cid);
+                    
+
+                    int rowsUpdated = pst.executeUpdate();
+
+                    if (rowsUpdated > 0) {
+                        JOptionPane.showMessageDialog(null, "UPDATE  SUCCESSFUL");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No record found with the given ID");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No record found with the given ID");
+                }
+                clearFiled();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e);
+                System.out.println(e);
+                JOptionPane.showMessageDialog(this, "Can't Update");
+            }
+        }
+    }//GEN-LAST:event_ButtonUpdateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,11 +411,11 @@ public class AddCourseForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonClear;
+    private javax.swing.JButton ButtonInsert;
+    private javax.swing.JButton ButtonUpdate;
     private javax.swing.JLabel NOValidates;
     private javax.swing.JButton jButton151;
-    private javax.swing.JButton jButtonClear;
-    private javax.swing.JButton jButtonInsert;
-    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -272,11 +424,88 @@ public class AddCourseForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField textDuration;
     private javax.swing.JTextField txtCourseId;
     private javax.swing.JTextField txtCourseName;
     private javax.swing.JLabel validateCourseName;
     private javax.swing.JLabel validateDuration;
     private javax.swing.JLabel validateEnddate;
     // End of variables declaration//GEN-END:variables
+    int cid;
+    String cName;
+    String duration;
+    
+    public void setCourseVariables() {
+        
+        cid = Integer.parseInt(txtCourseId.getText());
+        cName = txtCourseName.getText();
+        duration = textDuration.getText();
+    }
+    
+    private void customizeCloseOperation() {
+
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showOptionDialog(
+                        AddCourseForm.this,
+                        "Are you sure you want to close this application?",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        null,
+                        null
+                );
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
+    }
+    
+    public boolean isvalidate() {
+
+        boolean isvalidate = isvalidateCname() & isvalidateDuration();
+        return isvalidate;
+    }
+    
+    public boolean isvalidateCname() {
+
+        if (txtCourseName.getText().isEmpty()) {
+            validateCourseName.setText("Can not be Empty");
+            return false;
+        } else if (!Pattern.matches("[A-Za-z ]{1,50}", txtCourseName.getText())) {
+            validateCourseName.setText("only 50 leters (ex: Personal Survival techniques)");
+            return false;
+        } else {
+            validateCourseName.setText("");
+        }
+        return true;
+
+    }
+    
+    public boolean isvalidateDuration() {
+
+        if (textDuration.getText().isEmpty()) {
+            validateDuration.setText("Can not be Empty");
+            return false;
+        } else if (!Pattern.matches("[A-Za-z0-9 ]{1,50}", textDuration.getText())) {
+            validateDuration.setText("only 50 leters/Numbers (ex: 03 Months)");
+            return false;
+        } else {
+            validateDuration.setText("");
+        }
+        return true;
+
+    }
+    
+    public void clearFiled() {
+
+        txtCourseName.setText("");
+        textDuration.setText("");
+        
+    }
+
 }

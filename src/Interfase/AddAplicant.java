@@ -30,6 +30,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+ import javax.swing.JOptionPane;
 
 public class AddAplicant extends javax.swing.JPanel {
 
