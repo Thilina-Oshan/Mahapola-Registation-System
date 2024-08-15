@@ -15,16 +15,14 @@ enum Level {
 public class AddExamClass {
 
     private int ExamId;
-    private String NicExam;
     private int Mc_num;
     private Date ExameDate;
     private String CourseNameE;
     private String BatchNameE;
     private String ExameResult;
 
-    public AddExamClass(int ExamId, String NicExam, int Mc_num, Date ExameDate, String CourseNameE, String BatchNameE, String ExameResult) {
+    public AddExamClass(int ExamId, int Mc_num, Date ExameDate, String CourseNameE, String BatchNameE, String ExameResult) {
         this.ExamId = ExamId;
-        this.NicExam = NicExam;
         this.Mc_num = Mc_num;
         this.ExameDate = ExameDate;
         this.CourseNameE = CourseNameE;
@@ -44,20 +42,6 @@ public class AddExamClass {
      */
     public void setExamId(int ExamId) {
         this.ExamId = ExamId;
-    }
-
-    /**
-     * @return the NicExam
-     */
-    public String getNicExam() {
-        return NicExam;
-    }
-
-    /**
-     * @param NicExam the NicExam to set
-     */
-    public void setNicExam(String NicExam) {
-        this.NicExam = NicExam;
     }
 
     /**
@@ -130,6 +114,6 @@ public class AddExamClass {
         this.ExameResult = ExameResult;
     }
 
-   
+  
  
 }
