@@ -7,6 +7,7 @@ package Interfase;
 import Classes.AddExamClass;
 import java.awt.Color;
 import java.awt.Component;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -15,8 +16,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,7 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class ExamTable extends javax.swing.JPanel {
 
-    DefaultTableModel exameModel = new DefaultTableModel(new String[]{"Exam Id", "NIc", "Exam Date", "Exam Result", "Course", "Batch"}, 0);
+    DefaultTableModel exameModel = new DefaultTableModel(new String[]{"Exam Id", "NIc", "Mc Num", "Exam Date", "Course", "Batch", "Exam Result"}, 0);
     AddExamForm addexamform = new AddExamForm();
     ArrayList<AddExamClass> examArray;
     static Connection con = MainInterfase.conn;
@@ -34,33 +38,7 @@ public class ExamTable extends javax.swing.JPanel {
         initComponents();
         jTableAddExamDetails.setModel(exameModel);
         setExamTable();
-        // Customize the table header
-        JTableHeader header = jTableAddExamDetails.getTableHeader();
-        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
-        header.setForeground(Color.WHITE); // Set your desired text color
-        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 16)); // Customize the font if needed
-//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
-
-//        // Customize the table body (cell) background color
-//        DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer() {
-//            @Override
-//            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-//                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-//
-//                if (isSelected) {
-//                    c.setBackground(new Color(100, 150, 255)); // Darker blue for selected rows
-//                } else {
-//                    c.setBackground(new Color(0, 0, 0)); // Light blue for unselected rows
-//                }
-//
-//                return c;
-//            }
-//        };
-//
-//        // Apply the renderer to all columns
-//        for (int i = 0; i < jTableAddExamDetails.getColumnCount(); i++) {
-//            jTableAddExamDetails.getColumnModel().getColumn(i).setCellRenderer(cellRenderer);
-//        }
+        CustimizeTableHeader();// Customize the table header
 
     }
 
@@ -78,7 +56,7 @@ public class ExamTable extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                exam = new AddExamClass(rs.getInt(1), rs.getString(2), rs.getInt(3),rs.getDate(4),rs.getString(5),rs.getString(6), rs.getString(7));
+                exam = new AddExamClass(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getString(7));
                 examlist.add(exam);
             }
 
@@ -89,9 +67,8 @@ public class ExamTable extends javax.swing.JPanel {
 
         return examlist;
     }
-    
-    
-      private void setExamTableData(String query) { //table ekata data set 
+
+    private void setExamTableData(String query) { //table ekata data set 
 
         exameModel.setRowCount(0);
         examArray = getExamist(query);
@@ -292,41 +269,59 @@ public class ExamTable extends javax.swing.JPanel {
 
     private void jTableAddExamDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAddExamDetailsMouseClicked
 
-//        if (jTableAddaplicant.getSelectedRowCount() == 1) {
-//
-//            ADAF.setVisible(true);
-//
-//            try {
-//
-//                Field fieldId = ADAF.getClass().getDeclaredField("txtId");
-//                fieldId.setAccessible(true);
-//                JTextField txtId = (JTextField) fieldId.get(ADAF);
-//                txtId.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 0).toString());
-//
-//                Field field = ADAF.getClass().getDeclaredField("txtNic");
-//                field.setAccessible(true);
-//                JTextField txtNic = (JTextField) field.get(ADAF);
-//                txtNic.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 1).toString());
-//
-//                Field nameFiled = ADAF.getClass().getDeclaredField("txtName");
-//                nameFiled.setAccessible(true);
-//                JTextField txtName = (JTextField) nameFiled.get(ADAF);
-//                txtName.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 2).toString());
-//
-//                Field pnumField = ADAF.getClass().getDeclaredField("txtPhoneNumber");
-//                pnumField.setAccessible(true);
-//                JTextField txtPhoneNumber = (JTextField) pnumField.get(ADAF);
-//                txtPhoneNumber.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 3).toString());
-//
-//                Field addressField = ADAF.getClass().getDeclaredField("txtAddress");
-//                addressField.setAccessible(true);
-//                JTextField txtAddress = (JTextField) addressField.get(ADAF);
-//                txtAddress.setText(AddAplicantModel.getValueAt(jTableAddaplicant.getSelectedRow(), 4).toString());
-//
-//            } catch (Exception e) {
-//            }
-//
-//        }
+        if (jTableAddExamDetails.getSelectedRowCount() == 1) {
+
+            addexamform.setVisible(true);
+
+            try {
+
+                DisableTxtFielsExam();
+
+                Field fieldIdExam = addexamform.getClass().getDeclaredField("txtExamId");
+                fieldIdExam.setAccessible(true);
+                JTextField txtExamId = (JTextField) fieldIdExam.get(addexamform);
+                txtExamId.setText(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 0).toString());
+
+                Field fieldNicExam = addexamform.getClass().getDeclaredField("txtNicExam");
+                fieldNicExam.setAccessible(true);
+                JTextField txtNicExam = (JTextField) fieldNicExam.get(addexamform);
+                txtNicExam.setText(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 1).toString());
+
+                Field fieldMCExam = addexamform.getClass().getDeclaredField("txtMcExam");
+                fieldMCExam.setAccessible(true);
+                JTextField txtMcExam = (JTextField) fieldMCExam.get(addexamform);
+                txtMcExam.setText(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 2).toString());
+
+                // Retrieve and set the date
+                Field fieldExam_Date = addexamform.getClass().getDeclaredField("jDateChooserExam");
+                fieldExam_Date.setAccessible(true);
+                com.toedter.calendar.JDateChooser jDateChooserExam = (com.toedter.calendar.JDateChooser) fieldExam_Date.get(addexamform);
+
+                String dateStr = exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 3).toString();
+                java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr); // Adjust date format as needed
+                jDateChooserExam.setDate(utilDate); // Set the date in JDateChooser
+
+                Field courseExamFiled = addexamform.getClass().getDeclaredField("jComboBoxExamCourse");
+                courseExamFiled.setAccessible(true);
+                JComboBox<?> jComboBoxExamCourse = (JComboBox<?>) courseExamFiled.get(addexamform);
+                jComboBoxExamCourse.setSelectedItem(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 4).toString());
+
+                Field batchExamFiled = addexamform.getClass().getDeclaredField("jComboBoxBatcExam");
+                batchExamFiled.setAccessible(true);
+                JComboBox<?> jComboBoxBatcExam = (JComboBox<?>) batchExamFiled.get(addexamform);
+                jComboBoxBatcExam.setSelectedItem(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 5).toString());
+
+                Field PassExamFiled = addexamform.getClass().getDeclaredField("jComboBoxPassFail");
+                PassExamFiled.setAccessible(true);
+                JComboBox<?> jComboBoxPassFail = (JComboBox<?>) PassExamFiled.get(addexamform);
+                jComboBoxPassFail.setSelectedItem(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 6).toString());
+
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(this, e + "Not Selected Colom");
+            }
+
+        }
 
     }//GEN-LAST:event_jTableAddExamDetailsMouseClicked
 
@@ -404,4 +399,31 @@ public class ExamTable extends javax.swing.JPanel {
     private javax.swing.JTable jTableAddExamDetails;
     private javax.swing.JTextField jTextAplicant;
     // End of variables declaration//GEN-END:variables
+
+    void CustimizeTableHeader() {
+
+        JTableHeader header = jTableAddExamDetails.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
+    }
+
+    //Disable the Text Fields
+    public void DisableTxtFielsExam() {
+
+        addexamform.getTxtEnterNic().setEnabled(false);
+        addexamform.getTxtExamId().setEnabled(false);
+        addexamform.getTxtMcExam().setEnabled(false);
+        addexamform.getTxtNicExam().setEnabled(false);
+        addexamform.getjDateChooserExam().setEnabled(false);
+        addexamform.getjComboBoxExamCourse().setEnabled(false);
+        addexamform.getValidaterIdExam().setText("Do not Update Id");
+        addexamform.getValidateNicE().setText("Do not Update ID");
+        addexamform.getValidateMcE().setText("Do not Update Mc Number");
+        addexamform.getValidateEnterNic().setText("Do not Update Enter Nic");
+
+    }
+
 }
