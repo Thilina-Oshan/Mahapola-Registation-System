@@ -162,7 +162,7 @@ public class LoginForm extends javax.swing.JFrame {
                 }
                 if (notFound == 1 && Password.equals(passDb)) {
                     Home hp = new Home(); // Create a new instance of Home
-                    hp.setAdminName(fname); // Set the admin's name
+                    main.setUser(fname); // Set the admin's name
 
                     main.add(hp); // Add the Home panel to the JFrame
                     main.pack();

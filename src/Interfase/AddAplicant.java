@@ -30,7 +30,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
- import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
+import javax.swing.table.JTableHeader;
 
 public class AddAplicant extends javax.swing.JPanel {
 
@@ -48,6 +49,7 @@ public class AddAplicant extends javax.swing.JPanel {
         con = MainInterfase.conn;
         jTableAddaplicant.setModel(AddAplicantModel);
         setStudenttable();
+        CustimizeTableApliHeader();
         DefaultColor = new Color(0, 0, 51);
         ClickedColor = new Color(255, 255, 255);
 
@@ -267,7 +269,7 @@ public class AddAplicant extends javax.swing.JPanel {
         });
 
         jTextAplicant.setBackground(new java.awt.Color(204, 255, 255));
-        jTextAplicant.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        jTextAplicant.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
         jTextAplicant.setForeground(new java.awt.Color(51, 0, 51));
         jTextAplicant.setCaretColor(new java.awt.Color(0, 0, 0));
         jTextAplicant.addCaretListener(new javax.swing.event.CaretListener() {
@@ -370,7 +372,7 @@ public class AddAplicant extends javax.swing.JPanel {
 
     private void jTextAplicantCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextAplicantCaretUpdate
 
-          String[] col_names = {"stu_nic", "stu_name", "stu_name", "phone_num"};
+        String[] col_names = {"stu_nic", "stu_name", "stu_name", "phone_num"};
 
         if (jTextAplicant.getText().isEmpty()) {
             setAplicantTableData("SELECT * FROM `student_details`  ORDER BY `stu_id`");
@@ -384,7 +386,7 @@ public class AddAplicant extends javax.swing.JPanel {
             setAplicantTableData(query);
 
         }
-        
+
     }//GEN-LAST:event_jTextAplicantCaretUpdate
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -452,5 +454,15 @@ public class AddAplicant extends javax.swing.JPanel {
     private javax.swing.JTable jTableAddaplicant;
     private javax.swing.JTextField jTextAplicant;
     // End of variables declaration//GEN-END:variables
+
+    void CustimizeTableApliHeader() {
+
+        JTableHeader header = jTableAddaplicant.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
+    }
 
 }

@@ -7,6 +7,7 @@ package Interfase;
 import Classes.ActiveStatus;
 import Classes.AddRegistationClass;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import static javax.swing.text.html.HTML.Tag.SELECT;
 
 public class AddRegistrationTable extends javax.swing.JPanel {
@@ -39,6 +41,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         initComponents();
         jTableRegisterd.setModel(AddRegisterdModel);
         setRegStudenttable();
+        CustimizeTableApliHeader();
     }
 
     private ArrayList<AddRegistationClass> getRegStudentList(String query) {
@@ -191,7 +194,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        jComboBoxRegisterd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc_Number", "Nic", "Name", "Batch", "Course" }));
+        jComboBoxRegisterd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc_Number", "Nic", "Name", " " }));
 
         jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
         jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
@@ -474,6 +477,14 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 
     }
     
-    
+     void CustimizeTableApliHeader() {
+
+        JTableHeader header = jTableRegisterd.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
+    }
     
 }

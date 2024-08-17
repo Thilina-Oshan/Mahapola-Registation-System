@@ -6,6 +6,7 @@ package Interfase;
 
 import Classes.AddCourseClass;
 import Classes.DbConnection;
+import java.awt.Color;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class AddCourse extends javax.swing.JPanel {
     
@@ -33,6 +35,7 @@ public class AddCourse extends javax.swing.JPanel {
         conn = MainInterfase.conn;
         TableCourse.setModel(AddCourseModel);
         setCoursetable("SELECT * FROM `course`");
+         CustimizeTableCourseHeader();
     }
 
     private ArrayList<AddCourseClass> getCourseList(String query) {
@@ -111,8 +114,8 @@ public class AddCourse extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCourse = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        SearchCombo = new javax.swing.JComboBox<>();
-        jTextSearchRegisterd = new javax.swing.JTextField();
+        SearchComboCourse = new javax.swing.JComboBox<>();
+        jTextSearchCourse = new javax.swing.JTextField();
         jButtonAddCourse = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -152,15 +155,16 @@ public class AddCourse extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        SearchCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "couse_id", "couse_name", "course_duration", " " }));
+        SearchComboCourse.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        SearchComboCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "couse_id", "couse_name" }));
 
-        jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
-        jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jTextSearchRegisterd.setForeground(new java.awt.Color(51, 0, 51));
-        jTextSearchRegisterd.setCaretColor(new java.awt.Color(0, 0, 0));
-        jTextSearchRegisterd.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextSearchCourse.setBackground(new java.awt.Color(204, 255, 255));
+        jTextSearchCourse.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jTextSearchCourse.setForeground(new java.awt.Color(51, 0, 51));
+        jTextSearchCourse.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextSearchCourse.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextSearchRegisterdCaretUpdate(evt);
+                jTextSearchCourseCaretUpdate(evt);
             }
         });
 
@@ -200,23 +204,22 @@ public class AddCourse extends javax.swing.JPanel {
         jPanelAddCourseTable.setLayout(jPanelAddCourseTableLayout);
         jPanelAddCourseTableLayout.setHorizontalGroup(
             jPanelAddCourseTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAddCourseTableLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(SearchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanelAddCourseTableLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 919, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddCourseTableLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
+            .addGroup(jPanelAddCourseTableLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanelAddCourseTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanelAddCourseTableLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(SearchComboCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextSearchCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanelAddCourseTableLayout.setVerticalGroup(
             jPanelAddCourseTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,8 +228,8 @@ public class AddCourse extends javax.swing.JPanel {
                 .addGap(78, 78, 78)
                 .addGroup(jPanelAddCourseTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(SearchCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SearchComboCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextSearchCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -250,20 +253,24 @@ public class AddCourse extends javax.swing.JPanel {
         addcourseform.setVisible(true);
     }//GEN-LAST:event_jButtonAddCourseActionPerformed
 
-    private void jTextSearchRegisterdCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchRegisterdCaretUpdate
-        String[] col_names = {"couse_id", "couse_name", "course_duration"};
+    private void jTextSearchCourseCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchCourseCaretUpdate
+     
+          String[] col_names = {"couse_id", "couse_name"};
 
-        if (jTextSearchRegisterd.getText().isEmpty()) {
-            setCoursetable("SELECT * FROM `course`");
-          
+        if (jTextSearchCourse.getText().isEmpty()) {
+             setCourseTableData("SELECT * FROM `course` ORDER BY `couse_id`");
+            jTextSearchCourse.setText("");
         } else {
-            String col_name = col_names[SearchCombo.getSelectedIndex()];
-            String value = jTextSearchRegisterd.getText();
-            String query = "SELECT * FROM `course` WHERE `" + col_name + "` LIKE '%" + value + "%'";
-            
-            setCoursetable(query);
+
+            String col_name = col_names[SearchComboCourse.getSelectedIndex()];
+            String value = jTextSearchCourse.getText();
+            String query = "SELECT * FROM `course` WHERE " + col_name + " LIKE '%" + value + "%'";
+
+            setCourseTableData(query);
+
         }
-    }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
+        
+    }//GEN-LAST:event_jTextSearchCourseCaretUpdate
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
        setCoursetable();
@@ -304,7 +311,7 @@ public class AddCourse extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> SearchCombo;
+    private javax.swing.JComboBox<String> SearchComboCourse;
     private javax.swing.JTable TableCourse;
     private javax.swing.JButton jButtonAddCourse;
     private javax.swing.JLabel jLabel1;
@@ -312,6 +319,20 @@ public class AddCourse extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAddCourseTable;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextSearchRegisterd;
+    private javax.swing.JTextField jTextSearchCourse;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    void CustimizeTableCourseHeader() {
+
+        JTableHeader header = TableCourse.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
+    }
+
+    
 }

@@ -31,13 +31,7 @@ public class AddAdmin extends javax.swing.JPanel {
         initComponents();
         setAdmintable();
         jTableAdmin.setModel(AddAdminModel);
-
-        // Customize the table header
-        JTableHeader header = jTableAdmin.getTableHeader();
-        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
-        header.setForeground(Color.WHITE); // Set your desired text color
-        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 16)); // Customize the font if needed
-//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+        CustimizeTableAdminHeader();
 
     }
 
@@ -282,4 +276,16 @@ public class AddAdmin extends javax.swing.JPanel {
     private javax.swing.JTable jTableAdmin;
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
+
+
+   void CustimizeTableAdminHeader() {
+
+        JTableHeader header = jTableAdmin.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
+    }
+
 }

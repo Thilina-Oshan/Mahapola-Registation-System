@@ -6,6 +6,7 @@ package Interfase;
 
 import Classes.AddPaymentClass;
 import Classes.AddRegistationClass;
+import java.awt.Color;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class AddPayment extends javax.swing.JPanel {
 
@@ -33,6 +35,7 @@ public class AddPayment extends javax.swing.JPanel {
         con = MainInterfase.conn;
         jTablePayment.setModel(AddPayementdModel);
         setPaymentTable();
+        CustimizeTablePayHeader();
     }
 
     private ArrayList<AddPaymentClass> getPaymentList(String query) {
@@ -317,6 +320,16 @@ public class AddPayment extends javax.swing.JPanel {
 //        validateNicField.setEnabled(false);
 //    }
 //    
+    }
+
+    void CustimizeTablePayHeader() {
+
+        JTableHeader header = jTablePayment.getTableHeader();
+        header.setBackground(new Color(0, 102, 204)); // Set your desired background color
+        header.setForeground(Color.WHITE); // Set your desired text color
+        header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
+//        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
     }
 
 }

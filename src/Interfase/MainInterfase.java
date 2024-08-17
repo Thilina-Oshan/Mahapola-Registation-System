@@ -50,6 +50,10 @@ public class MainInterfase extends javax.swing.JFrame {
 
     }
 
+    public void setUser(String name) {
+        jLabel3.setText(name);
+    }
+
     private void changePanel(int index) {
         CardLayout cardLayout = (CardLayout) InterfaseView.getLayout();
         if (index >= 0 && index < InterfaseView.getComponentCount()) {
