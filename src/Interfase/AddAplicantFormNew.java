@@ -390,7 +390,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
                 pst.setString(3, phoneNum);
                 pst.setString(4, address);
                 pst.execute();
-                JOptionPane.showMessageDialog(this, "SAVE Successful");
+                JOptionPane.showMessageDialog(this, "Save Successful");
                 System.out.println("");
                 clearFiled();
             } catch (Exception e) {
@@ -440,7 +440,7 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
                         int rowsUpdated = pst.executeUpdate();
 
                         if (rowsUpdated > 0) {
-                            JOptionPane.showMessageDialog(null, "UPDATE Successful");
+                            JOptionPane.showMessageDialog(null, "Update Successful");
                         } else {
                             JOptionPane.showMessageDialog(null, "No record found with the given ID");
                         }

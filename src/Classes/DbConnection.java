@@ -24,7 +24,11 @@ public class DbConnection {
 
         } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, " Database is Not Connected. Please check localhost connection. ", null, 1);
+//            JOptionPane.showMessageDialog(null, " Database is Not Connected. Please check localhost connection. ", null, 1);
+            JOptionPane.showMessageDialog(null, "Database is Not Connected. Please check localhost connection.", "Connection Error", JOptionPane.ERROR_MESSAGE);
+
+            // Terminate the application to prevent it from continuing
+            System.exit(0);
 
         }
 

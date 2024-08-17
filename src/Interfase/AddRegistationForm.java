@@ -657,7 +657,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 }
 
                 pst.executeUpdate(); // Use executeUpdate for INSERT
-                JOptionPane.showMessageDialog(null, "INSERT SUCCESSFUL");
+                JOptionPane.showMessageDialog(null, "Save Successfull");
                 System.out.println("Sucess");
                 ClearFieldsReg();
             } catch (SQLException e) {

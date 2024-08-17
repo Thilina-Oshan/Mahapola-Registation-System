@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.regex.Pattern;
@@ -398,14 +399,21 @@ public class AddExamForm extends javax.swing.JFrame {
 
                 int rowsInserted = pst.executeUpdate(); // Use executeUpdate for INSERT
                 if (rowsInserted > 0) {
-                    JOptionPane.showMessageDialog(null, "INSERT SUCCESSFUL");
+                    JOptionPane.showMessageDialog(null, "Save Successfull");
                     System.out.println("Success");
                     clearFieldsEam();
                 }
 
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Can't Insert Data");
+                JOptionPane.showMessageDialog(this, BatchNameE + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
+                System.out.println("Not");
+//                JOptionPane.showMessageDialog(this, " Duplicate entry " + BatchNameE);
                 System.out.println(e);
+                System.out.println(e);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "An unexpected error occurred");
+                e.printStackTrace();
             }
         }
 
@@ -436,7 +444,6 @@ public class AddExamForm extends javax.swing.JFrame {
                     String query = "UPDATE `exam_detail` SET `mc_num`=?,`exam_date`=?,`couse_name`=?,`batch_name`=?,`examme_result`=? WHERE `exam_id`= ?";
                     try (PreparedStatement pst = con.prepareStatement(query)) {
 
-             
                         pst.setInt(1, Mc_numExam);
                         pst.setDate(2, new java.sql.Date(ExameDate.getTime()));
                         pst.setString(3, CourseNameE);
