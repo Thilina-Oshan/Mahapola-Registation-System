@@ -4,10 +4,12 @@
  */
 package Interfase;
 
+import Classes.JTableToExcelExporter;
 import Classes.ActiveStatus;
 import Classes.AddRegistationClass;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,6 +20,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -97,7 +100,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
     public void setRegStudenttable() {
 
         setRegistationTableData("SELECT * FROM `student_registation` ORDER BY `mc_num`");
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -118,6 +121,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jTextBatchNumber = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -250,6 +254,13 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Enter Batch Number");
 
+        jButton1.setText("Create Backup");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAddRegistationTableLayout = new javax.swing.GroupLayout(jPanelAddRegistationTable);
         jPanelAddRegistationTable.setLayout(jPanelAddRegistationTableLayout);
         jPanelAddRegistationTableLayout.setHorizontalGroup(
@@ -257,6 +268,8 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
@@ -295,7 +308,9 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
-                .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
@@ -445,8 +460,31 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JTableToExcelExporter exporter = new JTableToExcelExporter();
+
+        JFileChooser fileChooser = new JFileChooser();
+        int option = fileChooser.showSaveDialog(this);
+
+        if (option == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+            if (!filePath.endsWith(".xlsx")) {
+                filePath += ".xlsx";
+            }
+
+            try {
+                // Export the JTable data to Excel
+                exporter.exportToExcel(jTableRegisterd, filePath);
+            } catch (IOException ex) {
+                Logger.getLogger(AddRegistrationTable.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Data exported to Excel file successfully.");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddNewRegisterd;
     private javax.swing.JButton jButtonAplicant;
     private javax.swing.JButton jButtonRegisterd;
@@ -476,8 +514,8 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         addregistationForm.getValidateAddress1().setText("Do not Update Address");
 
     }
-    
-     void CustimizeTableApliHeader() {
+
+    void CustimizeTableApliHeader() {
 
         JTableHeader header = jTableRegisterd.getTableHeader();
         header.setBackground(new Color(0, 102, 204)); // Set your desired background color
@@ -486,5 +524,5 @@ public class AddRegistrationTable extends javax.swing.JPanel {
 //        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
 
     }
-    
+
 }
