@@ -27,13 +27,13 @@ import javax.swing.JTextField;
  * @author Oshan Demel
  */
 public class ExamTable extends javax.swing.JPanel {
-    
+
     DefaultTableModel exameModel = new DefaultTableModel(new String[]{"Exam Id", "Mc Num", "Exam Date", "Course", "Batch", "Exam Result"}, 0);
     AddExamForm addexamform = new AddExamForm();
     ArrayList<AddExamClass> examArray;
     static Connection con = MainInterfase.conn;
     ResultSet rs;
-    
+
     public ExamTable() {
         initComponents();
         jTableAddExamDetails.setModel(exameModel);
@@ -41,57 +41,57 @@ public class ExamTable extends javax.swing.JPanel {
         CustimizeTableHeader();// Customize the table header
 
     }
-    
+
     private ArrayList<AddExamClass> getExamist(String query) {
-        
+
         ArrayList<AddExamClass> examlist = new ArrayList<>();
         Statement st;
-        
+
         try {
-            
+
             st = (Statement) con.createStatement();
             rs = st.executeQuery(query);
-            
+
             AddExamClass exam;
-            
+
             while (rs.next()) {
-                
+
                 exam = new AddExamClass(rs.getInt(1), rs.getInt(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6));
                 examlist.add(exam);
             }
-            
+
         } catch (Exception e) {
-            
+
             JOptionPane.showMessageDialog(null, e, null, 2);
         }
-        
+
         return examlist;
     }
-    
+
     private void setExamTableData(String query) { //table ekata data set 
 
         exameModel.setRowCount(0);
         examArray = getExamist(query);
-        
+
         for (int i = 0; i < examArray.size(); i++) {
-            
+
             int a = examArray.get(i).getExamId();
             int b = examArray.get(i).getMc_num();
             Date c = examArray.get(i).getExameDate();
             String d = examArray.get(i).getCourseNameE();
             String e = examArray.get(i).getBatchNameE();
             String f = examArray.get(i).getExameResult();
-            
+
             exameModel.addRow(new Object[]{a, b, c, d, e, f});
         }
-        
+
     }
-    
+
     public void setExamTable() {
-        
+
         setExamTableData("SELECT * FROM `exam_detail`");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -273,20 +273,20 @@ public class ExamTable extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTableAddExamDetailsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAddExamDetailsMouseClicked
-        
+
         if (jTableAddExamDetails.getSelectedRowCount() == 1) {
-            
+
             addexamform.setVisible(true);
-            
+
             try {
-                
+
                 DisableTxtFielsExam();
-                
+
                 Field fieldIdExam = addexamform.getClass().getDeclaredField("txtExamId");
                 fieldIdExam.setAccessible(true);
                 JTextField txtExamId = (JTextField) fieldIdExam.get(addexamform);
                 txtExamId.setText(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 0).toString());
-                
+
                 Field fieldMCExam = addexamform.getClass().getDeclaredField("txtMcExam");
                 fieldMCExam.setAccessible(true);
                 JTextField txtMcExam = (JTextField) fieldMCExam.get(addexamform);
@@ -296,7 +296,7 @@ public class ExamTable extends javax.swing.JPanel {
                 Field fieldExam_Date = addexamform.getClass().getDeclaredField("jDateChooserExam");
                 fieldExam_Date.setAccessible(true);
                 com.toedter.calendar.JDateChooser jDateChooserExam = (com.toedter.calendar.JDateChooser) fieldExam_Date.get(addexamform);
-                
+
                 String dateStr = exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 2).toString();
                 java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr); // Adjust date format as needed
                 jDateChooserExam.setDate(utilDate); // Set the date in JDateChooser
@@ -305,22 +305,22 @@ public class ExamTable extends javax.swing.JPanel {
                 courseExamFiled.setAccessible(true);
                 JComboBox<?> jComboBoxExamCourse = (JComboBox<?>) courseExamFiled.get(addexamform);
                 jComboBoxExamCourse.setSelectedItem(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 3).toString());
-                
-                Field batchExamFiled = addexamform.getClass().getDeclaredField("jComboBoxBatcExam");
+
+                Field batchExamFiled = addexamform.getClass().getDeclaredField("txtBatchE");
                 batchExamFiled.setAccessible(true);
-                JComboBox<?> jComboBoxBatcExam = (JComboBox<?>) batchExamFiled.get(addexamform);
-                jComboBoxBatcExam.setSelectedItem(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 4).toString());
-                
+                JTextField txtBatchE = (JTextField) batchExamFiled.get(addexamform);
+                txtBatchE.setText(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 4).toString());
+
                 Field PassExamFiled = addexamform.getClass().getDeclaredField("jComboBoxPassFail");
                 PassExamFiled.setAccessible(true);
                 JComboBox<?> jComboBoxPassFail = (JComboBox<?>) PassExamFiled.get(addexamform);
                 jComboBoxPassFail.setSelectedItem(exameModel.getValueAt(jTableAddExamDetails.getSelectedRow(), 5).toString());
-                
+
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(this, e + "Not Selected Colom");
             }
-            
+
         }
 
     }//GEN-LAST:event_jTableAddExamDetailsMouseClicked
@@ -338,7 +338,7 @@ public class ExamTable extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonAddExamMouseExited
 
     private void jButtonAddExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddExamActionPerformed
-        
+
         addexamform.setVisible(true);
 
     }//GEN-LAST:event_jButtonAddExamActionPerformed
@@ -405,7 +405,7 @@ public class ExamTable extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     void CustimizeTableHeader() {
-        
+
         JTableHeader header = jTableAddExamDetails.getTableHeader();
         header.setBackground(new Color(0, 102, 204)); // Set your desired background color
         header.setForeground(Color.WHITE); // Set your desired text color
@@ -416,8 +416,9 @@ public class ExamTable extends javax.swing.JPanel {
 
     //Disable the Text Fields
     public void DisableTxtFielsExam() {
-        
+
         addexamform.getTxtEnterNic().setEnabled(false);
+        addexamform.getTxtEnterBatch().setEnabled(false);
         addexamform.getTxtExamId().setEnabled(false);
         addexamform.getTxtMcExam().setEnabled(false);
         addexamform.getjDateChooserExam().setEnabled(false);
@@ -425,6 +426,7 @@ public class ExamTable extends javax.swing.JPanel {
         addexamform.getValidateMcE().setText("Do not Update Mc Number");
         addexamform.getValidateEnterNic().setText("Do not Update Enter Nic");
         addexamform.getValidateExamDate().setText("Do Not Update Exam Date");
+         addexamform.getValidateEnterBatch().setText("Do Not Update Enter Batch Name");
     }
-    
+
 }

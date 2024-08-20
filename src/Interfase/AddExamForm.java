@@ -23,18 +23,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class AddExamForm extends javax.swing.JFrame {
-
+    
     static Connection com = MainInterfase.conn;
     Statement st;
     ResultSet rs;
-
+    
     public AddExamForm() {
         initComponents();
         customizeCloseOperationExam();
         setCourseCombo();
-        setBatchCombo();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -45,14 +44,14 @@ public class AddExamForm extends javax.swing.JFrame {
         txtEnterNic = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         validateEnterNic = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtEnterBatch = new javax.swing.JTextField();
+        ValidateEnterBatch = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtExamId = new javax.swing.JTextField();
         validaterIdExam = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtMcExam = new javax.swing.JTextField();
-        validateMcE = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jDateChooserExam = new com.toedter.calendar.JDateChooser();
         validateExamDate = new javax.swing.JLabel();
@@ -60,7 +59,6 @@ public class AddExamForm extends javax.swing.JFrame {
         jComboBoxExamCourse = new javax.swing.JComboBox<>();
         validateCourseE = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jComboBoxBatcExam = new javax.swing.JComboBox<>();
         validateBatchE = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jComboBoxPassFail = new javax.swing.JComboBox<>();
@@ -68,6 +66,10 @@ public class AddExamForm extends javax.swing.JFrame {
         jButtonInsertE = new javax.swing.JButton();
         jButton3UpdATEe = new javax.swing.JButton();
         jButtonClearE = new javax.swing.JButton();
+        txtMcExam = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        validateMcE = new javax.swing.JLabel();
+        txtBatchE = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -101,20 +103,42 @@ public class AddExamForm extends javax.swing.JFrame {
         validateEnterNic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         validateEnterNic.setText("Enter the Nic first");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel2.setText("Batch");
+
+        txtEnterBatch.setBackground(new java.awt.Color(153, 153, 255));
+        txtEnterBatch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtEnterBatch.setForeground(new java.awt.Color(0, 0, 0));
+
+        ValidateEnterBatch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ValidateEnterBatch.setForeground(new java.awt.Color(0, 0, 0));
+        ValidateEnterBatch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ValidateEnterBatch.setText("Enter the Batch Name");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(validateEnterNic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtEnterNic, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))))
+                            .addComponent(txtEnterNic, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                            .addComponent(txtEnterBatch, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ValidateEnterBatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -127,6 +151,12 @@ public class AddExamForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(validateEnterNic, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEnterBatch, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(ValidateEnterBatch, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -150,20 +180,6 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText(" Enterd Exam Details");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Mc Number");
-
-        txtMcExam.setBackground(new java.awt.Color(255, 255, 255));
-        txtMcExam.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txtMcExam.setForeground(new java.awt.Color(0, 0, 0));
-        txtMcExam.setText("jTextField3");
-        txtMcExam.setCaretColor(new java.awt.Color(0, 0, 0));
-
-        validateMcE.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        validateMcE.setForeground(new java.awt.Color(0, 0, 0));
-        validateMcE.setText("                                                 ");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,8 +205,6 @@ public class AddExamForm extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Course");
-
-        jComboBoxBatcExam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         validateBatchE.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         validateBatchE.setForeground(new java.awt.Color(0, 0, 0));
@@ -239,6 +253,23 @@ public class AddExamForm extends javax.swing.JFrame {
             }
         });
 
+        txtMcExam.setBackground(new java.awt.Color(255, 255, 255));
+        txtMcExam.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtMcExam.setForeground(new java.awt.Color(0, 0, 0));
+        txtMcExam.setCaretColor(new java.awt.Color(0, 0, 0));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Mc Number");
+
+        validateMcE.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        validateMcE.setForeground(new java.awt.Color(0, 0, 0));
+        validateMcE.setText("                                                 ");
+
+        txtBatchE.setBackground(new java.awt.Color(255, 255, 255));
+        txtBatchE.setForeground(new java.awt.Color(0, 0, 0));
+        txtBatchE.setCaretColor(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -248,7 +279,7 @@ public class AddExamForm extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jButtonInsertE, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                        .addComponent(jButtonInsertE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3UpdATEe, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -257,41 +288,38 @@ public class AddExamForm extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel6)))
+                        .addGap(17, 17, 17)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(validateMcE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtMcExam)
                             .addComponent(validatePassOrFail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(validateBatchE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(validateCourseE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(validaterIdExam, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                            .addComponent(validateCourseE, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                            .addComponent(validaterIdExam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtExamId)
                             .addComponent(jComboBoxExamCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxBatcExam, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxPassFail, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxPassFail, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtBatchE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(13, 13, 13))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(validateMcE, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtMcExam, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(validateExamDate, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooserExam, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(validateExamDate, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooserExam, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,13 +332,13 @@ public class AddExamForm extends javax.swing.JFrame {
                     .addComponent(txtExamId, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(validaterIdExam, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtMcExam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtMcExam, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addComponent(validateMcE, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
                     .addComponent(jDateChooserExam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -325,7 +353,7 @@ public class AddExamForm extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jComboBoxBatcExam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBatchE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(validateBatchE, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -343,6 +371,10 @@ public class AddExamForm extends javax.swing.JFrame {
         );
 
         txtExamId.setEnabled(false);
+        jDateChooserExam.setEnabled(false);
+        jComboBoxExamCourse.setEnabled(false);
+        jComboBoxPassFail.setEnabled(false);
+        txtBatchE.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -350,13 +382,15 @@ public class AddExamForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -385,7 +419,7 @@ public class AddExamForm extends javax.swing.JFrame {
                 String query = "INSERT INTO `exam_detail`(`mc_num`, `exam_date`, `couse_name`, `batch_name`, `examme_result`) VALUES (?,?,?,?,?)";
                 // Debug statement to print the query
                 System.out.println("Executing query: " + query);
-
+                
                 PreparedStatement pst = con.prepareStatement(query);
                 pst.setInt(1, Mc_numExam);
                 if (ExameDate != null) {
@@ -403,7 +437,7 @@ public class AddExamForm extends javax.swing.JFrame {
                     System.out.println("Success");
                     clearFieldsEam();
                 }
-
+                
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Can't Insert Data");
                 JOptionPane.showMessageDialog(this, BatchNameE + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
@@ -420,12 +454,20 @@ public class AddExamForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInsertEActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (txtEnterNic.getText().equals("")) {
-
+        if (txtEnterNic.getText().equals("") & txtEnterBatch.getText().equals("")) {
+            
             JOptionPane.showMessageDialog(null, "Please Fill Fields");
         } else {
-
+            
+            getAddBatch();
             getAddRegdetails();
+
+            // Enable other fields after button click
+            txtBatchE.setEnabled(true);
+            txtMcExam.setEnabled(true);
+            jDateChooserExam.setEnabled(true);
+            jComboBoxExamCourse.setEnabled(true);
+            jComboBoxPassFail.setEnabled(true); // Example for enabling another button
 
             System.out.println("Data Ok");
         }
@@ -434,22 +476,22 @@ public class AddExamForm extends javax.swing.JFrame {
     private void jButton3UpdATEeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3UpdATEeActionPerformed
         int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the data?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_NO_OPTION) {
-
+            
             if (isvalidateExam()) {
                 setVariableExam();
-
+                
                 try {
                     con.setAutoCommit(false); // Disable auto-commit for transaction management
 
                     String query = "UPDATE `exam_detail` SET `mc_num`=?,`exam_date`=?,`couse_name`=?,`batch_name`=?,`examme_result`=? WHERE `exam_id`= ?";
                     try (PreparedStatement pst = con.prepareStatement(query)) {
-
+                        
                         pst.setInt(1, Mc_numExam);
                         pst.setDate(2, new java.sql.Date(ExameDate.getTime()));
                         pst.setString(3, CourseNameE);
                         pst.setString(4, BatchNameE);
                         pst.setString(5, ExameResult);
-
+                        
                         pst.setInt(6, ExamId); // Use the correct variable for the registration ID
 
                         int rowsAffected = pst.executeUpdate();
@@ -460,7 +502,7 @@ public class AddExamForm extends javax.swing.JFrame {
                             System.out.println("Update Failed: No rows affected.");
                         }
                     }
-
+                    
                     con.commit(); // Commit the transaction
                     clearFieldsEam();
                 } catch (Exception e) {
@@ -484,9 +526,9 @@ public class AddExamForm extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3UpdATEeActionPerformed
-
+    
     public static void main(String args[]) {
-
+        
         FlatMacDarkLaf.setup();
 
         /* Create and display the form */
@@ -498,11 +540,11 @@ public class AddExamForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ValidateEnterBatch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3UpdATEe;
     private javax.swing.JButton jButtonClearE;
     private javax.swing.JButton jButtonInsertE;
-    private javax.swing.JComboBox<String> jComboBoxBatcExam;
     private javax.swing.JComboBox<String> jComboBoxExamCourse;
     private javax.swing.JComboBox<String> jComboBoxPassFail;
     private com.toedter.calendar.JDateChooser jDateChooserExam;
@@ -510,6 +552,7 @@ public class AddExamForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -517,6 +560,8 @@ public class AddExamForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField txtBatchE;
+    private javax.swing.JTextField txtEnterBatch;
     private javax.swing.JTextField txtEnterNic;
     private javax.swing.JTextField txtExamId;
     private javax.swing.JTextField txtMcExam;
@@ -536,16 +581,16 @@ public class AddExamForm extends javax.swing.JFrame {
     String CourseNameE;
     String BatchNameE;
     String ExameResult;
-
+    
     public void setVariableExam() {
-
+        
         NicExam = txtExamId.getText();
         Mc_numExam = Integer.parseInt(txtMcExam.getText());
         ExameDate = jDateChooserExam.getDate();
         CourseNameE = jComboBoxExamCourse.getSelectedItem().toString();
-        BatchNameE = jComboBoxBatcExam.getSelectedItem().toString();
+        BatchNameE = txtBatchE.getText();
         ExameResult = jComboBoxPassFail.getSelectedItem().toString();
-
+        
         String idTextExam = txtExamId.getText();
         if (idTextExam != null && !idTextExam.isEmpty()) {
             try {
@@ -555,15 +600,20 @@ public class AddExamForm extends javax.swing.JFrame {
                 return;
             }
         }
-
+        
     }
-
+    
     public void clearFieldsEam() {
-
+        
+        txtExamId.setText("");
+        jDateChooserExam.setDate(null);
         txtEnterNic.setText("");
         txtEnterNic.setEnabled(true);
+        txtEnterBatch.setText("");
+        txtEnterBatch.setEnabled(true);
         txtMcExam.setText("");
         txtMcExam.setEnabled(true);
+        txtBatchE.setText("");
 //        txtNicExam.setText("");
 //        txtNicExam.setEnabled(true);
 
@@ -572,13 +622,13 @@ public class AddExamForm extends javax.swing.JFrame {
         validateEnterNic.setText("Enter the Nic");
         validateExamDate.setText(" ");
         validateMcE.setText(" ");
-//        validateNicE.setText(" ");
+        validaterIdExam.setText("Id is Auto Increment ");
         validatePassOrFail.setText(" ");
-        validaterIdExam.setText(" ");
     }
-
+    
     private void customizeCloseOperationExam() {
-
+        
+        clearFieldsEam();
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -595,202 +645,220 @@ public class AddExamForm extends javax.swing.JFrame {
                 );
                 if (confirm == JOptionPane.YES_OPTION) {
                     dispose();
+                    clearFieldsEam();
                 }
             }
         });
     }
-
-    public void setBatchCombo() {
-
-        java.sql.Statement st;
-
-        try {
-
-            st = con.createStatement();
-
-            String comboBox = "SELECT  `batch_name`  FROM `batch_details`";
-            ResultSet rs = st.executeQuery(comboBox);
-            jComboBoxBatcExam.removeAllItems();
-
-            while (rs.next()) {
-
-                jComboBoxBatcExam.addItem(rs.getString(1));
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            System.out.println(e);
-        }
-
-    }
-
+    
     public void setCourseCombo() {
-
+        
         java.sql.Statement st;
-
+        
         try {
-
+            
             st = con.createStatement();
-
+            
             String comboBox = "SELECT `couse_name` FROM `course`";
             ResultSet rs = st.executeQuery(comboBox);
             jComboBoxExamCourse.removeAllItems();
-
+            
             while (rs.next()) {
-
+                
                 jComboBoxExamCourse.addItem(rs.getString(1));
             }
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             System.out.println(e);
         }
-
+        
     }
-
+    
     public void getAddRegdetails() {
-
+        
         java.sql.Statement stmt;
-
+        
+        try {
+            stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `student_registation` WHERE `stu_nic`='" + txtEnterNic.getText() + "'");
+            
+            if (rs.next()) {
+                
+                String mcnumE = rs.getString(2);
+                
+                txtMcExam.setText(mcnumE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Student not registerd");
+                
+            }
+        } catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null, e);
+            
+        }
+        
+    }
+    
+    public void getAddBatch() {
+        
+        java.sql.Statement stmt;
+        
         try {
             stmt = con.createStatement();
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `student_registation` WHERE `stu_nic`='" + txtEnterNic.getText() + "'");
+            // Get the text from the text field
+            String enteredBatchId = txtEnterBatch.getText();
+            System.out.println("Entered Batch ID: " + enteredBatchId); // For debugging
 
+            // Correctly form the SQL query
+            String query = "SELECT * FROM `batch_details` WHERE `batch_name`='" + enteredBatchId + "'";
+            System.out.println("Executing query: " + query); // For debugging
+
+            ResultSet rs = stmt.executeQuery(query);
+            
             if (rs.next()) {
-
-//                String nic = rs.getString(3);
-                String mcnumE = rs.getString(2);
-
-                txtMcExam.setText(mcnumE);
-
-//                txtNic1.setEnabled(false);
-//                txtName1.setEnabled(false);
-//                txtPhoneNUm1.setEnabled(false);
-//                txtAddress1.setEnabled(false);
-//                validateNIc2.setText("Do not Chanege Nic");
-//                validateName1.setText("Do not Chanege Name");
-//                validatePnum1.setText("Do not Chanege Phone Number");
-//                validateAddress1.setText("Do not Chanege Address");
+                // Assuming the batch name is in the second column
+                String batchNameumE = rs.getString(2);
+                txtBatchE.setText(batchNameumE);
             } else {
-                JOptionPane.showMessageDialog(null, "Student not registerd");
-
+                JOptionPane.showMessageDialog(null, "Batch not registered");
+                System.out.println("Batch not registered");
             }
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, e);
-
+            e.printStackTrace(); // For debugging
+            JOptionPane.showMessageDialog(null, "An error occurred while fetching batch details.");
         }
-
+        
     }
 
     //Getter Sette Method
-    public JComboBox<String> getjComboBoxBatcExam() {
-        return jComboBoxBatcExam;
+
+    public JTextField getTxtEnterBatch() {
+        return txtEnterBatch;
     }
 
-    public void setjComboBoxBatcExam(JComboBox<String> jComboBoxBatcExam) {
-        this.jComboBoxBatcExam = jComboBoxBatcExam;
+    public void setTxtEnterBatch(JTextField txtEnterBatch) {
+        this.txtEnterBatch = txtEnterBatch;
     }
 
+    public JLabel getValidateEnterBatch() {
+        return ValidateEnterBatch;
+    }
+
+    public void setValidateEnterBatch(JLabel ValidateEnterBatch) {
+        this.ValidateEnterBatch = ValidateEnterBatch;
+    }
+
+    
+    
+    public JTextField getTxtBatchE() {
+        return txtBatchE;
+    }
+    
+    public void setTxtBatchE(JTextField txtBatchE) {
+        this.txtBatchE = txtBatchE;
+    }
+    
     public JComboBox<String> getjComboBoxExamCourse() {
         return jComboBoxExamCourse;
     }
-
+    
     public void setjComboBoxExamCourse(JComboBox<String> jComboBoxExamCourse) {
         this.jComboBoxExamCourse = jComboBoxExamCourse;
     }
-
+    
     public JComboBox<String> getjComboBoxPassFail() {
         return jComboBoxPassFail;
     }
-
+    
     public void setjComboBoxPassFail(JComboBox<String> jComboBoxPassFail) {
         this.jComboBoxPassFail = jComboBoxPassFail;
     }
-
+    
     public JDateChooser getjDateChooserExam() {
         return jDateChooserExam;
     }
-
+    
     public void setjDateChooserExam(JDateChooser jDateChooserExam) {
         this.jDateChooserExam = jDateChooserExam;
     }
-
+    
     public JTextField getTxtEnterNic() {
         return txtEnterNic;
     }
-
+    
     public void setTxtEnterNic(JTextField txtEnterNic) {
         this.txtEnterNic = txtEnterNic;
     }
-
+    
     public JTextField getTxtExamId() {
         return txtExamId;
     }
-
+    
     public void setTxtExamId(JTextField txtExamId) {
         this.txtExamId = txtExamId;
     }
-
+    
     public JTextField getTxtMcExam() {
         return txtMcExam;
     }
-
+    
     public void setTxtMcExam(JTextField txtMcExam) {
         this.txtMcExam = txtMcExam;
     }
-
+    
     public JLabel getValidateBatchE() {
         return validateBatchE;
     }
-
+    
     public void setValidateBatchE(JLabel validateBatchE) {
         this.validateBatchE = validateBatchE;
     }
-
+    
     public JLabel getValidateCourseE() {
         return validateCourseE;
     }
-
+    
     public void setValidateCourseE(JLabel validateCourseE) {
         this.validateCourseE = validateCourseE;
     }
-
+    
     public JLabel getValidateEnterNic() {
         return validateEnterNic;
     }
-
+    
     public void setValidateEnterNic(JLabel validateEnterNic) {
         this.validateEnterNic = validateEnterNic;
     }
-
+    
     public JLabel getValidateExamDate() {
         return validateExamDate;
     }
-
+    
     public void setValidateExamDate(JLabel validateExamDate) {
         this.validateExamDate = validateExamDate;
     }
-
+    
     public JLabel getValidateMcE() {
         return validateMcE;
     }
-
+    
     public void setValidateMcE(JLabel validateMcE) {
         this.validateMcE = validateMcE;
     }
-
+    
     public JLabel getValidaterIdExam() {
         return validaterIdExam;
     }
-
+    
     public void setValidaterIdExam(JLabel validaterIdExam) {
         this.validaterIdExam = validaterIdExam;
     }
-
+    
     public boolean isvalidateExam() {
-
+        
         boolean isvalidate = isvalidateNicExam();
         return isvalidate;
     }
@@ -812,15 +880,15 @@ public class AddExamForm extends javax.swing.JFrame {
 //
 //    }
     private boolean isvalidateNicExam() {
-
+        
         if (txtMcExam.getText().equals("")) {
-
+            
             validateMcE.setText("Can not be empty");
-
+            
         } else {
             validateMcE.setText(" ");
         }
         return true;
     }
-
+    
 }
