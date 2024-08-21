@@ -107,6 +107,8 @@ public class LoginMainFrame extends javax.swing.JFrame {
 
         txtPasswordL.setBackground(new java.awt.Color(255, 204, 204));
         txtPasswordL.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtPasswordL.setForeground(new java.awt.Color(0, 0, 0));
+        txtPasswordL.setCaretColor(new java.awt.Color(0, 0, 0));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 0, 51));
@@ -267,47 +269,55 @@ public class LoginMainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void jButtonSingINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSingINActionPerformed
-        String Email, Password, query, fname = null, passDb = null;
+        String Email, query, fname = null, passDb = null;
+        String Password = new String(txtPasswordL.getPassword());
         int notFound = 0;
+
+        // Check if the fields are empty
+        if ("".equals(txtEmail.getText())) {
+            JOptionPane.showMessageDialog(new JFrame(), "Email Address is required", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if ("".equals(txtPasswordL.getText())) {
+            JOptionPane.showMessageDialog(new JFrame(), "Password is required", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         try {
             Statement st = con.createStatement();
-            if ("".equals(txtEmail.getText())) {
-                JOptionPane.showMessageDialog(new JFrame(), "Email Address is required", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            } else if ("".equals(txtPasswordL.getText())) {
-                JOptionPane.showMessageDialog(new JFrame(), "Password is required", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            } else {
 
-                Email = txtEmail.getText();
-                Password = txtPasswordL.getText();
+            Email = txtEmail.getText();
+            Password = new String(txtPasswordL.getPassword());  // Get password securely
 
-                query = "SELECT * FROM users WHERE email= '" + Email + "'";
+            query = "SELECT * FROM users WHERE email= '" + Email + "'";
 
-                ResultSet rs = st.executeQuery(query);
-                while (rs.next()) {
-                    passDb = rs.getString("password");
-                    fname = rs.getString("name");
-                    notFound = 1;
-                }
-                if (notFound == 1 && Password.equals(passDb)) {
-                    Home hp = new Home(); // Create a new instance of Home
-                    main.setUser(fname); // Set the admin's name
-
-                    main.add(hp); // Add the Home panel to the JFrame
-                    main.pack();
-                    JOptionPane.showMessageDialog(this, "Succefull Login");
-                    main.setLocationRelativeTo(null);
-                    main.setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(new JFrame(), "Incorrect email or password", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                }
-                txtPasswordL.setText("");
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                passDb = rs.getString("password");
+                fname = rs.getString("name");
+                notFound = 1;
             }
+
+            if (notFound == 1 && Password.equals(passDb)) {
+                Home hp = new Home(); // Create a new instance of Home
+                main.setUser(fname);  // Set the admin's name
+
+                main.add(hp); // Add the Home panel to the JFrame
+                main.pack();
+                JOptionPane.showMessageDialog(this, "Successful Login");
+                main.setLocationRelativeTo(null);
+                main.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Incorrect email or password", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+            txtPasswordL.setText("");
         } catch (Exception e) {
-            System.out.println("Error!" + e.getMessage());
+            System.out.println("Error! " + e.getMessage());
         }
     }//GEN-LAST:event_jButtonSingINActionPerformed
 

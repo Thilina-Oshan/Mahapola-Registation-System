@@ -237,6 +237,9 @@ public class AddCourse extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
         );
 
+        SearchComboCourse.setBackground(new java.awt.Color(255, 255, 255));
+        SearchComboCourse.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

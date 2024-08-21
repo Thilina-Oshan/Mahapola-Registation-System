@@ -362,6 +362,10 @@ public class AddPaymentForm extends javax.swing.JFrame {
         );
 
         txtPaymentNUm.setEnabled(false);
+        jComboBoxCoursePay.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxCoursePay.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBoxBatchPay.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxBatchPay.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Payment.jpeg"))); // NOI18N
 

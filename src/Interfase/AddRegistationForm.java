@@ -65,11 +65,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
         validateNIc2 = new javax.swing.JLabel();
         txtMCNUm = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jComboBoxBatch = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        jComboBoxBatchReg = new javax.swing.JComboBox<>();
+        validateBstchReg = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBoxCourse = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        jComboBoxCourseReg = new javax.swing.JComboBox<>();
+        validateCourseReg = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtRegId = new javax.swing.JTextField();
         validateRegId = new javax.swing.JLabel();
@@ -81,6 +81,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jDateChooserReg = new com.toedter.calendar.JDateChooser();
+        vaidateDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -245,21 +246,31 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Batch");
 
-        jComboBoxBatch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxBatchReg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Batch" }));
+        jComboBoxBatchReg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxBatchRegFocusLost(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("   ");
+        validateBstchReg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        validateBstchReg.setForeground(new java.awt.Color(0, 0, 0));
+        validateBstchReg.setText("   ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Course");
 
-        jComboBoxCourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCourseReg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCourseReg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBoxCourseRegFocusLost(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("nb");
+        validateCourseReg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        validateCourseReg.setForeground(new java.awt.Color(0, 0, 0));
+        validateCourseReg.setText("                                                  ");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -322,14 +333,14 @@ public class AddRegistationForm extends javax.swing.JFrame {
                                         .addComponent(txtPhoneNUm1)
                                         .addComponent(txtAddress1)
                                         .addComponent(validateAddress1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxBatch, 0, 281, Short.MAX_VALUE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBoxCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxBatchReg, 0, 281, Short.MAX_VALUE)
+                                        .addComponent(validateBstchReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jComboBoxCourseReg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(validateNIc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(validateRegId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(validateCourseReg, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jButtonInsert1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,16 +406,16 @@ public class AddRegistationForm extends javax.swing.JFrame {
                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                         .addGap(115, 115, 115)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxBatch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxBatchReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(validateBstchReg, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxCourseReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(validateCourseReg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -420,7 +431,13 @@ public class AddRegistationForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jComboBoxBatchReg.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxCourseReg.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBoxCourseReg.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxCourseReg.setForeground(new java.awt.Color(0, 0, 0));
         txtRegId.setEnabled(false);
+        jComboBoxStatus.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxStatus.setForeground(new java.awt.Color(0, 0, 0));
 
         validateEnterdNic.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         validateEnterdNic.setForeground(new java.awt.Color(0, 0, 0));
@@ -444,6 +461,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 51, 0));
         jLabel8.setText("Registred Date");
+
+        vaidateDate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        vaidateDate.setForeground(new java.awt.Color(0, 0, 0));
+        vaidateDate.setText("                                      ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -481,7 +502,9 @@ public class AddRegistationForm extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jDateChooserReg, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jDateChooserReg, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                                            .addComponent(vaidateDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(76, 76, 76)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -505,21 +528,26 @@ public class AddRegistationForm extends javax.swing.JFrame {
                         .addComponent(validateEnterdNic, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lable_IBid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
+                        .addGap(12, 12, 12))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jDateChooserReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(vaidateDate)
+                .addGap(16, 16, 16)
                 .addComponent(lable_ISid, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 85, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(lable_IDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
                 .addComponent(lable_IDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jDateChooserReg.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooserReg.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -538,11 +566,6 @@ public class AddRegistationForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         if (txtEnterNic.getText().equals("")) {
 
@@ -555,21 +578,59 @@ public class AddRegistationForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void txtNic1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNic1FocusLost
-        isvalidateNicReg();
-    }//GEN-LAST:event_txtNic1FocusLost
+    private void txtMCNUmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMCNUmFocusLost
+        isvalidateMcNumber();
+    }//GEN-LAST:event_txtMCNUmFocusLost
 
-    private void txtName1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtName1FocusLost
-        isvalidateNameReg();
-    }//GEN-LAST:event_txtName1FocusLost
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        ClearFieldsReg();
+    }//GEN-LAST:event_jButtonClearActionPerformed
 
-    private void txtPhoneNUm1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPhoneNUm1FocusLost
-        isvalidatePhonenumberReg();
-    }//GEN-LAST:event_txtPhoneNUm1FocusLost
+    private void jButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsert1ActionPerformed
 
-    private void txtAddress1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddress1FocusLost
-        isvalidateAddressReg();
-    }//GEN-LAST:event_txtAddress1FocusLost
+        if (isvalidateReg()) {
+            try {
+                SetVariableRegistation();
+                String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `status` , `reg_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                // Debug statement to print the query
+                System.out.println("Executing query: " + query);
+
+                PreparedStatement pst = con.prepareStatement(query);
+
+                pst.setInt(1, mc_number);
+                pst.setString(2, Reg_nic);
+                pst.setString(3, Reg_name);
+                pst.setString(4, Reg_phoneNum);
+                pst.setString(5, Reg_address);
+                pst.setString(6, Reg_batchName);
+                pst.setString(7, Reg_courseName);  // Corrected index to 7
+                pst.setString(8, Reg_statusS);      // Added status parameter at correct index
+                // Handling null for Reg_Date
+                if (Reg_Date != null) {
+                    pst.setDate(9, new java.sql.Date(Reg_Date.getTime()));
+                } else {
+                    pst.setNull(9, java.sql.Types.DATE);
+                }
+
+                pst.executeUpdate(); // Use executeUpdate for INSERT
+                JOptionPane.showMessageDialog(null, "Save Successfull");
+                System.out.println("Sucess");
+                ClearFieldsReg();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Can't Insert Data");
+                JOptionPane.showMessageDialog(this, Reg_batchName + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
+                System.out.println("Not");
+                //                JOptionPane.showMessageDialog(this, " Duplicate entry " + Reg_batchName);s
+                System.out.println(e);
+                System.out.println(e);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "An unexpected error occurred");
+                e.printStackTrace();
+            }
+        }
+
+    }//GEN-LAST:event_jButtonInsert1ActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
 
@@ -613,7 +674,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Rollback failed: " + ex.getMessage());
                     }
                     JOptionPane.showMessageDialog(this, Reg_batchName + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
-//                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+                    //                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
                     System.out.println(e);
                     e.printStackTrace(); // Print stack trace for debugging
                 } finally {
@@ -626,64 +687,36 @@ public class AddRegistationForm extends javax.swing.JFrame {
             }
         }
 
-
     }//GEN-LAST:event_jButtonUpdateActionPerformed
 
-    private void jButtonInsert1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsert1ActionPerformed
+    private void txtNic1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNic1FocusLost
+        isvalidateNicReg();
+    }//GEN-LAST:event_txtNic1FocusLost
 
-        if (isvalidateReg()) {
-            try {
-                SetVariableRegistation();
-                String query = "INSERT INTO `student_registation` (`mc_num`, `stu_nic`, `stu_name`, `phone_num`, `address`, `batch_name`, `couse_name` , `status` , `reg_date`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private void txtPhoneNUm1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPhoneNUm1FocusLost
+        isvalidatePhonenumberReg();
+    }//GEN-LAST:event_txtPhoneNUm1FocusLost
 
-                // Debug statement to print the query
-                System.out.println("Executing query: " + query);
+    private void txtName1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtName1FocusLost
+        isvalidateNameReg();
+    }//GEN-LAST:event_txtName1FocusLost
 
-                PreparedStatement pst = con.prepareStatement(query);
+    private void txtAddress1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAddress1FocusLost
+        isvalidateAddressReg();
+    }//GEN-LAST:event_txtAddress1FocusLost
 
-                pst.setInt(1, mc_number);
-                pst.setString(2, Reg_nic);
-                pst.setString(3, Reg_name);
-                pst.setString(4, Reg_phoneNum);
-                pst.setString(5, Reg_address);
-                pst.setString(6, Reg_batchName);
-                pst.setString(7, Reg_courseName);  // Corrected index to 7
-                pst.setString(8, Reg_statusS);      // Added status parameter at correct index
-                // Handling null for Reg_Date
-                if (Reg_Date != null) {
-                    pst.setDate(9, new java.sql.Date(Reg_Date.getTime()));
-                } else {
-                    pst.setNull(9, java.sql.Types.DATE);
-                }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-                pst.executeUpdate(); // Use executeUpdate for INSERT
-                JOptionPane.showMessageDialog(null, "Save Successfull");
-                System.out.println("Sucess");
-                ClearFieldsReg();
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Can't Insert Data");
-                JOptionPane.showMessageDialog(this, Reg_batchName + " Batch  is Already Exists", "Found Duplicate Entries, HEIGHT", 2);
-                System.out.println("Not");
-//                JOptionPane.showMessageDialog(this, " Duplicate entry " + Reg_batchName);s
-                System.out.println(e);
-                System.out.println(e);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "An unexpected error occurred");
-                e.printStackTrace();
-            }
-        }
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBoxBatchRegFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxBatchRegFocusLost
+        isvalidateBatchReg();
+    }//GEN-LAST:event_jComboBoxBatchRegFocusLost
 
-    }//GEN-LAST:event_jButtonInsert1ActionPerformed
-
-    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        ClearFieldsReg();
-
-    }//GEN-LAST:event_jButtonClearActionPerformed
-
-    private void txtMCNUmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMCNUmFocusLost
-        isvalidateMcNumber();
-    }//GEN-LAST:event_txtMCNUmFocusLost
+    private void jComboBoxCourseRegFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxCourseRegFocusLost
+        isvalidateCourseReg();
+    }//GEN-LAST:event_jComboBoxCourseRegFocusLost
 
     public static void main(String args[]) {
 
@@ -703,8 +736,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonInsert1;
     private javax.swing.JButton jButtonUpdate;
-    private javax.swing.JComboBox<String> jComboBoxBatch;
-    private javax.swing.JComboBox<String> jComboBoxCourse;
+    private javax.swing.JComboBox<String> jComboBoxBatchReg;
+    private javax.swing.JComboBox<String> jComboBoxCourseReg;
     private javax.swing.JComboBox<String> jComboBoxStatus;
     private com.toedter.calendar.JDateChooser jDateChooserReg;
     private javax.swing.JLabel jLabel1;
@@ -715,9 +748,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -735,7 +766,10 @@ public class AddRegistationForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtNic1;
     private javax.swing.JTextField txtPhoneNUm1;
     private javax.swing.JTextField txtRegId;
+    private javax.swing.JLabel vaidateDate;
     private javax.swing.JLabel validateAddress1;
+    private javax.swing.JLabel validateBstchReg;
+    private javax.swing.JLabel validateCourseReg;
     private javax.swing.JLabel validateEnterdNic;
     private javax.swing.JLabel validateMcNUm;
     private javax.swing.JLabel validateNIc2;
@@ -763,8 +797,8 @@ public class AddRegistationForm extends javax.swing.JFrame {
         Reg_name = txtName1.getText();
         Reg_phoneNum = txtPhoneNUm1.getText();
         Reg_address = txtAddress1.getText();
-        Reg_batchName = jComboBoxBatch.getSelectedItem().toString();
-        Reg_courseName = jComboBoxCourse.getSelectedItem().toString();
+        Reg_batchName = jComboBoxBatchReg.getSelectedItem().toString();
+        Reg_courseName = jComboBoxCourseReg.getSelectedItem().toString();
         Reg_statusS = jComboBoxStatus.getSelectedItem().toString();
         Reg_Date = jDateChooserReg.getDate();
 
@@ -846,7 +880,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
     public boolean isvalidateReg() {
 
-        boolean isvalidate = isvalidateNicReg() & isvalidateNameReg() & isvalidatePhonenumberReg() & isvalidateAddressReg() & isvalidateMcNumber();
+        boolean isvalidate = isvalidateNicReg() & isvalidateNameReg() & isvalidatePhonenumberReg() & isvalidateAddressReg() & isvalidateMcNumber() & isvalidateBatchReg() & isvalidateCourseReg() & isvalidateSatusReg() & isvalidateDate();
         return isvalidate;
     }
 
@@ -914,6 +948,55 @@ public class AddRegistationForm extends javax.swing.JFrame {
         return true;
     }
 
+    private boolean isvalidateCourseReg() {
+
+        if (jComboBoxCourseReg.getSelectedIndex() == 0) {
+
+            validateCourseReg.setText("Can not be empty");
+
+        } else {
+            validateCourseReg.setText(" ");
+        }
+        return true;
+    }
+
+    private boolean isvalidateBatchReg() {
+
+        if (jComboBoxBatchReg.getSelectedIndex() == 0) {
+            validateBstchReg.setText("Select Batch");
+
+        } else {
+            validateBstchReg.setText("");
+        }
+        return true;
+    }
+
+    private boolean isvalidateSatusReg() {
+
+        if (jComboBoxStatus.getSelectedIndex() == 0) {
+
+            validateStatus.setText("Can not be empty");
+
+        } else {
+            validateStatus.setText(" ");
+        }
+        return true;
+    }
+
+    public boolean isvalidateDate() {
+
+        if (jDateChooserReg.getDate() == null) {
+            vaidateDate.setText("Choose the Date");
+            return false;
+
+        } else {
+            vaidateDate.setText(" ");
+
+        }
+        return true;
+
+    }
+
     public void ClearFieldsReg() {
 
         txtNic1.setText("");
@@ -921,8 +1004,21 @@ public class AddRegistationForm extends javax.swing.JFrame {
         txtMCNUm.setText("");
         txtName1.setText("");
         txtPhoneNUm1.setText("");
-        jComboBoxBatch.setSelectedIndex(0);
-        jComboBoxCourse.setSelectedIndex(0);
+        jComboBoxBatchReg.setSelectedIndex(0);
+        jComboBoxCourseReg.setSelectedIndex(0);
+        jDateChooserReg.setDate(null);
+
+        validateAddress1.setText(" ");
+        validateBstchReg.setText(" ");
+        validateCourseReg.setText(" ");
+        validateEnterdNic.setText(" ");
+        validateMcNUm.setText(" ");
+        validateName1.setText(" ");
+        validateName1.setText(" ");
+        validatePnum1.setText(" ");
+        validateStatus.setText(" ");
+        validateNIc2.setText(" ");
+        vaidateDate.setText(" ");
     }
 
     public void setBatchCombo() {
@@ -935,11 +1031,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
             String comboBox = "SELECT  `batch_name`  FROM `batch_details`";
             ResultSet rs = st.executeQuery(comboBox);
-            jComboBoxBatch.removeAllItems();
+            jComboBoxBatchReg.removeAllItems();
 
             while (rs.next()) {
 
-                jComboBoxBatch.addItem(rs.getString(1));
+                jComboBoxBatchReg.addItem(rs.getString(1));
             }
 
         } catch (Exception e) {
@@ -959,11 +1055,11 @@ public class AddRegistationForm extends javax.swing.JFrame {
 
             String comboBox = "SELECT `couse_name` FROM `course`";
             ResultSet rs = st.executeQuery(comboBox);
-            jComboBoxCourse.removeAllItems();
+            jComboBoxCourseReg.removeAllItems();
 
             while (rs.next()) {
 
-                jComboBoxCourse.addItem(rs.getString(1));
+                jComboBoxCourseReg.addItem(rs.getString(1));
             }
 
         } catch (Exception e) {

@@ -317,6 +317,9 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
         );
 
+        jComboBoxRegisterd.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxRegisterd.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

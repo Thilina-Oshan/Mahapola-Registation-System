@@ -207,6 +207,9 @@ public class AddAdmin extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(

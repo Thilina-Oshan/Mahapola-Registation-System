@@ -373,7 +373,12 @@ public class AddExamForm extends javax.swing.JFrame {
         txtExamId.setEnabled(false);
         jDateChooserExam.setEnabled(false);
         jComboBoxExamCourse.setEnabled(false);
+        jComboBoxExamCourse.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxExamCourse.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxPassFail.setEnabled(false);
+
+        jComboBoxPassFail.setBackground(new java.awt.Color(255, 255, 255));
+        jComboBoxPassFail.setForeground(new java.awt.Color(0, 0, 0));
         txtBatchE.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

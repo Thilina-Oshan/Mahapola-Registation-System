@@ -103,7 +103,7 @@ public class ExamTable extends javax.swing.JPanel {
         jTableAddExamDetails = new javax.swing.JTable();
         jButtonAddExam = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        ComboBoxSearchaplicant = new javax.swing.JComboBox<>();
+        ComboBoxSearchExam = new javax.swing.JComboBox<>();
         jTextAplicant = new javax.swing.JTextField();
         jButtonTableCertificate = new javax.swing.JButton();
 
@@ -177,10 +177,10 @@ public class ExamTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :-");
 
-        ComboBoxSearchaplicant.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nic", "Name", "Phone Number" }));
-        ComboBoxSearchaplicant.addActionListener(new java.awt.event.ActionListener() {
+        ComboBoxSearchExam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nic", "Name", "Phone Number" }));
+        ComboBoxSearchExam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxSearchaplicantActionPerformed(evt);
+                ComboBoxSearchExamActionPerformed(evt);
             }
         });
 
@@ -231,7 +231,7 @@ public class ExamTable extends javax.swing.JPanel {
                         .addGap(30, 30, 30)
                         .addComponent(jLabel1)
                         .addGap(49, 49, 49)
-                        .addComponent(ComboBoxSearchaplicant, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ComboBoxSearchExam, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
                         .addComponent(jTextAplicant, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -249,7 +249,7 @@ public class ExamTable extends javax.swing.JPanel {
                 .addGap(78, 78, 78)
                 .addGroup(jPanelExamTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(ComboBoxSearchaplicant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBoxSearchExam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextAplicant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,6 +259,9 @@ public class ExamTable extends javax.swing.JPanel {
                     .addComponent(jButtonTableCertificate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
+
+        ComboBoxSearchExam.setBackground(new java.awt.Color(255, 255, 255));
+        ComboBoxSearchExam.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -343,9 +346,9 @@ public class ExamTable extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButtonAddExamActionPerformed
 
-    private void ComboBoxSearchaplicantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxSearchaplicantActionPerformed
+    private void ComboBoxSearchExamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxSearchExamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxSearchaplicantActionPerformed
+    }//GEN-LAST:event_ComboBoxSearchExamActionPerformed
 
     private void jTextAplicantCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextAplicantCaretUpdate
 
@@ -392,7 +395,7 @@ public class ExamTable extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxSearchaplicant;
+    private javax.swing.JComboBox<String> ComboBoxSearchExam;
     private javax.swing.JButton jButtonAddExam;
     private javax.swing.JButton jButtonTableCertificate;
     private javax.swing.JLabel jLabel1;

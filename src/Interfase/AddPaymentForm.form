@@ -603,6 +603,7 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboBoxCoursePayFocusLost"/>
               </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jComboBoxCoursePay.setBackground(new java.awt.Color(255, 255, 255));&#xa;jComboBoxCoursePay.setForeground(new java.awt.Color(0, 0, 0));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -621,6 +622,7 @@
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jComboBoxBatchPayFocusLost"/>
               </Events>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jComboBoxBatchPay.setBackground(new java.awt.Color(255, 255, 255));&#xa;jComboBoxBatchPay.setForeground(new java.awt.Color(0, 0, 0));"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
