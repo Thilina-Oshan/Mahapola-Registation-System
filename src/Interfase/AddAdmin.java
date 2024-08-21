@@ -22,7 +22,7 @@ import javax.swing.table.JTableHeader;
 public class AddAdmin extends javax.swing.JPanel {
 
     static Connection con = MainInterfase.conn;
-    DefaultTableModel AddAdminModel = new DefaultTableModel(new String[]{"Student Id", "User Name", "User Email", "Password", "Re-Password"}, 0);
+    DefaultTableModel AddAdminModel = new DefaultTableModel(new String[]{"Student Id", "User Name", "User Email", "Sequrity Quetion", "Answer", "Password", "Re-Password"}, 0);
     AddAdminForm addadminform = new AddAdminForm();
     ArrayList<AddAdminClass> addadminArray;
     ResultSet rs;
@@ -49,7 +49,7 @@ public class AddAdmin extends javax.swing.JPanel {
 
             while (rs.next()) {
 
-                users = new AddAdminClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+                users = new AddAdminClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
                 adminlist.add(users);
             }
 
@@ -70,11 +70,13 @@ public class AddAdmin extends javax.swing.JPanel {
 
             int a = addadminArray.get(i).getUser_id();
             String b = addadminArray.get(i).getUser_name();
-            String c = addadminArray.get(i).getName();
-            String d = addadminArray.get(i).getPassword();
-            String e = addadminArray.get(i).getRe_enterPassword();
+            String c = addadminArray.get(i).getEmail();
+            String d = addadminArray.get(i).getQuet();
+            String e = addadminArray.get(i).getAnsw();
+            String f = addadminArray.get(i).getPassword();
+            String g = addadminArray.get(i).getRe_enterPassword();
 
-            AddAdminModel.addRow(new Object[]{a, b, c, d, e});
+            AddAdminModel.addRow(new Object[]{a, b, c, d, e, f, g});
         }
 
     }
@@ -202,7 +204,7 @@ public class AddAdmin extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonAddAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -213,7 +215,7 @@ public class AddAdmin extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelAddPaymentTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelAddPaymentTable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -277,8 +279,7 @@ public class AddAdmin extends javax.swing.JPanel {
     private javax.swing.JTextField jTextSearchRegisterd;
     // End of variables declaration//GEN-END:variables
 
-
-   void CustimizeTableAdminHeader() {
+    void CustimizeTableAdminHeader() {
 
         JTableHeader header = jTableAdmin.getTableHeader();
         header.setBackground(new Color(0, 102, 204)); // Set your desired background color

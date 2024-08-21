@@ -15,7 +15,7 @@ import javax.swing.SwingUtilities;
 public class Home extends javax.swing.JPanel {
 
     Connection con;
-    LoginForm lgF;
+    LoginMainFrame lgF;
 
     public Home() {
         initComponents();
@@ -25,7 +25,7 @@ public class Home extends javax.swing.JPanel {
 
     public void initializeLoginForm() {
         if (lgF == null) {
-            lgF = new LoginForm();
+            lgF = new LoginMainFrame();
             lgF.setVisible(true);
             updateAdminName();
         }
@@ -232,10 +232,9 @@ public class Home extends javax.swing.JPanel {
                 .addGap(0, 53, Short.MAX_VALUE))
         );
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/resized_image.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/slp.jpeg"))); // NOI18N
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 1, true));
 
         JlableAdminName.setFont(new java.awt.Font("Segoe UI Black", 1, 15)); // NOI18N
         JlableAdminName.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,7 +279,7 @@ public class Home extends javax.swing.JPanel {
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                        .addGap(0, 183, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
@@ -297,9 +296,9 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -8,14 +8,18 @@ public class AddAdminClass {
 
     private int User_id;
     private String user_name;
-    private String name;
+    private String email;
+      private String Quet;
+      private String Answ;
     private String password;
     private String re_enterPassword;
 
-    public AddAdminClass(int User_id, String user_name, String name, String password, String re_enterPassword) {
+    public AddAdminClass(int User_id, String user_name, String email, String Quet, String Answ, String password, String re_enterPassword) {
         this.User_id = User_id;
         this.user_name = user_name;
-        this.name = name;
+        this.email = email;
+        this.Quet = Quet;
+        this.Answ = Answ;
         this.password = password;
         this.re_enterPassword = re_enterPassword;
     }
@@ -49,17 +53,45 @@ public class AddAdminClass {
     }
 
     /**
-     * @return the name
+     * @return the email
      */
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param name the name to set
+     * @param email the email to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the Quet
+     */
+    public String getQuet() {
+        return Quet;
+    }
+
+    /**
+     * @param Quet the Quet to set
+     */
+    public void setQuet(String Quet) {
+        this.Quet = Quet;
+    }
+
+    /**
+     * @return the Answ
+     */
+    public String getAnsw() {
+        return Answ;
+    }
+
+    /**
+     * @param Answ the Answ to set
+     */
+    public void setAnsw(String Answ) {
+        this.Answ = Answ;
     }
 
     /**
@@ -90,5 +122,5 @@ public class AddAdminClass {
         this.re_enterPassword = re_enterPassword;
     }
 
-   
+ 
 }
