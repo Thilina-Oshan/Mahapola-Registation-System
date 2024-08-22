@@ -152,6 +152,14 @@ public class AddBatch extends javax.swing.JPanel {
         jButtonAddBatch.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButtonAddBatch.setForeground(new java.awt.Color(0, 0, 51));
         jButtonAddBatch.setText("Add New Batch");
+        jButtonAddBatch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAddBatchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonAddBatchMouseExited(evt);
+            }
+        });
         jButtonAddBatch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddBatchActionPerformed(evt);
@@ -304,6 +312,16 @@ public class AddBatch extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_jTableBatchMouseClicked
+
+    private void jButtonAddBatchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddBatchMouseEntered
+        jButtonAddBatch.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAddBatch.setBackground(new java.awt.Color(0, 0, 51));
+    }//GEN-LAST:event_jButtonAddBatchMouseEntered
+
+    private void jButtonAddBatchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddBatchMouseExited
+        jButtonAddBatch.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonAddBatch.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jButtonAddBatchMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

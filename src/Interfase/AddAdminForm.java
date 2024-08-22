@@ -41,9 +41,7 @@ public class AddAdminForm extends javax.swing.JFrame {
         validateAdminName = new javax.swing.JLabel();
         validatePassword = new javax.swing.JLabel();
         validateReenderPassword = new javax.swing.JLabel();
-        jButtonClear = new javax.swing.JButton();
         jButtonInsertAdmin = new javax.swing.JButton();
-        jButtonUpdate = new javax.swing.JButton();
         txtPassword = new javax.swing.JTextField();
         txtReenterPws = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -118,39 +116,15 @@ public class AddAdminForm extends javax.swing.JFrame {
         validateReenderPassword.setForeground(new java.awt.Color(0, 0, 0));
         validateReenderPassword.setText("     ");
 
-        jButtonClear.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonClear.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButtonClear.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonClear.setText("Clear");
-        jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearActionPerformed(evt);
-            }
-        });
-
         jButtonInsertAdmin.setBackground(new java.awt.Color(102, 102, 255));
         jButtonInsertAdmin.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jButtonInsertAdmin.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonInsertAdmin.setText("Save");
+        jButtonInsertAdmin.setText("Sing In");
         jButtonInsertAdmin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButtonInsertAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonInsertAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInsertAdminActionPerformed(evt);
-            }
-        });
-
-        jButtonUpdate.setBackground(new java.awt.Color(102, 102, 255));
-        jButtonUpdate.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jButtonUpdate.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonUpdate.setText("Update");
-        jButtonUpdate.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
-        jButtonUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUpdateActionPerformed(evt);
             }
         });
 
@@ -173,6 +147,7 @@ public class AddAdminForm extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Email");
 
         txtEmail.setBackground(new java.awt.Color(255, 255, 255));
@@ -189,6 +164,7 @@ public class AddAdminForm extends javax.swing.JFrame {
         ValidationEmail.setText("                                           ");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Security question");
 
         validateQue.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -196,6 +172,7 @@ public class AddAdminForm extends javax.swing.JFrame {
         validateQue.setText("                                                       ");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Anwer");
 
         jComboBoxQue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "What is your Favariout Game ?", "What is your Nick Name ?", "What is your pet's Name ?" }));
@@ -231,15 +208,7 @@ public class AddAdminForm extends javax.swing.JFrame {
                             .addComponent(txtReenterPws)
                             .addComponent(validatePassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButtonInsertAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jButtonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonClear, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                        .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -266,6 +235,10 @@ public class AddAdminForm extends javax.swing.JFrame {
                             .addComponent(txtAns)
                             .addComponent(validateAns, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonInsertAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,12 +287,9 @@ public class AddAdminForm extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validateReenderPassword)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonInsertAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(jButtonInsertAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
         );
 
         txtAdminId.setEnabled(false);
@@ -376,60 +346,6 @@ public class AddAdminForm extends javax.swing.JFrame {
         passwordValidation();
     }//GEN-LAST:event_txtPasswordFocusLost
 
-    private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-
-        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to update the data?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        if (choice == JOptionPane.YES_NO_OPTION) {
-
-            setVariableAdmin();
-
-            if (isvalidateAdmin()) {
-
-                try {
-                    con.setAutoCommit(false); // Disable auto-commit for transaction management
-
-                    String query = "UPDATE `users` SET `name`=?,`email`=?,`password`=?,`re_enterpassword`=? WHERE `id`=?";
-                    try (PreparedStatement pst = con.prepareStatement(query)) {
-
-                        pst.setString(1, User_name);
-                        pst.setString(2, Email);
-                        pst.setString(3, Password);
-                        pst.setString(4, Re_enterPassword);
-                        pst.setInt(5, User_id); // Use the correct variable for the registration ID
-
-                        int rowsAffected = pst.executeUpdate();
-                        if (rowsAffected > 0) {
-                            JOptionPane.showMessageDialog(null, "Update Successful");
-                            ClearAdminF();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Update Failed: No rows affected.");
-                            System.out.println("Update Failed: No rows affected.");
-                        }
-                    }
-
-                    con.commit(); // Commit the transaction
-                } catch (Exception e) {
-                    try {
-                        con.rollback(); // Rollback transaction on error
-                    } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "Rollback failed: " + ex.getMessage());
-                    }
-                    JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
-                    System.out.println(e);
-                    e.printStackTrace(); // Print stack trace for debugging
-                } finally {
-                    try {
-                        con.setAutoCommit(true); // Re-enable auto-commit
-                    } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "Failed to reset auto-commit: " + ex.getMessage());
-
-                    }
-                }
-            }
-
-        }
-    }//GEN-LAST:event_jButtonUpdateActionPerformed
-
     private void jButtonInsertAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertAdminActionPerformed
         if (isvalidateAdmin()) {
             setVariableAdmin();
@@ -469,10 +385,6 @@ public class AddAdminForm extends javax.swing.JFrame {
         nameValidation();
     }//GEN-LAST:event_txtAdminNameFocusLost
 
-    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
-        ClearAdminF();
-    }//GEN-LAST:event_jButtonClearActionPerformed
-
     public static void main(String args[]) {
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
@@ -487,9 +399,7 @@ public class AddAdminForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel NOValidate;
     private javax.swing.JLabel ValidationEmail;
-    private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonInsertAdmin;
-    private javax.swing.JButton jButtonUpdate;
     private javax.swing.JComboBox<String> jComboBoxQue;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

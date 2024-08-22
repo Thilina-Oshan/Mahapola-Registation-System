@@ -33,6 +33,7 @@ public class MainInterfase extends javax.swing.JFrame {
         ClickedColor = new Color(11, 160, 244);
         ClickAfterForgrond = new Color(255, 255, 0);
         ClickForeground = new Color(255, 255, 255);
+        
 
         buttons = new JButton[]{Homet1Botton, Homet1Botton, AddcoursBotton, AddBatchButton, AddPaymentBotton, jButtonExam};
 
@@ -86,7 +87,7 @@ public class MainInterfase extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         AddStudentBotton1 = new javax.swing.JButton();
         AddBatchButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonLogout = new javax.swing.JButton();
         jButtonExam = new javax.swing.JButton();
         InterfaseView = new javax.swing.JPanel();
 
@@ -212,16 +213,16 @@ public class MainInterfase extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 51));
-        jButton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LOgoutS.png"))); // NOI18N
-        jButton1.setText("LogOut");
-        jButton1.setBorder(null);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogout.setBackground(new java.awt.Color(0, 0, 51));
+        jButtonLogout.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        jButtonLogout.setForeground(new java.awt.Color(255, 255, 0));
+        jButtonLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/LOgoutS.png"))); // NOI18N
+        jButtonLogout.setText("LogOut");
+        jButtonLogout.setBorder(null);
+        jButtonLogout.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButtonLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonLogoutActionPerformed(evt);
             }
         });
 
@@ -263,7 +264,7 @@ public class MainInterfase extends javax.swing.JFrame {
                             .addComponent(AddcoursBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AddStudentBotton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AddBatchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AddPaymentBotton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -290,7 +291,7 @@ public class MainInterfase extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButtonExam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(180, 180, 180)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -492,11 +493,11 @@ public class MainInterfase extends javax.swing.JFrame {
         jButtonExam.setForeground(ClickForeground);
     }//GEN-LAST:event_jButtonExamMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       LoginMainFrame loginF = new LoginMainFrame();
-       loginF.setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogoutActionPerformed
+        LoginMainFrame loginmainframe = new LoginMainFrame();
+        loginmainframe.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonLogoutActionPerformed
 
     public static void main(String args[]) {
 
@@ -517,8 +518,8 @@ public class MainInterfase extends javax.swing.JFrame {
     private javax.swing.JButton AddcoursBotton;
     private javax.swing.JButton Homet1Botton;
     private javax.swing.JPanel InterfaseView;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonExam;
+    private javax.swing.JButton jButtonLogout;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;

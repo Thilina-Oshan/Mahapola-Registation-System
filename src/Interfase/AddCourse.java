@@ -170,6 +170,14 @@ public class AddCourse extends javax.swing.JPanel {
         jButtonAddCourse.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButtonAddCourse.setForeground(new java.awt.Color(0, 0, 51));
         jButtonAddCourse.setText("Add New Course");
+        jButtonAddCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAddCourseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonAddCourseMouseExited(evt);
+            }
+        });
         jButtonAddCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddCourseActionPerformed(evt);
@@ -308,6 +316,16 @@ public class AddCourse extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         setCoursetable();
     }//GEN-LAST:event_formMouseClicked
+
+    private void jButtonAddCourseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddCourseMouseEntered
+       jButtonAddCourse.setBackground(new java.awt.Color(0, 0, 51));
+        jButtonAddCourse.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jButtonAddCourseMouseEntered
+
+    private void jButtonAddCourseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddCourseMouseExited
+         jButtonAddCourse.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonAddCourse.setForeground(new java.awt.Color(0, 0, 51));
+    }//GEN-LAST:event_jButtonAddCourseMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

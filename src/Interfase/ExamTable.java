@@ -105,7 +105,6 @@ public class ExamTable extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         ComboBoxSearchExam = new javax.swing.JComboBox<>();
         jTextExam = new javax.swing.JTextField();
-        jButtonTableCertificate = new javax.swing.JButton();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,29 +193,6 @@ public class ExamTable extends javax.swing.JPanel {
             }
         });
 
-        jButtonTableCertificate.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonTableCertificate.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jButtonTableCertificate.setForeground(new java.awt.Color(0, 0, 51));
-        jButtonTableCertificate.setText("Certificate");
-        jButtonTableCertificate.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jButtonTableCertificateItemStateChanged(evt);
-            }
-        });
-        jButtonTableCertificate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButtonTableCertificateMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButtonTableCertificateMouseExited(evt);
-            }
-        });
-        jButtonTableCertificate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonTableCertificateActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelExamTableLayout = new javax.swing.GroupLayout(jPanelExamTable);
         jPanelExamTable.setLayout(jPanelExamTableLayout);
         jPanelExamTableLayout.setHorizontalGroup(
@@ -237,8 +213,6 @@ public class ExamTable extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExamTableLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonTableCertificate, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jButtonAddExam, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(94, 94, 94))
         );
@@ -254,9 +228,7 @@ public class ExamTable extends javax.swing.JPanel {
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanelExamTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddExam, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonTableCertificate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButtonAddExam, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -369,26 +341,6 @@ public class ExamTable extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTextExamCaretUpdate
 
-    private void jButtonTableCertificateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTableCertificateMouseEntered
-        jButtonTableCertificate.setBackground(new java.awt.Color(0, 0, 51));
-        jButtonTableCertificate.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jButtonTableCertificate.setForeground(new java.awt.Color(255, 255, 255));
-    }//GEN-LAST:event_jButtonTableCertificateMouseEntered
-
-    private void jButtonTableCertificateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTableCertificateMouseExited
-        jButtonTableCertificate.setBackground(new java.awt.Color(255, 255, 255));
-        jButtonTableCertificate.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jButtonTableCertificate.setForeground(new java.awt.Color(0, 0, 51));
-    }//GEN-LAST:event_jButtonTableCertificateMouseExited
-
-    private void jButtonTableCertificateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTableCertificateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTableCertificateActionPerformed
-
-    private void jButtonTableCertificateItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jButtonTableCertificateItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonTableCertificateItemStateChanged
-
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         setExamTable();
     }//GEN-LAST:event_formMouseClicked
@@ -397,7 +349,6 @@ public class ExamTable extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxSearchExam;
     private javax.swing.JButton jButtonAddExam;
-    private javax.swing.JButton jButtonTableCertificate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanelExamTable;

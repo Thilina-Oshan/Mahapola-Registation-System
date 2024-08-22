@@ -121,7 +121,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jTextBatchNumber = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonBackUp = new javax.swing.JButton();
 
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -219,6 +219,14 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jButtonAddNewRegisterd.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButtonAddNewRegisterd.setForeground(new java.awt.Color(0, 0, 51));
         jButtonAddNewRegisterd.setText("Registerd Student Form");
+        jButtonAddNewRegisterd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAddNewRegisterdMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonAddNewRegisterdMouseExited(evt);
+            }
+        });
         jButtonAddNewRegisterd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddNewRegisterdActionPerformed(evt);
@@ -254,13 +262,21 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Enter Batch Number");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 51));
-        jButton1.setText("Create Backup");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBackUp.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonBackUp.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
+        jButtonBackUp.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonBackUp.setText("Create Backup");
+        jButtonBackUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonBackUpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonBackUpMouseExited(evt);
+            }
+        });
+        jButtonBackUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBackUpActionPerformed(evt);
             }
         });
 
@@ -271,7 +287,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddRegistationTableLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonBackUp, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
@@ -313,7 +329,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(jPanelAddRegistationTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddNewRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonBackUp, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
 
@@ -466,7 +482,7 @@ public class AddRegistrationTable extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextSearchRegisterdCaretUpdate
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonBackUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackUpActionPerformed
         JTableToExcelExporter exporter = new JTableToExcelExporter();
 
         JFileChooser fileChooser = new JFileChooser();
@@ -486,13 +502,35 @@ public class AddRegistrationTable extends javax.swing.JPanel {
             }
             JOptionPane.showMessageDialog(null, "Data exported to Excel file successfully.");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonBackUpActionPerformed
+
+    private void jButtonAddNewRegisterdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddNewRegisterdMouseEntered
+        jButtonAddNewRegisterd.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAddNewRegisterd.setBackground(new java.awt.Color(0, 0, 51));
+    }//GEN-LAST:event_jButtonAddNewRegisterdMouseEntered
+
+    private void jButtonAddNewRegisterdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddNewRegisterdMouseExited
+
+        jButtonAddNewRegisterd.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonAddNewRegisterd.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jButtonAddNewRegisterdMouseExited
+
+    private void jButtonBackUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackUpMouseEntered
+        jButtonBackUp.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBackUp.setBackground(new java.awt.Color(0, 0, 51));
+    }//GEN-LAST:event_jButtonBackUpMouseEntered
+
+    private void jButtonBackUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackUpMouseExited
+
+        jButtonBackUp.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonBackUp.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jButtonBackUpMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddNewRegisterd;
     private javax.swing.JButton jButtonAplicant;
+    private javax.swing.JButton jButtonBackUp;
     private javax.swing.JButton jButtonRegisterd;
     private javax.swing.JComboBox<String> jComboBoxRegisterd;
     private javax.swing.JLabel jLabel1;

@@ -140,6 +140,17 @@ public class AddAdmin extends javax.swing.JPanel {
         jButtonAddAdmin.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButtonAddAdmin.setForeground(new java.awt.Color(0, 0, 51));
         jButtonAddAdmin.setText("Add New Admin");
+        jButtonAddAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddAdminMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAddAdminMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonAddAdminMouseExited(evt);
+            }
+        });
         jButtonAddAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddAdminActionPerformed(evt);
@@ -268,6 +279,20 @@ public class AddAdmin extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         setAdmintable();
     }//GEN-LAST:event_formMouseClicked
+
+    private void jButtonAddAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAdminMouseClicked
+        jButtonAddAdmin.setForeground(new java.awt.Color(0, 0, 51));
+        jButtonAddAdmin.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jButtonAddAdminMouseClicked
+
+    private void jButtonAddAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAdminMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddAdminMouseExited
+
+    private void jButtonAddAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddAdminMouseEntered
+        jButtonAddAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAddAdmin.setBackground(new java.awt.Color(0, 0, 51));
+    }//GEN-LAST:event_jButtonAddAdminMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
