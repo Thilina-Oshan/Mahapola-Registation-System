@@ -24,14 +24,12 @@ public class AddBatchForm extends javax.swing.JFrame {
     static Connection con = MainInterfase.conn;
     private AddBatch addbatch;
     ResultSet rs;
-   
+
     public AddBatchForm() {
         initComponents();
         customizeCloseOperation();
     }
 
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,7 +53,6 @@ public class AddBatchForm extends javax.swing.JFrame {
         DateChooserStartDate = new com.toedter.calendar.JDateChooser();
         DateChooserEndDate = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        jButton151 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -209,7 +206,7 @@ public class AddBatchForm extends javax.swing.JFrame {
                     .addComponent(txtBatchName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validateBatchName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DateChooserStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
@@ -231,17 +228,6 @@ public class AddBatchForm extends javax.swing.JFrame {
 
         txtBtchId.setEnabled(false);
 
-        jButton151.setBackground(new java.awt.Color(51, 102, 255));
-        jButton151.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton151.setForeground(new java.awt.Color(255, 255, 255));
-        jButton151.setText("Back");
-        jButton151.setBorder(null);
-        jButton151.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton151ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/signup-library-icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -251,7 +237,6 @@ public class AddBatchForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton151, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -259,8 +244,7 @@ public class AddBatchForm extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton151)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1))
@@ -282,11 +266,6 @@ public class AddBatchForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton151ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton151ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButton151ActionPerformed
-
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
         clearFiled();
     }//GEN-LAST:event_jButtonClearActionPerformed
@@ -301,9 +280,9 @@ public class AddBatchForm extends javax.swing.JFrame {
                 PreparedStatement pst = con.prepareStatement(query);
 
                 pst.setString(1, BName);
-                pst.setDate(2, new java.sql.Date (StartDate.getTime()));
-                pst.setDate(3, new java.sql.Date (EndDate.getTime()));
-               
+                pst.setDate(2, new java.sql.Date(StartDate.getTime()));
+                pst.setDate(3, new java.sql.Date(EndDate.getTime()));
+
                 pst.execute();
                 JOptionPane.showMessageDialog(this, "SAVE SUCCESSFUL");
                 System.out.println("");
@@ -327,7 +306,6 @@ public class AddBatchForm extends javax.swing.JFrame {
                 System.out.println("Name: " + BName);
                 System.out.println("Phone Number: " + StartDate);
                 System.out.println("Address: " + EndDate);
-                
 
                 // Check if the student ID exists
                 String checkQuery = "SELECT COUNT(*) FROM `batch_details` WHERE `batch_id` = ?";
@@ -341,10 +319,9 @@ public class AddBatchForm extends javax.swing.JFrame {
                     PreparedStatement pst = con.prepareStatement(query);
 
                     pst.setString(1, BName);
-                    pst.setDate(2, new java.sql.Date (StartDate.getTime()));
-                    pst.setDate(3, new java.sql.Date (EndDate.getTime()));
+                    pst.setDate(2, new java.sql.Date(StartDate.getTime()));
+                    pst.setDate(3, new java.sql.Date(EndDate.getTime()));
                     pst.setInt(4, bid);
-                    
 
                     int rowsUpdated = pst.executeUpdate();
 
@@ -373,9 +350,9 @@ public class AddBatchForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -388,7 +365,6 @@ public class AddBatchForm extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DateChooserEndDate;
     private com.toedter.calendar.JDateChooser DateChooserStartDate;
     private javax.swing.JLabel NOValidate;
-    private javax.swing.JButton jButton151;
     private javax.swing.JButton jButtonClear;
     private javax.swing.JButton jButtonInsert;
     private javax.swing.JButton jButtonUpdate;
@@ -411,7 +387,7 @@ public class AddBatchForm extends javax.swing.JFrame {
     String BName;
     Date StartDate;
     Date EndDate;
-    
+
     public void setBatchVariables() {
 
         BName = txtBatchName.getText();
@@ -428,10 +404,6 @@ public class AddBatchForm extends javax.swing.JFrame {
             }
         }
     }
-
-
-
-
 
     private void customizeCloseOperation() {
 
@@ -451,6 +423,7 @@ public class AddBatchForm extends javax.swing.JFrame {
                 );
                 if (confirm == JOptionPane.YES_OPTION) {
                     dispose();
+                    clearFiled();
                 }
             }
         });
@@ -461,14 +434,14 @@ public class AddBatchForm extends javax.swing.JFrame {
         boolean isvalidate = isvalidateBatchName() & isvalidate_Batch_Starting_Date() & isvalidate_Batch_End_Date();
         return isvalidate;
     }
-    
+
     public boolean isvalidateBatchName() {
 
         if (txtBatchName.getText().isEmpty()) {
             validateBatchName.setText("Can not be Empty");
             return false;
         } else if (!Pattern.matches("^[A-Z]+_\\d{4}\\(\\d{2}\\)$", txtBatchName.getText())) {
-            validateBatchName.setText("only 50 leters (ex: ME_2024(01)");
+            validateBatchName.setText("Not Match Batch Name(ex: ME_2024(01)");
             return false;
         } else {
             validateBatchName.setText("");
@@ -476,36 +449,43 @@ public class AddBatchForm extends javax.swing.JFrame {
         return true;
 
     }
-    
+
     public boolean isvalidate_Batch_Starting_Date() {
 
-        if (DateChooserStartDate.getDate().toString().isBlank()) {
-            validateSDate.setText("Can not be Empty");
+        if (DateChooserStartDate.getDate() == null) {
+            validateSDate.setText("Choose the Start Date");
+            return false;
+
         } else {
-            validateSDate.setText("  ");
+            validateSDate.setText(" ");
+
         }
         return true;
 
     }
-    
+
     public boolean isvalidate_Batch_End_Date() {
 
-        if (DateChooserEndDate.getDate().toString().isBlank()) {
-            validateEnddate.setText("Can not be Empty");
+        if (DateChooserStartDate.getDate() == null) {
+            validateEnddate.setText("Choose the End Date");
+            return false;
         } else {
             validateEnddate.setText("  ");
         }
         return true;
 
     }
-    
+
     public void clearFiled() {
 
         txtBtchId.setText("");
         txtBatchName.setText("");
         DateChooserStartDate.setDate(null);
         DateChooserEndDate.setDate(null);
-        
+
+        validateBatchName.setText(" ");
+        validateEnddate.setText(" ");
+        validateSDate.setText(" ");
 
     }
 

@@ -52,7 +52,7 @@
                           <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="ComboBoxSearchExam" min="-2" pref="237" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jTextAplicant" min="-2" pref="368" max="-2" attributes="0"/>
+                          <Component id="jTextExam" min="-2" pref="368" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="38" max="32767" attributes="0"/>
@@ -74,7 +74,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ComboBoxSearchExam" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextAplicant" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextExam" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="269" max="-2" attributes="0"/>
@@ -212,9 +212,9 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="Nic"/>
-                <StringItem index="1" value="Name"/>
-                <StringItem index="2" value="Phone Number"/>
+                <StringItem index="0" value="Mc Number"/>
+                <StringItem index="1" value="Exam Date"/>
+                <StringItem index="2" value="Batch"/>
               </StringArray>
             </Property>
           </Properties>
@@ -226,13 +226,13 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextAplicant">
+        <Component class="javax.swing.JTextField" name="jTextExam">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Emoji" size="14" style="1"/>
+              <Font name="Segoe UI Emoji" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="33" type="rgb"/>
@@ -242,7 +242,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextAplicantCaretUpdate"/>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextExamCaretUpdate"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonTableCertificate">

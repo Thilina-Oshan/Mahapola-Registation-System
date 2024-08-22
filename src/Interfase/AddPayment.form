@@ -58,7 +58,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jComboBoxPaymentT" min="-2" pref="237" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
-                          <Component id="jTextSearchRegisterd" min="-2" pref="378" max="-2" attributes="0"/>
+                          <Component id="jTextSearchPayment" min="-2" pref="378" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="857" max="-2" attributes="0"/>
                   </Group>
@@ -74,7 +74,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jComboBoxPaymentT" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextSearchRegisterd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextSearchPayment" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="259" max="-2" attributes="0"/>
@@ -121,11 +121,9 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxPaymentT">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Mc Number"/>
+                <StringItem index="1" value="Batch"/>
               </StringArray>
             </Property>
           </Properties>
@@ -134,13 +132,13 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextSearchRegisterd">
+        <Component class="javax.swing.JTextField" name="jTextSearchPayment">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Emoji" size="14" style="1"/>
+              <Font name="Segoe UI Emoji" size="12" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="33" type="rgb"/>
@@ -149,6 +147,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextSearchPaymentCaretUpdate"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAddpayment">
           <Properties>
@@ -164,6 +165,8 @@
             <Property name="text" type="java.lang.String" value="Add New Payment"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddpaymentMouseEntered"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonAddpaymentMouseExited"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddpaymentActionPerformed"/>
           </Events>
         </Component>

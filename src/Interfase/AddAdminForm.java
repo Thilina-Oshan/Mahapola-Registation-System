@@ -124,6 +124,11 @@ public class AddAdminForm extends javax.swing.JFrame {
         jButtonClear.setText("Clear");
         jButtonClear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(51, 0, 51), null, new java.awt.Color(51, 0, 51)));
         jButtonClear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearActionPerformed(evt);
+            }
+        });
 
         jButtonInsertAdmin.setBackground(new java.awt.Color(102, 102, 255));
         jButtonInsertAdmin.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
@@ -464,6 +469,10 @@ public class AddAdminForm extends javax.swing.JFrame {
         nameValidation();
     }//GEN-LAST:event_txtAdminNameFocusLost
 
+    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearActionPerformed
+        ClearAdminF();
+    }//GEN-LAST:event_jButtonClearActionPerformed
+
     public static void main(String args[]) {
         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
@@ -543,6 +552,12 @@ public class AddAdminForm extends javax.swing.JFrame {
         txtEmail.setText("");
         txtPassword.setText("");
         txtReenterPws.setText("");
+
+        ValidationEmail.setText(" ");
+        validateAdminName.setText(" ");
+        validateAns.setText(" ");
+        validatePassword.setText(" ");
+        validateReenderPassword.setText(" ");
 
     }
 

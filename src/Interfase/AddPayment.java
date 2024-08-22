@@ -97,7 +97,7 @@ public class AddPayment extends javax.swing.JPanel {
         jTablePayment = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jComboBoxPaymentT = new javax.swing.JComboBox<>();
-        jTextSearchRegisterd = new javax.swing.JTextField();
+        jTextSearchPayment = new javax.swing.JTextField();
         jButtonAddpayment = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -132,17 +132,30 @@ public class AddPayment extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :- ");
 
-        jComboBoxPaymentT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPaymentT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc Number", "Batch" }));
 
-        jTextSearchRegisterd.setBackground(new java.awt.Color(204, 255, 255));
-        jTextSearchRegisterd.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jTextSearchRegisterd.setForeground(new java.awt.Color(51, 0, 51));
-        jTextSearchRegisterd.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextSearchPayment.setBackground(new java.awt.Color(204, 255, 255));
+        jTextSearchPayment.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jTextSearchPayment.setForeground(new java.awt.Color(51, 0, 51));
+        jTextSearchPayment.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextSearchPayment.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextSearchPaymentCaretUpdate(evt);
+            }
+        });
 
         jButtonAddpayment.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAddpayment.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jButtonAddpayment.setForeground(new java.awt.Color(0, 0, 51));
         jButtonAddpayment.setText("Add New Payment");
+        jButtonAddpayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonAddpaymentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonAddpaymentMouseExited(evt);
+            }
+        });
         jButtonAddpayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddpaymentActionPerformed(evt);
@@ -188,7 +201,7 @@ public class AddPayment extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jComboBoxPaymentT, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(101, 101, 101)
-                        .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextSearchPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -200,7 +213,7 @@ public class AddPayment extends javax.swing.JPanel {
                 .addGroup(jPanelAddPaymentTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBoxPaymentT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextSearchRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextSearchPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -294,6 +307,35 @@ public class AddPayment extends javax.swing.JPanel {
         setPaymentTable();
     }//GEN-LAST:event_formMouseClicked
 
+    private void jTextSearchPaymentCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchPaymentCaretUpdate
+
+        String[] col_names = {"mc_num", "batch_name"};
+
+        if (jTextSearchPayment.getText().isEmpty()) {
+            setPaymentTableData("SELECT * FROM `payment` ORDER BY `payment_id`");
+            jTextSearchPayment.setText("");
+        } else {
+
+            String col_name = col_names[jComboBoxPaymentT.getSelectedIndex()];
+            String value = jTextSearchPayment.getText();
+            String query = "SELECT * FROM `payment`  WHERE " + col_name + " LIKE '%" + value + "%'";
+
+            setPaymentTableData(query);
+
+        }
+
+    }//GEN-LAST:event_jTextSearchPaymentCaretUpdate
+
+    private void jButtonAddpaymentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddpaymentMouseEntered
+        jButtonAddpayment.setBackground(new java.awt.Color(0, 0, 51));
+        jButtonAddpayment.setForeground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jButtonAddpaymentMouseEntered
+
+    private void jButtonAddpaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddpaymentMouseExited
+      jButtonAddpayment.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonAddpayment.setForeground(new java.awt.Color(0, 0, 51));
+    }//GEN-LAST:event_jButtonAddpaymentMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddpayment;
@@ -304,7 +346,7 @@ public class AddPayment extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelAddPaymentTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePayment;
-    private javax.swing.JTextField jTextSearchRegisterd;
+    private javax.swing.JTextField jTextSearchPayment;
     // End of variables declaration//GEN-END:variables
 
     //Disable the Text Fields

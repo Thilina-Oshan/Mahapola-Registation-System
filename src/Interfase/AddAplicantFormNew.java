@@ -627,6 +627,12 @@ public class AddAplicantFormNew extends javax.swing.JFrame {
         txtAddress.setText("");
         txtId.setText("");
 
+        validateAddress.setText(" ");
+        validateName.setText(" ");
+        validateAddress.setText(" ");
+        validateNic.setText(" ");
+        validatePnum.setText(" ");
+
     }
 
     private boolean addApliDuplicateCheck() {

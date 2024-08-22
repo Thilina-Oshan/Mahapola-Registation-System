@@ -104,7 +104,7 @@ public class ExamTable extends javax.swing.JPanel {
         jButtonAddExam = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         ComboBoxSearchExam = new javax.swing.JComboBox<>();
-        jTextAplicant = new javax.swing.JTextField();
+        jTextExam = new javax.swing.JTextField();
         jButtonTableCertificate = new javax.swing.JButton();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,20 +177,20 @@ public class ExamTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
         jLabel1.setText("Search By :-");
 
-        ComboBoxSearchExam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nic", "Name", "Phone Number" }));
+        ComboBoxSearchExam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mc Number", "Exam Date", "Batch" }));
         ComboBoxSearchExam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxSearchExamActionPerformed(evt);
             }
         });
 
-        jTextAplicant.setBackground(new java.awt.Color(204, 255, 255));
-        jTextAplicant.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
-        jTextAplicant.setForeground(new java.awt.Color(51, 0, 51));
-        jTextAplicant.setCaretColor(new java.awt.Color(0, 0, 0));
-        jTextAplicant.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextExam.setBackground(new java.awt.Color(204, 255, 255));
+        jTextExam.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        jTextExam.setForeground(new java.awt.Color(51, 0, 51));
+        jTextExam.setCaretColor(new java.awt.Color(0, 0, 0));
+        jTextExam.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextAplicantCaretUpdate(evt);
+                jTextExamCaretUpdate(evt);
             }
         });
 
@@ -233,7 +233,7 @@ public class ExamTable extends javax.swing.JPanel {
                         .addGap(49, 49, 49)
                         .addComponent(ComboBoxSearchExam, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(65, 65, 65)
-                        .addComponent(jTextAplicant, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextExam, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelExamTableLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -250,7 +250,7 @@ public class ExamTable extends javax.swing.JPanel {
                 .addGroup(jPanelExamTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(ComboBoxSearchExam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextAplicant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextExam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -350,24 +350,24 @@ public class ExamTable extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboBoxSearchExamActionPerformed
 
-    private void jTextAplicantCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextAplicantCaretUpdate
+    private void jTextExamCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextExamCaretUpdate
 
-//        String[] col_names = {"stu_nic", "stu_name", "stu_name", "phone_num"};
-//
-//        if (jTextAplicant.getText().isEmpty()) {
-//            setAplicantTableData("SELECT * FROM `student_details`  ORDER BY `stu_id`");
-//            jTextAplicant.setText("");
-//        } else {
-//
-//            String col_name = col_names[ComboBoxSearchaplicant.getSelectedIndex()];
-//            String value = jTextAplicant.getText();
-//            String query = "SELECT * FROM `student_details` WHERE " + col_name + " LIKE '%" + value + "%'";
-//
-//            setAplicantTableData(query);
-//
-//        }
+        String[] col_names = {"mc_num", "exam_date", "batch_name"};
 
-    }//GEN-LAST:event_jTextAplicantCaretUpdate
+        if (jTextExam.getText().isEmpty()) {
+            setExamTableData("SELECT * FROM `exam_detail`");
+            jTextExam.setText("");
+        } else {
+
+            String col_name = col_names[ComboBoxSearchExam.getSelectedIndex()];
+            String value = jTextExam.getText();
+            String query = "SELECT * FROM `exam_detail` WHERE " + col_name + " LIKE '%" + value + "%'";
+
+            setExamTableData(query);
+
+        }
+
+    }//GEN-LAST:event_jTextExamCaretUpdate
 
     private void jButtonTableCertificateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTableCertificateMouseEntered
         jButtonTableCertificate.setBackground(new java.awt.Color(0, 0, 51));
@@ -404,7 +404,7 @@ public class ExamTable extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelTitle;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableAddExamDetails;
-    private javax.swing.JTextField jTextAplicant;
+    private javax.swing.JTextField jTextExam;
     // End of variables declaration//GEN-END:variables
 
     void CustimizeTableHeader() {
@@ -429,7 +429,7 @@ public class ExamTable extends javax.swing.JPanel {
         addexamform.getValidateMcE().setText("Do not Update Mc Number");
         addexamform.getValidateEnterNic().setText("Do not Update Enter Nic");
         addexamform.getValidateExamDate().setText("Do Not Update Exam Date");
-         addexamform.getValidateEnterBatch().setText("Do Not Update Enter Batch Name");
+        addexamform.getValidateEnterBatch().setText("Do Not Update Enter Batch Name");
     }
 
 }

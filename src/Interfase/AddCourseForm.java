@@ -26,17 +26,14 @@ public class AddCourseForm extends javax.swing.JFrame {
 
     static Connection con = MainInterfase.conn;
     ResultSet rs;
-    
-    
-    
+
     public AddCourseForm() {
         initComponents();
         customizeCloseOperation();
     }
-    
+
     private ArrayList<AddCourseClass> getCourseList(String query) {
-        
-        
+
         ArrayList<AddCourseClass> coursedlist = new ArrayList<>();
         Statement st;
 
@@ -60,9 +57,7 @@ public class AddCourseForm extends javax.swing.JFrame {
 
         return coursedlist;
     }
-    
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,10 +79,10 @@ public class AddCourseForm extends javax.swing.JFrame {
         ButtonUpdate = new javax.swing.JButton();
         textDuration = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton151 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -241,7 +236,7 @@ public class AddCourseForm extends javax.swing.JFrame {
                     .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(validateCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(textDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -259,17 +254,6 @@ public class AddCourseForm extends javax.swing.JFrame {
 
         txtCourseId.setEnabled(false);
 
-        jButton151.setBackground(new java.awt.Color(51, 102, 255));
-        jButton151.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton151.setForeground(new java.awt.Color(255, 255, 255));
-        jButton151.setText("Back");
-        jButton151.setBorder(null);
-        jButton151.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton151ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/signup-library-icon.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -279,7 +263,6 @@ public class AddCourseForm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton151, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -287,8 +270,7 @@ public class AddCourseForm extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton151)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1))
@@ -307,12 +289,8 @@ public class AddCourseForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton151ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton151ActionPerformed
-
-        this.dispose();
-    }//GEN-LAST:event_jButton151ActionPerformed
 
     private void txtCourseNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCourseNameFocusLost
         isvalidateCname();
@@ -325,7 +303,6 @@ public class AddCourseForm extends javax.swing.JFrame {
     private void ButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInsertActionPerformed
         if (isvalidate()) {
 
-               
             try {
 
                 setCourseVariables();
@@ -336,11 +313,13 @@ public class AddCourseForm extends javax.swing.JFrame {
                 pst.setString(1, cName);
                 pst.setString(2, duration);
                 pst.execute();
-                
+
                 JOptionPane.showMessageDialog(this, "Data Saved! ");
 
             } catch (Exception e) {
+
                 JOptionPane.showMessageDialog(this, e);
+                System.out.println("Not Insert" + e);
             }
 
         }
@@ -359,7 +338,6 @@ public class AddCourseForm extends javax.swing.JFrame {
                 System.out.println("Course ID: " + cid);
                 System.out.println("Name: " + cName);
                 System.out.println("Duration: " + duration);
-                
 
                 // Check if the student ID exists
                 String checkQuery = "SELECT COUNT(*) FROM `course` WHERE `couse_id` = ?";
@@ -371,11 +349,10 @@ public class AddCourseForm extends javax.swing.JFrame {
                     // Proceed with the update
                     String query = "UPDATE `course` SET `couse_name`= ?,`course_duration`= ? WHERE `couse_id`= ?";
                     PreparedStatement pst = con.prepareStatement(query);
-                    
+
                     pst.setString(1, cName);
                     pst.setString(2, duration);
                     pst.setInt(3, cid);
-                    
 
                     int rowsUpdated = pst.executeUpdate();
 
@@ -400,7 +377,7 @@ public class AddCourseForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-         com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
+        com.formdev.flatlaf.themes.FlatMacDarkLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -415,7 +392,6 @@ public class AddCourseForm extends javax.swing.JFrame {
     private javax.swing.JButton ButtonInsert;
     private javax.swing.JButton ButtonUpdate;
     private javax.swing.JLabel NOValidates;
-    private javax.swing.JButton jButton151;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -434,14 +410,14 @@ public class AddCourseForm extends javax.swing.JFrame {
     int cid;
     String cName;
     String duration;
-    
+
     public void setCourseVariables() {
-        
-        cid = Integer.parseInt(txtCourseId.getText());
+
+//        cid = Integer.parseInt(txtCourseId.getText());
         cName = txtCourseName.getText();
         duration = textDuration.getText();
     }
-    
+
     private void customizeCloseOperation() {
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -464,13 +440,13 @@ public class AddCourseForm extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public boolean isvalidate() {
 
         boolean isvalidate = isvalidateCname() & isvalidateDuration();
         return isvalidate;
     }
-    
+
     public boolean isvalidateCname() {
 
         if (txtCourseName.getText().isEmpty()) {
@@ -485,7 +461,7 @@ public class AddCourseForm extends javax.swing.JFrame {
         return true;
 
     }
-    
+
     public boolean isvalidateDuration() {
 
         if (textDuration.getText().isEmpty()) {
@@ -500,12 +476,12 @@ public class AddCourseForm extends javax.swing.JFrame {
         return true;
 
     }
-    
+
     public void clearFiled() {
 
         txtCourseName.setText("");
         textDuration.setText("");
-        
+
     }
 
 }

@@ -85,6 +85,11 @@ public class LoginMainFrame extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setText("Forgot Password");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jButtonSingIN.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSingIN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -343,6 +348,13 @@ public class LoginMainFrame extends javax.swing.JFrame {
         addadminform.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabelSignUpMouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+       ForgotPasswordForm forgotpasswordform = new ForgotPasswordForm();
+       forgotpasswordform.setVisible(true);
+       this.dispose();
+        
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     public static void main(String args[]) {
 

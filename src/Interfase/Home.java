@@ -11,19 +11,39 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import java.sql.Statement;
+import java.sql.ResultSet;
 
 public class Home extends javax.swing.JPanel {
 
     Connection con;
-   
 
     public Home() {
         initComponents();
         con = MainInterfase.conn;
         System.out.println("Database connection initialized");
+        // Fetch and display courses
+        jLabelCourses.setText(getCourses());
     }
 
+    private String getCourses() {
+    String courseCount = "";
+    String query = "SELECT COUNT(*) AS total_courses FROM `course`"; // Adjust this query based on your database structure
 
+    try {
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        if (rs.next()) {
+            courseCount = rs.getString("total_courses");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error fetching course count: " + e.getMessage());
+    }
+
+    return courseCount;
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

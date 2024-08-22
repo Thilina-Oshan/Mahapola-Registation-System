@@ -383,15 +383,15 @@ public class AddRegistrationTable extends javax.swing.JPanel {
                 JTextField txtAddress1 = (JTextField) fieldAddress.get(addregistationForm);
                 txtAddress1.setText(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 5).toString());
 
-                Field fieldBatch = addregistationForm.getClass().getDeclaredField("jComboBoxBatch");
+                Field fieldBatch = addregistationForm.getClass().getDeclaredField("jComboBoxBatchReg");
                 fieldBatch.setAccessible(true);
-                JComboBox<?> jComboBoxBatch = (JComboBox<?>) fieldBatch.get(addregistationForm);
-                jComboBoxBatch.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 6));
+                JComboBox<?> jComboBoxBatchReg = (JComboBox<?>) fieldBatch.get(addregistationForm);
+                jComboBoxBatchReg.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 6));
 
-                Field fieldCourse = addregistationForm.getClass().getDeclaredField("jComboBoxCourse");
+                Field fieldCourse = addregistationForm.getClass().getDeclaredField("jComboBoxCourseReg");
                 fieldCourse.setAccessible(true);
-                JComboBox<?> jComboBoxCourse = (JComboBox<?>) fieldCourse.get(addregistationForm);
-                jComboBoxCourse.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 7).toString());
+                JComboBox<?> jComboBoxCourseReg = (JComboBox<?>) fieldCourse.get(addregistationForm);
+                jComboBoxCourseReg.setSelectedItem(AddRegisterdModel.getValueAt(jTableRegisterd.getSelectedRow(), 7).toString());
 
                 Field fieldSatus = addregistationForm.getClass().getDeclaredField("jComboBoxStatus");
                 fieldSatus.setAccessible(true);
