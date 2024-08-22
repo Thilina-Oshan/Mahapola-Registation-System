@@ -7,6 +7,7 @@ package Interfase;
 import Classes.AddBatchClass;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.lang.reflect.Field;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -17,7 +18,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.table.JTableHeader;
 
 /**
@@ -122,6 +126,11 @@ public class AddBatch extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableBatch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableBatchMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableBatch);
 
         jLabel1.setFont(new java.awt.Font("Sitka Text", 1, 18)); // NOI18N
@@ -244,6 +253,58 @@ public class AddBatch extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTextSearchBatchCaretUpdate
 
+    private void jTableBatchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableBatchMouseClicked
+        if (jTableBatch.getSelectedRowCount() == 1) {
+
+            addBatchform.setVisible(true);
+
+            try {
+
+                DisableTxtFielsBatch();
+                Field fieldIdBatch = addBatchform.getClass().getDeclaredField("txtBtchId");
+                fieldIdBatch.setAccessible(true);
+                JTextField txtBtchId = (JTextField) fieldIdBatch.get(addBatchform);
+                txtBtchId.setText(AddBatchModel.getValueAt(jTableBatch.getSelectedRow(), 0).toString());
+
+                Field fiedNameBatch = addBatchform.getClass().getDeclaredField("txtBatchName");
+                fiedNameBatch.setAccessible(true);
+                JTextField txtBatchName = (JTextField) fiedNameBatch.get(addBatchform);
+                txtBatchName.setText(AddBatchModel.getValueAt(jTableBatch.getSelectedRow(), 1).toString());
+
+                // Access the JDateChooser field via reflection
+                Field fieldBStart = addBatchform.getClass().getDeclaredField("DateChooserStartDate");
+                fieldBStart.setAccessible(true);
+                com.toedter.calendar.JDateChooser DateChooserStartDate = (com.toedter.calendar.JDateChooser) fieldBStart.get(addBatchform);
+                // Retrieve the date string from the selected row in the table
+                String dateStr = AddBatchModel.getValueAt(jTableBatch.getSelectedRow(), 2).toString();
+                // Parse the date string into a java.util.Date object
+                java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateStr); // Adjust date format as needed
+                // Set the parsed date in the JDateChooser
+                DateChooserStartDate.setDate(utilDate);
+
+                // Access the JDateChooser field for the end date via reflection
+                Field fieldBEnd = addBatchform.getClass().getDeclaredField("DateChooserEndDate");
+                fieldBEnd.setAccessible(true);
+                com.toedter.calendar.JDateChooser DateChooserEndDate = (com.toedter.calendar.JDateChooser) fieldBEnd.get(addBatchform);
+
+                // Retrieve the date string from the selected row in the table
+                String dateStrEnd = AddBatchModel.getValueAt(jTableBatch.getSelectedRow(), 3).toString();
+
+                // Parse the date string into a java.util.Date object
+                java.util.Date utilDateEnd = new SimpleDateFormat("yyyy-MM-dd").parse(dateStrEnd); // Adjust date format as needed
+
+                // Set the parsed date in the JDateChooser
+                DateChooserEndDate.setDate(utilDateEnd);
+
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(this, e + "Not Selected Colom");
+            }
+
+        }
+
+    }//GEN-LAST:event_jTableBatchMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddBatch;
@@ -264,6 +325,14 @@ public class AddBatch extends javax.swing.JPanel {
         header.setForeground(Color.WHITE); // Set your desired text color
         header.setFont(new java.awt.Font("Serif", java.awt.Font.BOLD, 14)); // Customize the font if needed
 //        header.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK)); // Optional: Set a border for the header
+
+    }
+
+    //Disable the Text Fields
+    public void DisableTxtFielsBatch() {
+
+        addBatchform.getTxtBtchId().setEnabled(false);
+        addBatchform.getNOValidate().setText("Do not Update Id");
 
     }
 

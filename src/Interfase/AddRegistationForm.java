@@ -420,7 +420,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         );
 
         jComboBoxBatchReg.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBoxCourseReg.setForeground(new java.awt.Color(0, 0, 0));
+        jComboBoxBatchReg.setForeground(new java.awt.Color(0, 0, 0));
         jComboBoxCourseReg.setBackground(new java.awt.Color(255, 255, 255));
         jComboBoxCourseReg.setForeground(new java.awt.Color(0, 0, 0));
         txtRegId.setEnabled(false);
@@ -451,7 +451,7 @@ public class AddRegistationForm extends javax.swing.JFrame {
         jLabel8.setText("Registred Date");
 
         vaidateDate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        vaidateDate.setForeground(new java.awt.Color(0, 0, 0));
+        vaidateDate.setForeground(new java.awt.Color(255, 255, 255));
         vaidateDate.setText("                                      ");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Reg.png"))); // NOI18N
@@ -974,14 +974,12 @@ public class AddRegistationForm extends javax.swing.JFrame {
     }
 
     public boolean isvalidateDate() {
-
         if (jDateChooserReg.getDate() == null) {
             vaidateDate.setText("Choose the Date");
+            JOptionPane.showMessageDialog(null, "Please choose a date.", "Date Required", JOptionPane.WARNING_MESSAGE);
             return false;
-
         } else {
             vaidateDate.setText(" ");
-
         }
         return true;
 

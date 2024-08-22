@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
 public class AddCourse extends javax.swing.JPanel {
-    
+
     //Set Connection 
     static Connection conn = new DbConnection().connect();
 
@@ -28,14 +28,13 @@ public class AddCourse extends javax.swing.JPanel {
     ArrayList<AddCourseClass> addCourseArray;
     ResultSet rs;
     AddCourseForm ACF = new AddCourseForm();
-    
 
     public AddCourse() {
         initComponents();
         conn = MainInterfase.conn;
         TableCourse.setModel(AddCourseModel);
-        setCoursetable("SELECT * FROM `course`");
-         CustimizeTableCourseHeader();
+        setCoursetable();
+        CustimizeTableCourseHeader();
     }
 
     private ArrayList<AddCourseClass> getCourseList(String query) {
@@ -75,7 +74,7 @@ public class AddCourse extends javax.swing.JPanel {
         }
 
     }
-    
+
     void setCourseTableData(String query) { //table ekata data set 
 
         AddCourseModel.setRowCount(0);
@@ -86,13 +85,12 @@ public class AddCourse extends javax.swing.JPanel {
             int a = addCourseArray.get(i).getCourse_id();
             String b = addCourseArray.get(i).getCourse_name();
             String c = addCourseArray.get(i).getCourse_duration();
-            
 
             AddCourseModel.addRow(new Object[]{a, b, c});
         }
 
     }
-    
+
     public void setCoursetable() {
 
         setCourseTableData("SELECT * FROM `course` ORDER BY `couse_id`");
@@ -257,11 +255,11 @@ public class AddCourse extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonAddCourseActionPerformed
 
     private void jTextSearchCourseCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextSearchCourseCaretUpdate
-     
-          String[] col_names = {"couse_id", "couse_name"};
+
+        String[] col_names = {"couse_id", "couse_name"};
 
         if (jTextSearchCourse.getText().isEmpty()) {
-             setCourseTableData("SELECT * FROM `course` ORDER BY `couse_id`");
+            setCourseTableData("SELECT * FROM `course` ORDER BY `couse_id`");
             jTextSearchCourse.setText("");
         } else {
 
@@ -272,11 +270,11 @@ public class AddCourse extends javax.swing.JPanel {
             setCourseTableData(query);
 
         }
-        
+
     }//GEN-LAST:event_jTextSearchCourseCaretUpdate
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
-       setCoursetable();
+        setCoursetable();
     }//GEN-LAST:event_formFocusGained
 
     private void TableCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCourseMouseClicked
@@ -301,7 +299,6 @@ public class AddCourse extends javax.swing.JPanel {
                 JTextField textDuration = (JTextField) DurationFiled.get(ACF);
                 textDuration.setText(AddCourseModel.getValueAt(TableCourse.getSelectedRow(), 2).toString());
 
-
             } catch (Exception e) {
             }
 
@@ -309,7 +306,7 @@ public class AddCourse extends javax.swing.JPanel {
     }//GEN-LAST:event_TableCourseMouseClicked
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        
+        setCoursetable();
     }//GEN-LAST:event_formMouseClicked
 
 
@@ -325,8 +322,6 @@ public class AddCourse extends javax.swing.JPanel {
     private javax.swing.JTextField jTextSearchCourse;
     // End of variables declaration//GEN-END:variables
 
-    
-    
     void CustimizeTableCourseHeader() {
 
         JTableHeader header = TableCourse.getTableHeader();
@@ -337,5 +332,4 @@ public class AddCourse extends javax.swing.JPanel {
 
     }
 
-    
 }

@@ -357,7 +357,7 @@ public class AddCourseForm extends javax.swing.JFrame {
                     int rowsUpdated = pst.executeUpdate();
 
                     if (rowsUpdated > 0) {
-                        JOptionPane.showMessageDialog(null, "UPDATE  SUCCESSFUL");
+                        JOptionPane.showMessageDialog(null, "Update  Successful");
                     } else {
                         JOptionPane.showMessageDialog(null, "No record found with the given ID");
                     }
@@ -416,6 +416,16 @@ public class AddCourseForm extends javax.swing.JFrame {
 //        cid = Integer.parseInt(txtCourseId.getText());
         cName = txtCourseName.getText();
         duration = textDuration.getText();
+        
+         String idTexBatch = txtCourseId.getText();
+        if (idTexBatch != null && !idTexBatch.isEmpty()) {
+            try {
+                cid = Integer.parseInt(idTexBatch);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Student ID");
+                return;
+            }
+        }
     }
 
     private void customizeCloseOperation() {

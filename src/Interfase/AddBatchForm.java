@@ -5,6 +5,7 @@
 package Interfase;
 
 import static Interfase.AddBatchForm.con;
+import com.toedter.calendar.JDateChooser;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
@@ -13,7 +14,12 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -24,6 +30,7 @@ public class AddBatchForm extends javax.swing.JFrame {
     static Connection con = MainInterfase.conn;
     private AddBatch addbatch;
     ResultSet rs;
+    Statement st;
 
     public AddBatchForm() {
         initComponents();
@@ -271,33 +278,39 @@ public class AddBatchForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearActionPerformed
 
     private void jButtonInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInsertActionPerformed
-        if (isvalidate()) {
+        if (isvalidate() & addBatchlicateCheck()) {
 
             try {
                 setBatchVariables();
 
-                String query = "INSERT INTO `batch_details` (`batch_name`, `startdate`, `enddate`) VALUES (?,?,?)";
+                String query = "INSERT INTO `batch_details` (`batch_name`, `startdate`, `enddate`) VALUES (?, ?, ?)";
                 PreparedStatement pst = con.prepareStatement(query);
+
+                // Debug: Check values before setting them
+                System.out.println("Batch Name: " + BName);
+                System.out.println("Start Date: " + StartDate);
+                System.out.println("End Date: " + EndDate);
 
                 pst.setString(1, BName);
                 pst.setDate(2, new java.sql.Date(StartDate.getTime()));
                 pst.setDate(3, new java.sql.Date(EndDate.getTime()));
 
                 pst.execute();
-                JOptionPane.showMessageDialog(this, "SAVE SUCCESSFUL");
-                System.out.println("");
-                clearFiled();
+                JOptionPane.showMessageDialog(this, "Update Successful");
+
+                clearFiled(); // Ensure method name is clearField() or clearFields() as intended
+            } catch (SQLException e) {
+                System.out.println("SQL Error: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
             } catch (Exception e) {
-                System.out.println(e);
-                JOptionPane.showMessageDialog(this, e);
-                JOptionPane.showMessageDialog(null, "Can't Save");
-                clearFiled();
+                System.out.println("General Error: " + e.getMessage());
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
             }
         }
     }//GEN-LAST:event_jButtonInsertActionPerformed
 
     private void jButtonUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateActionPerformed
-        if (isvalidate()) {
+        if (isvalidate() & addBatchlicateCheck()) {
             setBatchVariables();
 
             try {
@@ -326,7 +339,7 @@ public class AddBatchForm extends javax.swing.JFrame {
                     int rowsUpdated = pst.executeUpdate();
 
                     if (rowsUpdated > 0) {
-                        JOptionPane.showMessageDialog(null, "UPDATE  SUCCESSFUL");
+                        JOptionPane.showMessageDialog(null, "Update Successful");
                     } else {
                         JOptionPane.showMessageDialog(null, "No record found with the given ID");
                     }
@@ -487,6 +500,115 @@ public class AddBatchForm extends javax.swing.JFrame {
         validateEnddate.setText(" ");
         validateSDate.setText(" ");
 
+    }
+
+    
+    // Check for Duplicate Batch
+    private boolean addBatchlicateCheck() {
+        setBatchVariables();
+
+        try {
+            // Use PreparedStatement to avoid SQL injection and properly handle placeholders
+            String query = "SELECT COUNT(*) FROM `batch_details` WHERE `batch_name` = ?";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, BName);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+
+                // If count is greater than 0, it means the batch name already exists
+                if (count > 0) {
+                    JOptionPane.showMessageDialog(this, BName + " Batch is Already Exists", "Duplicate Entry Found", JOptionPane.WARNING_MESSAGE);
+                    clearFiled();
+                    
+                    return false;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Database error: " + e.getMessage());
+            System.out.println("SQL Error: " + e.getMessage());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return true;  // No duplicates found
+    }
+
+    //gette sette methods
+    public JDateChooser getDateChooserEndDate() {
+        return DateChooserEndDate;
+    }
+
+    public void setDateChooserEndDate(JDateChooser DateChooserEndDate) {
+        this.DateChooserEndDate = DateChooserEndDate;
+    }
+
+    public JDateChooser getDateChooserStartDate() {
+        return DateChooserStartDate;
+    }
+
+    public void setDateChooserStartDate(JDateChooser DateChooserStartDate) {
+        this.DateChooserStartDate = DateChooserStartDate;
+    }
+
+    public JTextField getTxtBatchName() {
+        return txtBatchName;
+    }
+
+    public void setTxtBatchName(JTextField txtBatchName) {
+        this.txtBatchName = txtBatchName;
+    }
+
+    public JTextField getTxtBtchId() {
+        return txtBtchId;
+    }
+
+    public void setTxtBtchId(JTextField txtBtchId) {
+        this.txtBtchId = txtBtchId;
+    }
+
+    public JLabel getValidateBatchName() {
+        return validateBatchName;
+    }
+
+    public void setValidateBatchName(JLabel validateBatchName) {
+        this.validateBatchName = validateBatchName;
+    }
+
+    public JLabel getValidateEnddate() {
+        return validateEnddate;
+    }
+
+    public void setValidateEnddate(JLabel validateEnddate) {
+        this.validateEnddate = validateEnddate;
+    }
+
+    public JLabel getValidateSDate() {
+        return validateSDate;
+    }
+
+    public void setValidateSDate(JLabel validateSDate) {
+        this.validateSDate = validateSDate;
+    }
+
+    public Date getStartDate() {
+        return StartDate;
+    }
+
+    public void setStartDate(Date StartDate) {
+        this.StartDate = StartDate;
+    }
+
+    public JLabel getNOValidate() {
+        return NOValidate;
+    }
+
+    public void setNOValidate(JLabel NOValidate) {
+        this.NOValidate = NOValidate;
     }
 
 }

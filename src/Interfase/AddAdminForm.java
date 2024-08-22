@@ -446,7 +446,7 @@ public class AddAdminForm extends javax.swing.JFrame {
                 pst.setString(6, Re_enterPassword);
                 pst.execute();
 
-                JOptionPane.showMessageDialog(this, "Success");
+                JOptionPane.showMessageDialog(this, "Login Successful");
 
                 // Load the main interface
                 MainInterfase mainInterface = new MainInterfase(); // Replace with your main interface class

@@ -24,26 +24,76 @@ public class Home extends javax.swing.JPanel {
         System.out.println("Database connection initialized");
         // Fetch and display courses
         jLabelCourses.setText(getCourses());
+        JlableRegisterd.setText(getApplicant());
+        jLabelAddApplicant.setText(getBatch());
     }
 
     private String getCourses() {
-    String courseCount = "";
-    String query = "SELECT COUNT(*) AS total_courses FROM `course`"; // Adjust this query based on your database structure
+        String courseCount = "";
+        String query = "SELECT COUNT(*) AS total_courses FROM `course`";
 
-    try {
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
 
-        if (rs.next()) {
-            courseCount = rs.getString("total_courses");
+            if (rs.next()) {
+                int count = rs.getInt("total_courses");
+                // Format the count as a two-digit number, even if it's greater than 9
+                courseCount = String.format("%02d", count);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error fetching course count: " + e.getMessage());
         }
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error fetching course count: " + e.getMessage());
+        return courseCount;
     }
 
-    return courseCount;
-}
+    private String getApplicant() {
+
+        String studentCount = "";
+        String query = "SELECT COUNT(*) AS total_student FROM `student_details`"; // Adjust this query based on your database structure
+
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            if (rs.next()) {
+                int count = rs.getInt("total_student");
+                // Format the count as a two-digit number, even if it's greater than 9
+                studentCount = String.format("%02d", count);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error fetching Student count: " + e.getMessage());
+        }
+
+        return studentCount;
+
+    }
+
+    private String getBatch() {
+
+        String batchCount = "";
+        String query = "SELECT COUNT(*) AS total_batch FROM `batch_details`"; // Adjust this query based on your database structure
+
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            if (rs.next()) {
+                int count = rs.getInt("total_batch");
+                // Format the count as a two-digit number, even if it's greater than 9
+                batchCount = String.format("%02d", count);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error fetching Student count: " + e.getMessage());
+        }
+
+        return batchCount;
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -75,7 +125,7 @@ public class Home extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(102, 0, 102));
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
-        jLabel1.setText("Add Applicant");
+        jLabel1.setText("All Batches");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -84,7 +134,7 @@ public class Home extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,10 +144,11 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel2.setText("Students who have applied :-");
+        jLabel2.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel2.setText("Batches Registered :-");
 
-        jLabelAddApplicant.setText("jLabel3");
+        jLabelAddApplicant.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelAddApplicant.setText("       ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,10 +157,10 @@ public class Home extends javax.swing.JPanel {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelAddApplicant, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,10 +197,11 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel4.setText("Courses registered");
+        jLabel4.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel4.setText("Courses registered :-");
 
-        jLabelCourses.setText("jLabel3");
+        jLabelCourses.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabelCourses.setText("       ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -158,10 +210,10 @@ public class Home extends javax.swing.JPanel {
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +240,7 @@ public class Home extends javax.swing.JPanel {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,10 +250,11 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jLabel6.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel6.setText("Students who have Registered:-");
+        jLabel6.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
+        jLabel6.setText("Applide Student :-");
 
-        JlableRegisterd.setText("jLabel3");
+        JlableRegisterd.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        JlableRegisterd.setText("      ");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -210,8 +263,8 @@ public class Home extends javax.swing.JPanel {
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addComponent(JlableRegisterd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -226,7 +279,7 @@ public class Home extends javax.swing.JPanel {
                 .addGap(0, 53, Short.MAX_VALUE))
         );
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/slp.jpeg"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Sri_Lanka_Port_Authority_Resized_900x390.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -242,9 +295,9 @@ public class Home extends javax.swing.JPanel {
                         .addGap(26, 26, 26)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel7)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,9 +307,9 @@ public class Home extends javax.swing.JPanel {
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
